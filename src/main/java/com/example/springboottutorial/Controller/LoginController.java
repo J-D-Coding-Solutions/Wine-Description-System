@@ -1,6 +1,6 @@
-package Controller;
+package com.example.springboottutorial.Controller;
 
-import Service.UserService;
+import com.example.springboottutorial.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +16,12 @@ public class LoginController {
 
     // Handle GET request for login page
     @GetMapping("/login")
-    public String showLoginPage(Model model) {
+    public String showLoginPage() {
         return "login"; // This should resolve to the login.html template
     }
 
     // Handle POST request for form submission (login)
-   /* @PostMapping("/login")
+    @PostMapping("/login")
     public String login(@RequestParam String username,
                         @RequestParam String password, Model model) {
         // Authenticate using UserService
@@ -33,5 +33,5 @@ public class LoginController {
             model.addAttribute("error", "Invalid username or password");
             return "login"; // Re-render the login page with the error
         }
-    }*/
+    }
 }
