@@ -4,7 +4,9 @@
   <title>Welcome</title>
 </head>
 <body>
-<h2>Welcome!</h2>
+<h2>Welcome, <span th:text="${Username}">User</span>!</h2>
 <p>You have successfully logged in.</p>
+<p style="color: red;" th:text="${error}"></p>
 </body>
 </html>
+

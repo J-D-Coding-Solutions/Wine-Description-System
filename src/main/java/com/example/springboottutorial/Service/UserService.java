@@ -17,4 +17,9 @@ public class UserService {
         Optional<User> user = userRepository.findByUsername(username);
         return user.map(value -> value.getPassword().equals(password)).orElse(false);
     }
+    public boolean register(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
+        return user.isEmpty(); // Returns true if the user does not exist, false if it does
+    }
+
 }
