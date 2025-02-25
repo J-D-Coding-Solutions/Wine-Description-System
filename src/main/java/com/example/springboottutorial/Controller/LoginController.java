@@ -20,13 +20,13 @@ public class LoginController {
     private UserRepository userRepository;
 
     // Handle GET request for login page
-    @GetMapping("/login")
+    @GetMapping("/")
     public String showLoginPage() {
         return "login"; // This should resolve to the login.html template
     }
 
     // Handle POST request for form submission (login)
-    @PostMapping("/login")
+    @PostMapping("/")
     public String login(@RequestParam String username,
                         @RequestParam String password, Model model) {
         // Authenticate using UserService
@@ -59,14 +59,18 @@ public class LoginController {
         }
     }
     @GetMapping("/welcome")
-    public String Welcome(@RequestParam String username, Model model) {
-        User user = userRepository.findByUsername(username).orElse(null);
-        if (user != null) {
-            model.addAttribute("Username", user.getUsername());
+    public String welcome(@RequestParam(name = "username", required = false) String username, Model model) {
+        if (username != null) {
+            User user = userRepository.findByUsername(username).orElse(null);
+            if (user != null) {
+                model.addAttribute("username", user.getUsername());
+            } else {
+                model.addAttribute("error", "User not found");
+            }
         } else {
-            model.addAttribute("error", "User not found");
+            model.addAttribute("error", "Username not provided");
         }
-    return "/welcome";
+        return "welcome"; // Thymeleaf template name
     }
 
 
