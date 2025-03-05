@@ -1,0 +1,22 @@
+#loginHeader{
+   text-align: center;
+    margin-top: 100px;
+}
+.loginForm{
+    text-align: center;
+    margin-right: 10px;
+}
+
+.loginForm button{
+    margin-top: 10px;
+}
+
+#error{
+    text-align: center;
+}
+
+body{
+    background-image: url('/images/Login-Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
