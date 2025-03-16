@@ -1,15 +1,24 @@
 #loginHeader{
-   text-align: center;
+    text-align: center;
     margin-top: 100px;
 }
 .loginForm{
     text-align: center;
     margin-right: 10px;
+    border: #5A6E41 2px solid;
+    border-radius: 8px;
+    border-top: #5A6E41 4px solid;
+    border-bottom: #5A6E41 4px solid;
+    position: relative;
+    padding: 0px;
 }
 
 .loginForm button{
     margin-top: 10px;
+    border-radius: 8px;
+    background-color: #D8B5A5;
 }
+
 
 #error{
     text-align: center;
@@ -19,4 +28,6 @@ body{
     background-image: url('/images/Login-Background.png');
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #F4EAE6;
 }
