@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F4EAE6;
+}
+
+.friendPage{
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    /*align-items: center;*/
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+
+}
+
+#friendInfo{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #B03A48  ;
+
+}
+
+
+
+#friendList{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #7B506F;
+}
+
+
+#searchFriend{
+    background-color: #F4EAE6;
+    background-image: url(../images/searchIcon.png);
+    background-position: 1px 12px;
+    background-repeat: no-repeat;
+    width: 98%;
+    /*height: 100%;*/
+    font-size: 16px;
+    padding: 12px 4px 12px 1px;
+    margin-bottom: 12px;
+    position: relative;
+    background-color: white;
+
+}
+
+
+#friendRequest{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #B03A48;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    /*border: 1px solid #dddddd;*/
+    text-align: left;
+    padding: 8px;
+}
+td, .header{
+    border-bottom: 1px solid black;
+}
+
+.header, tr:hover{
+    background-color: #F4EAE6;;
+}
+
+.accept, .decline{
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.accept{
+    background-color: lightgreen;
+    color: white;
+}
+
+.decline{
+    background-color: darkred;
+    color: white;
+}
+
+h2{
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+#friendInfo h2{
+    text-align: center;
+}
+
+#friendRequest h2{
+    text-align: center;
+}
+
+#friendList h2{
+    text-align: center;
+}

@@ -3,7 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link th:href="@{/css/Welcome.css}" rel="stylesheet">
+    <link th:href="@{/css/welcome.css}" rel="stylesheet">
+    <link th:href="@{/css/friend.css}" rel="stylesheet">
+    <script th:src="@{/js/friend.js}"></script>
 </head>
 <body>
 
@@ -14,10 +16,70 @@
     <li class="right"><a href="#about">About</a></li>
 </ul>
 
-<div style="padding:0 16px;">
-    <h2>Welcome, <span th:text="${username}"></span>!</h2>
-    <p>You have successfully logged in.</p>
-    <p style="color: red;" th:text="${error}"></p>
+<div class="friendPage">
+    <div id="friendInfo">
+    <h2>Friend Info</h2>
+    <p style="text-align: center;">Selected friend info</p>
+</div>
+
+<div id="friendList">
+    <h2>Friends</h2>
+    <input type="text" id="searchFriend" placeholder="Search Friend List..." onkeyup="searchFriend()">
+    <table id="friendTable">
+        <tr class="header">
+            <th>User Id</th>
+            <th>Username</th>
+        </tr>
+        <tr onclick="showFriendInfo(this)">
+            <td>1</td>
+            <td>Dennis</td>
+        </tr>
+        <tr onclick="showFriendInfo(this)">
+            <td>2</td>
+            <td>Jake</td>
+        </tr>
+        <tr onclick="showFriendInfo(this)">
+            <td>3</td>
+            <td>Rachel Jackie</td>
+        </tr>
+        <tr onclick="showFriendInfo(this)">
+            <td>4</td>
+            <td>Helen</td>
+        </tr>
+        <tr onclick="showFriendInfo(this)">
+            <td>5</td>
+            <td>HYoshi</td>
+        </tr>
+        <tr onclick="showFriendInfo(this)">
+            <td>6</td>
+            <td>Giovanni</td>
+        </tr>
+    </table>
+</div>
+
+<div id="friendRequest">
+    <h2>Friend Requests</h2>
+    <table>
+        <tr class="header">
+            <th>User Id</th>
+            <th>Username</th>
+            <th>accept</th>
+            <th>decline</th>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Jack</td>
+            <td><button class="accept">Accept</button></td>
+            <td><button class="decline">Decline</button></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Lonk</td>
+            <td><button class="accept">Accept</button></td>
+            <td><button class="decline">Decline</button></td>
+        </tr>
+    </table>
+</div>
 </div>
 
 </body>
