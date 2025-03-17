@@ -3,18 +3,30 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link th:href="@{/css/welcome.css}" rel="stylesheet">
+    <link th:href="@{/css/NavBar.css}" rel="stylesheet">
     <link th:href="@{/css/friend.css}" rel="stylesheet">
     <script th:src="@{/js/friend.js}"></script>
+    <script th:src="@{js/NavBar.js}"></script>
 </head>
 <body>
 
-<ul class="topnav">
-    <li><a th:href="@{/welcome(username=${username})}">Home</a></li>
-    <li><a class="active" href="/friendPage" >Friends</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li class="right"><a href="#about">About</a></li>
-</ul>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="friendDropdown">
+        <button class="dropbtn" id="dropbtn">Friends</button>
+        <div class="dropdown-content" id="dropdownContent">
+            <a href="#">Friend Requests</a>
+            <a href="/friendPage">Current Friends</a>
+            <a href="#">Find Friends</a>
+        </div>
+    </div>
+
+    <a href="#">Contact</a>
+</nav>
 
 <div class="friendPage">
     <div id="friendInfo">
