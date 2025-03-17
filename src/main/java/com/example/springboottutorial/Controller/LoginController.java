@@ -74,7 +74,21 @@ public class LoginController {
         return "welcome"; // Thymeleaf template name
     }
 
+    @GetMapping("/friendPage")
+    public String friendPage(@RequestParam(name = "username", required = false) String username, Model model) {
+        if (username != null) {
+            User user = userRepository.findByUsername(username).orElse(null);
+            if (user != null) {
+                model.addAttribute("username", user.getUsername());
+            } else {
+                model.addAttribute("error", "User not found");
+            }
+        } else {
+            model.addAttribute("error", "Username not provided");
+        }
 
+        return "Friends";
+    }
 
 
 

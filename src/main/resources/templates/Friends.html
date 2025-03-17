@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link th:href="@{/css/Welcome.css}" rel="stylesheet">
 </head>
 <body>
+
+<ul class="topnav">
+    <li><a th:href="@{/welcome(username=${username})}">Home</a></li>
+    <li><a class="active" href="/friendPage" >Friends</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li class="right"><a href="#about">About</a></li>
+</ul>
+
+<div style="padding:0 16px;">
+    <h2>Welcome, <span th:text="${username}"></span>!</h2>
+    <p>You have successfully logged in.</p>
+    <p style="color: red;" th:text="${error}"></p>
+</div>
 
 </body>
 </html>
