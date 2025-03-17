@@ -70,6 +70,7 @@ public class LoginController {
         } else {
             model.addAttribute("error", "Username not provided");
         }
+
         return "welcome"; // Thymeleaf template name
     }
 

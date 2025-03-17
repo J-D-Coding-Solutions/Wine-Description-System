@@ -1,40 +1,23 @@
-#loginHeader{
-    text-align: center;
-}
-
-#loginForm{
-    padding: 30px;
-    border: 2px solid #ccc;
+#registerForm{
     position: relative;
     text-align: center;
+    padding: 30px;
+    border: 2px solid  #D8B5A5;
 }
 
-#loginForm button{
+#registerForm button{
     margin-top: 10px;
     border-radius: 8px;
     background-color: #D8B5A5;
     padding: 5px;
     width: 75%;
-    left: 50%;
 }
 
-#loginForm input{
+#registerForm input{
     margin-top: 10px;
     border-radius: 8px;
     padding: 5px;
     width: 100%;
-}
-
-html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#error{
-    text-align: center;
 }
 
 body{
@@ -43,4 +26,12 @@ body{
     background-repeat: no-repeat;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #F4EAE6;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

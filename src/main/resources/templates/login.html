@@ -5,8 +5,8 @@
   <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 <body>
+<div id="loginForm">
 <h2 id="loginHeader">Login</h2>
-<div class="loginForm">
 <form action="/" method="post">
   <label>Username:</label>
   <input type="text" name="username" required><br><br>
@@ -20,9 +20,9 @@
 <form action="/RegisterPage" method="get">
       <button id="newAccount" type="submit">Don't Have an Account?</button>
 </form>
-</div>
 
 <p id="error" style="color: red;" th:text="${error}"></p>
+</div>
 </body>
 </html>
 
