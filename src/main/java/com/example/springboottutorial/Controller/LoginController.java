@@ -1,16 +1,17 @@
 package com.example.springboottutorial.Controller;
 
+import com.example.springboottutorial.Controller.*;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
-import com.example.springboottutorial.Controller.*;
+import jakarta.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpSession;
+import java.util.Map;
+
 
 @Controller
 public class LoginController {
@@ -28,18 +29,19 @@ public class LoginController {
 
     // Handle POST request for form submission (login)
     @PostMapping("/")
-    public String login(@RequestParam String username, @RequestParam String password) {
+    public String login(@RequestParam String username, @RequestParam String password, HttpSession session) {
         String role = userService.authenticate(username, password);
 
-        if (role != null) {
-            if (role.equals("ADMIN")) {
-                return "redirect:/admin/dashboard"; // Redirect to admin page
-            } else if (role.equals("USER")) {
-                return "redirect:/friendPage"; // Redirect to user page
-            }//:/welocme- +roel
+        if (role == null) {
+            return "redirect:/"; // Redirect back to log in if authentication fails
         }
-        return "redirect:/"; // Redirect back to log in if failed
+
+        // Store role in session
+        session.setAttribute("userRole", role);
+
+        return "redirect:/" + role + "Dash"; // Redirect to appropriate dashboard
     }
+
     @GetMapping("/RegisterPage")
     public String DisplayRegisterPage(Model model) {
         model.addAttribute("user", new User());
@@ -58,7 +60,7 @@ public class LoginController {
 
         }
     }
-    @GetMapping("/welcome")
+    @GetMapping("/UserDash")
     public String welcome(@RequestParam(name = "username", required = false) String username, Model model) {
         if (username != null) {
             User user = userRepository.findByUsername(username).orElse(null);
@@ -71,6 +73,7 @@ public class LoginController {
             model.addAttribute("error", "Username not provided");
         }
 
-        return "User-welcome"; // Thymeleaf template name
+        return "welcome-USER"; // Thymeleaf template name
     }
+
 }
