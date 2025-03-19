@@ -1,6 +1,5 @@
 body{
     background-color: #2C1E1E;
-
 }
 
 #mainDiv{
@@ -9,7 +8,7 @@ body{
     height: 100vh;
 }
 
-#registerFriendDiv{
+#reportDiv{
     background-color: #5A2A27;
     padding: 20px;
     border-radius: 10px;
@@ -25,17 +24,17 @@ h1{
     border-bottom: 1px solid #F4EAE6;
 }
 
-#friendName{
+#bugDescription{
     width: 97%;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 6px;
     border: 1px solid #F4EAE6;
     background-color: #F4EAE6 ;
-    color: black;
+    color: #F4EAE6;
 }
 
-#registerFriendButton{
+#reportBugButton{
     background-color: #7B506F;
     color: #F4EAE6;
     border: none;
@@ -50,11 +49,11 @@ h1{
     width: 75%;
 }
 
-#registerFriendButton:hover{
+#reportBugButton:hover{
     background-color: #7B506F;
     transform: scale(0.95);
 }
 
-#registerFriendButton:active{
+#reportBugButton:active{
     background-color: #6c4661;
 }

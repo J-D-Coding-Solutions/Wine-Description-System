@@ -6,6 +6,7 @@
     <link th:href="@{/css/registerFriend.css}" rel="stylesheet">
     <link th:href="@{/css/NavBar.css}" rel="stylesheet">
     <script th:src="@{/js/NavBar.js}"></script>
+    <script th:src="@{/js/registerFriend.js}"></script>
 </head>
 <body>
 
@@ -33,7 +34,7 @@
         <form id="addFriendForm" autocomplete="off">
             <input type="text" id="friendName" placeholder="Friend's Name" required>
 
-            <button id="registerFriendButton">Register</button>
+            <button id="registerFriendButton" onclick="requestSent()">Register</button>
         </form>
     </div>
 </div>
