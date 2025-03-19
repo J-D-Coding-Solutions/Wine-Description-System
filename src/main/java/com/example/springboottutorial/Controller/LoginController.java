@@ -3,6 +3,7 @@ package com.example.springboottutorial.Controller;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
+import com.example.springboottutorial.Controller.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,19 +28,18 @@ public class LoginController {
 
     // Handle POST request for form submission (login)
     @PostMapping("/")
-    public String login(@RequestParam String username,
-                        @RequestParam String password, Model model) {
-        // Authenticate using UserService
-        if (userService.authenticate(username, password)) {
-            // If authentication is successful, redirect to welcome page
-            return "redirect:/welcome?username=" + username; // Redirect with username
-        } else {
-            // If authentication fails, return to the login page with an error message
-            model.addAttribute("error", "Invalid username or password");
-            return "login"; // Re-render the login page with the error
-        }
-    }
+    public String login(@RequestParam String username, @RequestParam String password) {
+        String role = userService.authenticate(username, password);
 
+        if (role != null) {
+            if (role.equals("ADMIN")) {
+                return "redirect:/admin/dashboard"; // Redirect to admin page
+            } else if (role.equals("USER")) {
+                return "redirect:/friendPage"; // Redirect to user page
+            }//:/welocme- +roel
+        }
+        return "redirect:/"; // Redirect back to login if failed
+    }
     @GetMapping("/RegisterPage")
     public String DisplayRegisterPage(Model model) {
         model.addAttribute("user", new User());
@@ -71,38 +71,6 @@ public class LoginController {
             model.addAttribute("error", "Username not provided");
         }
 
-        return "welcome"; // Thymeleaf template name
+        return "User-welcome"; // Thymeleaf template name
     }
-
-    @GetMapping("/friendPage")
-    public String friendPage(@RequestParam(name = "username", required = false) String username, Model model) {
-        if (username != null) {
-            User user = userRepository.findByUsername(username).orElse(null);
-            if (user != null) {
-                model.addAttribute("username", user.getUsername());
-            } else {
-                model.addAttribute("error", "User not found");
-            }
-        } else {
-            model.addAttribute("error", "Username not provided");
-        }
-
-        return "Friends";
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

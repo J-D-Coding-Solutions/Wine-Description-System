@@ -13,9 +13,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public boolean authenticate(String username, String password) {
+    public String authenticate(String username, String password) {
         Optional<User> user = userRepository.findByUsername(username);
-        return user.map(value -> value.getPassword().equals(password)).orElse(false);
+
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            return user.get().getRole(); // Return role if authentication is successful
+        }
+        return null; // Authentication failed
     }
     public boolean register(String username) {
         Optional<User> user = userRepository.findByUsername(username);
