@@ -60,4 +60,15 @@ public class WelcomeController {
     public String showWineSearchPage() {
         return "WineSearch";
     }
+
+    @GetMapping("/AdjustProfiles")
+    public String showAdjustProfilesPage() {
+        return "adjustProfile";
+
+    }
+
+    @GetMapping("/ViewBugs")
+    public String showBugsPage() {
+        return "viewBugReport";
+    }
 }

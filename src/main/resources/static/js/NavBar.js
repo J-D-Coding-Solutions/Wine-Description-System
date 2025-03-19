@@ -28,7 +28,6 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-                <a href="/">About</a>
 
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
@@ -47,7 +46,6 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-                <a href="/">About</a>
 
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
@@ -65,7 +63,6 @@ function updateNavbar(role) {
         "guest": `
             <nav>
                 <a href="/WineSearch">Wine Search</a>
-                <a href="/">About</a>
                 <a href="/ReportBuggies">Report Bugs</a>
                 <a href="/">Login</a> <!-- Replaces login with logout -->
             </nav>
@@ -74,8 +71,7 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-                <a href="/">About</a>
-                <a href="/">Adjust Profiles</a>
+                <a href="/AdjustProfiles">Adjust Profiles</a>
                 <a href="/RegisterAccounts">Register Accounts</a>
 
                 <!-- Dropdown Menu -->
@@ -86,7 +82,7 @@ function updateNavbar(role) {
                         <a href="/FriendRequest">Find Friends</a>
                     </div>
                 </div>
-                <a href="/">View Bug Reports</a>
+                <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
                 <a href="/">Logout</a> <!-- Replaces login with logout -->
             </nav>
@@ -95,8 +91,7 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-                <a href="/">About</a>
-                <a href="/">Adjust Profiles</a>
+                <a href="/AdjustProfiles">Adjust Profiles</a>
 
 
                 <!-- Dropdown Menu -->
@@ -108,7 +103,7 @@ function updateNavbar(role) {
                     </div>
                 </div>
                 
-                <a href="/">View Bug Reports</a>
+                <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
                 <a href="/">Logout</a> <!-- Replaces login with logout -->
             </nav>
@@ -118,7 +113,6 @@ function updateNavbar(role) {
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
                 <a href="/WineRequest">Wine Requests</a>
-                <a href="/">About</a>
 
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
