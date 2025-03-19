@@ -1,16 +1,13 @@
 package com.example.springboottutorial.Controller;
 
-import com.example.springboottutorial.Controller.*;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
-import jakarta.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
-import java.util.Map;
 
 
 @Controller
@@ -39,7 +36,7 @@ public class LoginController {
         // Store role in session
         session.setAttribute("userRole", role);
 
-        return "redirect:/" + role + "Dash"; // Redirect to appropriate dashboard
+        return "redirect:/" + "Dash"; // Redirect to appropriate dashboard
     }
 
     @GetMapping("/RegisterPage")
@@ -60,7 +57,7 @@ public class LoginController {
 
         }
     }
-    @GetMapping("/UserDash")
+    @GetMapping("/Dash")
     public String welcome(@RequestParam(name = "username", required = false) String username, Model model) {
         if (username != null) {
             User user = userRepository.findByUsername(username).orElse(null);
@@ -73,7 +70,7 @@ public class LoginController {
             model.addAttribute("error", "Username not provided");
         }
 
-        return "welcome-USER"; // Thymeleaf template name
+        return "Dash"; // Thymeleaf template name
     }
 
 }

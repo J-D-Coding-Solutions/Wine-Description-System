@@ -34,45 +34,30 @@ public class WelcomeController {
         return "Friends";
     }
 
-    @GetMapping("/AdminDash")
-    public String showAdminPage() {
-        return "welcome-ADMIN"; // This should resolve to the login.html template
-    }
 
-    @GetMapping("/SocialPage")
-    public String showSocialPage() {
-        return "Friends"; // This should resolve to the login.html template
-    }
-
-    @GetMapping("/GuestDash")
-    public String showGuestPage() {
-        return "welcome-GUEST"; // This should resolve to the login.html template
-    }
-
-    @GetMapping("/ModeratorDash")
-    public String showModeratorPage() {
-        return "welcome-MODERATOR"; // This should resolve to the login.html template
-    }
-
-    @GetMapping("/AddFriends")
-    public String showFriendsPage() {
-        return "registerFriend"; // This should resolve to the login.html template
-    }
-
-    @GetMapping("/SommelierDash")
-    public String showSomlierPage() {
-        return "welcome-SOMMELIER"; // This should resolve to the login.html template
-    }
-
-    @GetMapping("/StakeholderDash")
-    public String showStakeholderPage() {
-        return "welcome-STAKEHOLDER"; // This should resolve to the login.html template
-    }
 
     @GetMapping("/WineRequest")
     public String showRequestPage() {
         return "Wine-request"; // This should resolve to the login.html template
     }
 
+    @GetMapping("/FriendRequest")
+    public String showFriendRequestPage() {
+        return "registerFriend";
+    }
 
+    @GetMapping("/ReportBuggies")
+    public String showReportBuggiesPage() {
+        return "reportBug";
+    }
+
+    @GetMapping("/RegisterAccounts")
+    public String showRegisterAccountsPage() {
+        return "registerAdmin";
+    }
+
+    @GetMapping("/WineSearch")
+    public String showWineSearchPage() {
+        return "WineSearch";
+    }
 }

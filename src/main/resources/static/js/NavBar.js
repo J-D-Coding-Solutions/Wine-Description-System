@@ -26,8 +26,8 @@ function updateNavbar(role) {
     const navbar = {
         "User": `
             <nav>
-                <a href="/">Home</a>
-                <a href="/">Wine Search</a>
+                <a href="/Dash">Home</a>
+                <a href="/WineSearch">Wine Search</a>
                 <a href="/">About</a>
 
                 <!-- Dropdown Menu -->
@@ -35,30 +35,105 @@ function updateNavbar(role) {
                     <button class="dropbtn" id="dropbtn">Friends</button>
                     <div class="dropdown-content" id="dropdownContent">
                         <a href="/friendPage">Your Profile</a>
-                        <a href="/">Find Friends</a>
+                        <a href="/FriendRequest">Find Friends</a>
                     </div>
                 </div>
 
-                <a href="">Report Bugs</a>
+                <a href="/ReportBuggies">Report Bugs</a>
                 <a href="/">Logout</a> <!-- Replaces login with logout -->
             </nav>
         `,
-        "admin": `
+        "Stakeholder": `
             <nav>
-                <a href="index.html">Home</a>
-                <a href="users.html">Manage Users</a>
-                <a href="wines.html">Manage Wines</a>
-                <a href="settings.html">Settings</a>
-                <a href="logout.html">Logout</a>
+                <a href="/Dash">Home</a>
+                <a href="/WineSearch">Wine Search</a>
+                <a href="/">About</a>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown" id="friendDropdown">
+                    <button class="dropbtn" id="dropbtn">Friends</button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="/friendPage">Your Profile</a>
+                        <a href="/FriendRequest">Find Friends</a>
+                    </div>
+                </div>
+
+                <a href="/ReportBuggies">Report Bugs</a>
+                <a href="/">Logout</a> <!-- Replaces login with logout -->
             </nav>
         `,
         "guest": `
             <nav>
-                <a href="index.html">Home</a>
-                <a href="login.html">Login</a>
-                <a href="about.html">About</a>
+                <a href="/WineSearch">Wine Search</a>
+                <a href="/">About</a>
+                <a href="/ReportBuggies">Report Bugs</a>
+                <a href="/">Login</a> <!-- Replaces login with logout -->
             </nav>
         `,
+        "Admin": `
+            <nav>
+                <a href="/Dash">Home</a>
+                <a href="/WineSearch">Wine Search</a>
+                <a href="/">About</a>
+                <a href="/">Adjust Profiles</a>
+                <a href="/RegisterAccounts">Register Accounts</a>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown" id="friendDropdown">
+                    <button class="dropbtn" id="dropbtn">Friends</button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="/friendPage">Your Profile</a>
+                        <a href="/FriendRequest">Find Friends</a>
+                    </div>
+                </div>
+                <a href="/">View Bug Reports</a>
+                <a href="/ReportBuggies">Report Bugs</a>
+                <a href="/">Logout</a> <!-- Replaces login with logout -->
+            </nav>
+        `,
+        "Moderator": `
+            <nav>
+                <a href="/Dash">Home</a>
+                <a href="/WineSearch">Wine Search</a>
+                <a href="/">About</a>
+                <a href="/">Adjust Profiles</a>
+
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown" id="friendDropdown">
+                    <button class="dropbtn" id="dropbtn">Friends</button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="/friendPage">Your Profile</a>
+                        <a href="/FriendRequest">Find Friends</a>
+                    </div>
+                </div>
+                
+                <a href="/">View Bug Reports</a>
+                <a href="/ReportBuggies">Report Bugs</a>
+                <a href="/">Logout</a> <!-- Replaces login with logout -->
+            </nav>
+        `,
+        "Sommelier": `
+            <nav>
+                <a href="/Dash">Home</a>
+                <a href="/WineSearch">Wine Search</a>
+                <a href="/WineRequest">Wine Requests</a>
+                <a href="/">About</a>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown" id="friendDropdown">
+                    <button class="dropbtn" id="dropbtn">Friends</button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="/friendPage">Your Profile</a>
+                        <a href="/FriendRequest">Find Friends</a>
+                    </div>
+                </div>
+
+                <a href="/ReportBuggies">Report Bugs</a>
+                <a href="/">Logout</a> <!-- Replaces login with logout -->
+            </nav>
+        `
+
     };
 
     document.getElementById("navbar").innerHTML = navbar[role] || navbar["guest"];
