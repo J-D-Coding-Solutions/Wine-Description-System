@@ -38,7 +38,7 @@ public class LoginController {
                 return "redirect:/friendPage"; // Redirect to user page
             }//:/welocme- +roel
         }
-        return "redirect:/friendPage"; // Redirect back to login if failed
+        return "redirect:/"; // Redirect back to login if failed
     }
     @GetMapping("/RegisterPage")
     public String DisplayRegisterPage(Model model) {
