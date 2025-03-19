@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="../static/css/NavBar.css" rel="stylesheet">
+    <link href="../static/css/wineSearch.css" rel="stylesheet">
+    <script src="../static/javascript/NavBar.js"></script>
+    <script src="../static/javascript/wineSearch.js"></script>
+
+    <!--<link th:href="@{/css/NavBar.css}" rel="stylesheet">
+    <link th:href="@{/css/wineSearch.css}" rel="stylesheet">
+    <script th:src="@{js/NavBar.js}"></script>
+    <script th:src="@{js/wineSearch.js}"></script>-->
+
+</head>
+<body>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="friendDropdown">
+        <button class="dropbtn" id="dropbtn">Friends</button>
+        <div class="dropdown-content" id="dropdownContent">
+            <a href="#">Friend Requests</a>
+            <a href="/friendPage">Current Friends</a>
+            <a href="#">Find Friends</a>
+        </div>
+    </div>
+
+    <a href="#">Contact</a>
+</nav>
+
+<div id="mainDiv">
+    <div id="searchDiv">
+        <h1>Search Wine</h1>
+        <form id="searchForm" autocomplete="off">
+            <div id="extras">
+                <label id="countryLabel" for="wineCountry"><h3>Country:</h4></label>
+                <input type="text" id="wineCountry" name="wineCountry" placeholder="Wine Country">
+
+                <label id="provinceLabel" for="wineProvince"><h3>Province:</h4></label>
+                <input type="text" id="wineProvince" name="wineProvince" placeholder="Wine Province">
+            </div>
+
+            <label for="wineDescription"><h2>Description:</h2></label>
+            <div id="descriptionDiv">
+                <input type="text" id="wineDescription"  name="wineDescription" placeholder="Wine Description" required>
+                <button id="searchWineButton" onclick="displayTable()">Search</button>
+            </div>
+        </form>
+
+        <table id="wineTable">
+            <tr class="header">
+                <th>Wine Name</th>
+                <th>Winery</th>
+                <th>Country</th>
+                <th>Province</th>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

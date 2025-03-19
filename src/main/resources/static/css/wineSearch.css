@@ -1,0 +1,122 @@
+body{
+    background-color: #2C1E1E;
+}
+
+#mainDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#searchDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #5A2A27;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: 50%;
+    text-align: center;
+}
+
+#searchDiv h1{
+    color: #F4EAE6;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #F4EAE6;
+}
+
+#searchDiv h2{
+    color: #F4EAE6 ;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #F4EAE6;
+    margin-bottom: 1.5rem;
+}
+
+#searchForm{
+    margin-bottom: 30px;
+}
+
+#descriptionDiv{
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 10px;
+    background: #F4EAE6;
+}
+
+#descriptionDiv input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    background: transparent;
+}
+#descriptionDiv button {
+    background: #7B506F;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#descriptionDiv button:hover {
+    background: #6c4661;
+}
+
+#extras{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    margin-top: 1rem;
+}
+
+#wineCountry, #wineProvince{
+    width: 97%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #F4EAE6;
+    background-color: #F4EAE6 ;
+    color: #F4EAE6;
+}
+
+label{
+    color: #F4EAE6;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+table {
+    position: relative;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    display: none;
+    text-align: center;
+  }
+  
+  td, th {
+    /*border: 1px solid #dddddd;*/
+    text-align: left;
+    padding: 8px;
+  }
+  td, .header{
+    border: 1px solid black;
+  }
+
+ .header, tr:hover{
+    background-color: #F4EAE6;;
+  }
+
+  #searchDiv #wineTable{
+    margin: 20px auto;
+  }
