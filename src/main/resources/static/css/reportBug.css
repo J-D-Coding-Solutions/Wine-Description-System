@@ -1,0 +1,59 @@
+body{
+    background-color: #2C1E1E;
+}
+
+#mainDiv{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+#reportDiv{
+    background-color: #5A2A27;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: 50%;
+    text-align: center;
+}
+
+h1{
+    color: #F4EAE6;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #F4EAE6;
+}
+
+#bugDescription{
+    width: 97%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #F4EAE6;
+    background-color: #F4EAE6 ;
+    color: #F4EAE6;
+}
+
+#reportBugButton{
+    background-color: #7B506F;
+    color: #F4EAE6;
+    border: none;
+    padding: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 75%;
+}
+
+#reportBugButton:hover{
+    background-color: #7B506F;
+    transform: scale(0.95);
+}
+
+#reportBugButton:active{
+    background-color: #6c4661;
+}
