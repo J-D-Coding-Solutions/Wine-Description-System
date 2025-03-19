@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <link href="../static/css/NavBar.css" rel="stylesheet">
+    <link href="../static/css/friend.css" rel="stylesheet">
+    <script src="../static/js/viewBugReport.js"></script>
+    <script src="../static/js/NavBar.js"></script>
+
+    <!--<link th:href="@{/css/NavBar.css}" rel="stylesheet">
+    <link th:href="@{/css/friend.css}" rel="stylesheet">
+    <script th:src="@{/js/viewBugReport.js}"></script>
+    <script th:src="@{js/NavBar.js}"></script>-->
+</head>
+<body>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="friendDropdown">
+        <button class="dropbtn" id="dropbtn">Friends</button>
+        <div class="dropdown-content" id="dropdownContent">
+            <a href="#">Friend Requests</a>
+            <a href="/friendPage">Current Friends</a>
+            <a href="#">Find Friends</a>
+        </div>
+    </div>
+
+    <a href="#">Contact</a>
+</nav>
+<div class="mainDiv">
+<div id="friendList">
+    <h2>Bug Reports</h2>
+    <input type="text" id="searchFriend" placeholder="Search Bug List..." onkeyup="searchFriend()">
+    <table id="friendTable">
+        <tr class="header">
+            <th>Issue Id</th>
+            <th>Bug report</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Nav bar was glitching out</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>User gaining admin access</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>BUG BUG BUG</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>IDK what to put here</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Running out of Ideas</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Css not loading properly</td>
+        </tr>
+    </table>
+</div>
+</div>
+
+</body>
+</html>
