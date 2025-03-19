@@ -2,17 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="">
 <head>
   <title>Register For Account</title>
-  <link href="/static/css/registerForm.css" rel="stylesheet">
-  <link href="/static/css/registerAdmin.css" rel="stylesheet">
-  <!--<link th:href="@{/css/Register.css}" rel="stylesheet">
-  <link th:href="@{/css/registerAdmin.css}" rel="stylesheet">-->
+  <link th:href="@{/css/Register.css}" rel="stylesheet">
+  <link th:href="@{/css/registerAdmin.css}" rel="stylesheet">
+  <link th:href="@{/css/NavBar.css}" rel="stylesheet">
+  <script th:src="@{/js/NavBar.js}"></script>
+
 </head>
 <body>
+
+
 <div id="registerForm">
   <h2>Register For A New Admin Account</h2>
 
 
-  <form action="/AddUser" th:object="${user}" method="post">
+  <form action="/AddUser" th:object="${user}" method="post"><!--NEEDS A CONTROLLER SIMILAR TO REGISTER USER BUT IT NEEDS TO USE THE DROP DOWN MENU, LEAVIBG AS DASH FRO FRIGHT NOW-->
     <label>Username:</label>
     <input type="text" name="username" required><br><br>
 
@@ -27,6 +30,10 @@
       <option value="moderator">Moderator</option>
     </select><br><br>
     <button type="submit">Create Account</button>
+  </form>
+  <form action="/Dash" method="get">
+    <button id="Back to Admin" type="submit"> Back to Dashboard </button>
+
   </form>
 
   <p style="color: red;" th:text="${error}"></p>

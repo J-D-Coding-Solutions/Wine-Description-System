@@ -3,10 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <!--<link href="../static/css/NavBar.css" rel="stylesheet">
-    <link href="../static/css/wineSearch.css" rel="stylesheet">
-    <script src="../static/javascript/NavBar.js"></script>
-    <script src="../static/javascript/wineSearch.js"></script>-->
 
     <link th:href="@{/css/NavBar.css}" rel="stylesheet">
     <link th:href="@{/css/wineSearch.css}" rel="stylesheet">
@@ -16,23 +12,8 @@
 </head>
 <body>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
+<div id="navbar"></div>
 
-    <!-- Dropdown Menu -->
-    <div class="dropdown" id="friendDropdown">
-        <button class="dropbtn" id="dropbtn">Friends</button>
-        <div class="dropdown-content" id="dropdownContent">
-            <a href="#">Friend Requests</a>
-            <a href="/friendPage">Current Friends</a>
-            <a href="#">Find Friends</a>
-        </div>
-    </div>
-
-    <a href="#">Contact</a>
-</nav>
 
 <div id="mainDiv">
     <div id="searchDiv">
