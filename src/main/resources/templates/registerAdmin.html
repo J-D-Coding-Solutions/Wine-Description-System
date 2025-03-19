@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="">
+<head>
+  <title>Register For Account</title>
+  <link href="/static/css/registerForm.css" rel="stylesheet">
+  <link href="/static/css/registerAdmin.css" rel="stylesheet">
+  <!--<link th:href="@{/css/Register.css}" rel="stylesheet">
+  <link th:href="@{/css/registerAdmin.css}" rel="stylesheet">-->
+</head>
+<body>
+<div id="registerForm">
+  <h2>Register For A New Admin Account</h2>
+
+
+  <form action="/AddUser" th:object="${user}" method="post">
+    <label>Username:</label>
+    <input type="text" name="username" required><br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password" required><br><br>
+    <label>Acount Type:</label>
+    <select name="accountType" class="accountType">
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+      <option value="sommelier">Sommelier</option>
+      <option value="stakeholder">Stakeholder</option>
+      <option value="moderator">Moderator</option>
+    </select><br><br>
+    <button type="submit">Create Account</button>
+  </form>
+
+  <p style="color: red;" th:text="${error}"></p>
+</div>
+</body>
+</html>

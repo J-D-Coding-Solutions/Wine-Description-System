@@ -83,7 +83,7 @@ td, .header{
 }
 
 .header, tr:hover{
-    background-color: #F4EAE6;;
+    background-color: #F4EAE6;
 }
 
 .accept, .decline{
@@ -121,4 +121,8 @@ h2{
 
 #friendList h2{
     text-align: center;
+}
+
+.dark{
+    color: #F4EAE6;
 }
