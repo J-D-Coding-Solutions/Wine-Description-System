@@ -5,27 +5,13 @@
   <title>Welcome</title>
   <link th:href="@{/css/NavBar.css}" rel="stylesheet">
   <link th:href="@{/css/Welcome-user.css}" rel="stylesheet">
-  <script th::src="@{/js/NavBar.js}"></script>
+  <script th:src="@{/js/NavBar.js}"></script>
+
 
 </head>
 <body>
 
-<nav>
-  <a href="/">Home</a>
-  <a href="/">Wine Search</a>
-  <a href="/">About</a>
-
-  <!-- Dropdown Menu -->
-  <div class="dropdown" id="friendDropdown">
-    <button class="dropbtn" id="dropbtn">Friends</button>
-    <div class="dropdown-content" id="dropdownContent">
-      <a href="/friendPage">Your Profile</a>
-      <a href="/">Find Friends</a>
-    </div>
-  </div>
-  <a href="">Report Bugs</a>
-  <a href="">Login</a>
-</nav>
+<div id="navbar"></div>
 
 <div class="WelcomePage">
   <!-- Left Section -->

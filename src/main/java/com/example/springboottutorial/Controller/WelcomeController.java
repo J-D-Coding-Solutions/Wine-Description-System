@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -35,5 +33,46 @@ public class WelcomeController {
 
         return "Friends";
     }
+
+    @GetMapping("/AdminDash")
+    public String showAdminPage() {
+        return "welcome-ADMIN"; // This should resolve to the login.html template
+    }
+
+    @GetMapping("/SocialPage")
+    public String showSocialPage() {
+        return "Friends"; // This should resolve to the login.html template
+    }
+
+    @GetMapping("/GuestDash")
+    public String showGuestPage() {
+        return "welcome-GUEST"; // This should resolve to the login.html template
+    }
+
+    @GetMapping("/ModeratorDash")
+    public String showModeratorPage() {
+        return "welcome-MODERATOR"; // This should resolve to the login.html template
+    }
+
+    @GetMapping("/AddFriends")
+    public String showFriendsPage() {
+        return "registerFriend"; // This should resolve to the login.html template
+    }
+
+    @GetMapping("/SommelierDash")
+    public String showSomlierPage() {
+        return "welcome-SOMMELIER"; // This should resolve to the login.html template
+    }
+
+    @GetMapping("/StakeholderDash")
+    public String showStakeholderPage() {
+        return "welcome-STAKEHOLDER"; // This should resolve to the login.html template
+    }
+
+    @GetMapping("/WineRequest")
+    public String showRequestPage() {
+        return "Wine-request"; // This should resolve to the login.html template
+    }
+
 
 }
