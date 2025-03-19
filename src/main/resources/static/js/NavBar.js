@@ -40,6 +40,8 @@ function updateNavbar(role) {
 
                 <a href="/ReportBuggies">Report Bugs</a>
                 <a href="/">Logout</a> <!-- Replaces login with logout -->
+                <button onclick="logout()">Logout</button>
+
             </nav>
         `,
         "Stakeholder": `
@@ -57,7 +59,7 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <a href="/">Logout</a> <!-- Replaces login with logout -->
+                <button onclick="logout()">Logout</button>
             </nav>
         `,
         "guest": `
@@ -84,7 +86,7 @@ function updateNavbar(role) {
                 </div>
                 <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
-                <a href="/">Logout</a> <!-- Replaces login with logout -->
+                <button onclick="logout()">Logout</button>
             </nav>
         `,
         "Moderator": `
@@ -105,7 +107,7 @@ function updateNavbar(role) {
                 
                 <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
-                <a href="/">Logout</a> <!-- Replaces login with logout -->
+                <button onclick="logout()">Logout</button>
             </nav>
         `,
         "Sommelier": `
@@ -124,7 +126,7 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <a href="/">Logout</a> <!-- Replaces login with logout -->
+                <button onclick="logout()">Logout</button>
             </nav>
         `
 

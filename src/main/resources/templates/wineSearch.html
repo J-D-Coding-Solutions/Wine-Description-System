@@ -8,6 +8,8 @@
     <link th:href="@{/css/wineSearch.css}" rel="stylesheet">
     <script th:src="@{js/NavBar.js}"></script>
     <script th:src="@{js/wineSearch.js}"></script>
+    <script th:src="@{js/Logout.js}"></script>
+
 
 </head>
 <body>
@@ -20,10 +22,10 @@
         <h1>Search Wine</h1>
         <form id="searchForm" autocomplete="off">
             <div id="extras">
-                <label id="countryLabel" for="wineCountry"><h3>Country:</h4></label>
+                <label id="countryLabel" for="wineCountry"><h3>Country:</h3></label>
                 <input type="text" id="wineCountry" name="wineCountry" placeholder="Wine Country">
 
-                <label id="provinceLabel" for="wineProvince"><h3>Province:</h4></label>
+                <label id="provinceLabel" for="wineProvince"><h3>Province:</h3></label>
                 <input type="text" id="wineProvince" name="wineProvince" placeholder="Wine Province">
             </div>
 
@@ -49,5 +51,6 @@
             </tr>
         </table>
     </div>
+</div>
 </body>
 </html>
