@@ -1,4 +1,4 @@
-console.log("navbar.js has been loaded");
+/*console.log("navbar.js has been loaded");
 
 document.addEventListener("DOMContentLoaded", function () {
     // Fetch user role from the backend
@@ -131,12 +131,11 @@ function updateNavbar(role) {
         `
 
     };
-
     document.getElementById("navbar").innerHTML = navbar[role] || navbar["guest"];
-}
+}*/
 
 // Function to initialize the dropdown menu functionality
-function setupDropdown() {
+/*function setupDropdown() {
     const dropdown = document.getElementById("friendDropdown");
     const dropdownContent = document.getElementById("dropdownContent");
 
@@ -151,4 +150,4 @@ function setupDropdown() {
     } else {
         console.error("Dropdown elements not found. Check your HTML structure.");
     }
-}
+}*/
