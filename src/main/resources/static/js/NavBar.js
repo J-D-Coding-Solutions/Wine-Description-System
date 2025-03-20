@@ -1,4 +1,4 @@
-/*console.log("navbar.js has been loaded");
+console.log("navbar.js has been loaded");
 
 document.addEventListener("DOMContentLoaded", function () {
     // Fetch user role from the backend
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             const userRole = data.role || "guest"; // Default to guest if no role is found
             updateNavbar(userRole);
+            console.log(userRole);
             setupDropdown(); // Initialize dropdown AFTER navbar is inserted
         })
         .catch(error => {
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function to update the navbar based on the role
 function updateNavbar(role) {
     const navbar = {
-        "User": `
+        "USER": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -44,7 +45,7 @@ function updateNavbar(role) {
 
             </nav>
         `,
-        "Stakeholder": `
+        "STAKEHOLDER": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -69,7 +70,7 @@ function updateNavbar(role) {
                 <a href="/">Login</a> <!-- Replaces login with logout -->
             </nav>
         `,
-        "Admin": `
+        "ADMIN": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -89,7 +90,7 @@ function updateNavbar(role) {
                 <button onclick="logout()">Logout</button>
             </nav>
         `,
-        "Moderator": `
+        "MODERATOR": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -110,7 +111,7 @@ function updateNavbar(role) {
                 <button onclick="logout()">Logout</button>
             </nav>
         `,
-        "Sommelier": `
+        "SOMMLIER": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -131,11 +132,12 @@ function updateNavbar(role) {
         `
 
     };
+
     document.getElementById("navbar").innerHTML = navbar[role] || navbar["guest"];
-}*/
+}
 
 // Function to initialize the dropdown menu functionality
-/*function setupDropdown() {
+function setupDropdown() {
     const dropdown = document.getElementById("friendDropdown");
     const dropdownContent = document.getElementById("dropdownContent");
 
@@ -150,4 +152,6 @@ function updateNavbar(role) {
     } else {
         console.error("Dropdown elements not found. Check your HTML structure.");
     }
-}*/
+}
+
+

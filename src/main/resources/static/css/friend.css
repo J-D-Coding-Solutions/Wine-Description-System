@@ -19,7 +19,6 @@ body{
 #friendInfo{
     width: 100%;
     height: 100%;
-    position: relative;
     background-color: #5A2A27; /* Dark wine red */  ;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -56,7 +55,6 @@ body{
 #friendRequest{
     width: 100%;
     height: 100%;
-    position: relative;
     background-color: #5A2A27; /* Dark wine red */;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -75,7 +73,8 @@ td, th {
     padding: 8px;
 }
 td, .header{
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     border-radius: 8px;
 }
 

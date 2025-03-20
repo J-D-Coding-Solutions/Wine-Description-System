@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #F4EAE6; /* Light border */
+    background-color: #7B506F; /* Muted wine purple */
+    border-radius: 8px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensure rounded corners apply */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+}
+
+td, th {
+    text-align: left;
+    padding: 12px; /* Add more padding for a modern look */
+    color: #F4EAE6; /* Light text */
+}
+
+tbody, thead{
+    display: block;
+}
+
+tbody{
+
+    /* Set the height of table body */
+    height: 200px;
+
+    /* Set vertical scroll */
+    overflow-y: auto;
+
+    /* Hide the horizontal scroll */
+    overflow-x: hidden;
+}
+
+tbody td,
+thead th {
+    width: 200px;
+}
+
+td {
+    background-color: #5A2A27; /* Dark wine red for rows */
+    border-bottom: 1px solid black;
+}
+
+/* Add hover effect only for table rows with data */
+tr:not(.Header):hover td {
+    background-color: #7B506F; /* Muted wine purple for hover */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
