@@ -39,7 +39,6 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <a href="/">Logout</a> <!-- Replaces login with logout -->
                 <button onclick="logout()">Logout</button>
 
             </nav>
