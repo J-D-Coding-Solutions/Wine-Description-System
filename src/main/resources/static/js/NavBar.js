@@ -28,6 +28,7 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
+                <a href="/WineRequest">Wine Request</a>
 
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
@@ -47,7 +48,7 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-
+                <a href="/WineRequest">Wine Request</a>
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
                     <button class="dropbtn" id="dropbtn">Friends</button>
@@ -72,6 +73,7 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
+                <a href="/WineRequests">Requested Wines</a>
                 <a href="/AdjustProfiles">Adjust Profiles</a>
                 <a href="/RegisterAccounts">Register Accounts</a>
 
@@ -113,8 +115,7 @@ function updateNavbar(role) {
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-                <a href="/WineRequest">Wine Requests</a>
-
+                <a href="/WineRequests">Requested Wines</a>
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
                     <button class="dropbtn" id="dropbtn">Friends</button>

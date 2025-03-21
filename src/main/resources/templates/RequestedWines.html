@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link th:href="@{/css/NavBar.css}" rel="stylesheet">
+  <link th:href="@{/css/RequestedWines.css}" rel="stylesheet">
+  <link th:href="@{/css/table.css}" rel="stylesheet">
+  <script th:src="@{js/RequestedWines.js}"></script>
+  <script th:src="@{js/NavBar.js}"></script>
+  <script th:src="@{js/Logout.js}"></script>
+
+</head>
+<body>
+
+<div id="navbar"></div>
+
+
+<div class="winePage">
+  <div id="wineInfo">
+    <h2 class="dark">Friend Info</h2>
+    <h3 style="text-align: center; color: #F4EAE6;">Selected friend info</h3>
+    <table id="wineInfoTable">
+      <tr class="header">
+        <th>User Id</th>
+        <th>Username</th>
+      </tr>
+      <tr id="infoRow">
+
+      </tr>
+    </table>
+  </div>
+
+  <div id="wineList">
+    <h2>Current Winelist</h2>
+    <input type="text" id="searchwine" placeholder="Search Requested Wines..." onkeyup="searchFriend()">
+    <table id="wineTable">
+      <tr class="header">
+        <th>User Id</th>
+        <th>Username</th>
+      </tr>
+      <tr onclick="showwineInfo(this, 1)">
+        <td>Dennis</td>
+        <td>Super yummy purple wine, i dunno what its called, thats your job</td>
+      </tr>
+      <tr onclick="showwineInfo(this, 1)">
+        <td>Dennis</td>
+        <td>Super yummy purple wine, i dunno what its called, thats your job</td>
+      </tr>
+      <tr onclick="showwineInfo(this, 1)">
+        <td>Dennis</td>
+        <td>Super yummy purple wine, i dunno what its called, thats your job</td>
+      </tr>
+      <tr onclick="showwineInfo(this, 1)">
+        <td>Dennis</td>
+        <td>Super yummy purple wine, i dunno what its called, thats your job</td>
+      </tr>
+      <tr onclick="showwineInfo(this, 1)">
+        <td>Dennis</td>
+        <td>Super yummy purple wine, i dunno what its called, thats your job</td>
+      </tr>
+      <tr onclick="showwineInfo(this, 1)">
+        <td>Dennis</td>
+        <td>Super yummy purple wine, i dunno what its called, thats your job</td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="wineRequest">
+    <h2>Friend Requests</h2>
+    <table>
+      <tr class="header">
+        <th>Wine Name</th>
+        <th>Wine Description</th>
+        <th>accept</th>
+        <th>decline</th>
+      </tr>
+      <tr>
+        <td>Jacob</td>
+        <td>Blueberry Wine!!!!</td>
+        <td><button class="accept" onclick="addwine(this)">Accept</button></td>
+        <td><button class="decline" onclick="declinewine(this)">Decline</button></td>
+      </tr>
+      <tr>
+        <td>Jacob</td>
+        <td>Blueberry Wine!!!!</td>
+        <td><button class="accept" onclick="addwine(this)">Accept</button></td>
+        <td><button class="decline" onclick="declinewine(this)">Decline</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
