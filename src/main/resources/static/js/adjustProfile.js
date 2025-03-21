@@ -19,8 +19,9 @@ function searchFriend(){
 }
 
 function deleteUser(thisObj){
+    var parentRow= thisObj.parentElement.parentElement;
     var confrimDelete = confirm("Are you sure you want to delete this user?");
     if (confrimDelete){
-        thisObj.remove();
+        parentRow.remove();
     }
 }
