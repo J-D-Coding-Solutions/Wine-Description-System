@@ -81,8 +81,3 @@ button, .Remove {
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
 }
-
-button:hover, .Remove:hover {
-    background-color: #5A2A27; /* Dark wine red on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-}

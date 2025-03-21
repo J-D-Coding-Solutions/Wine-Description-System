@@ -39,7 +39,7 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
 
             </nav>
         `,
@@ -58,7 +58,7 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
         "guest": `
@@ -85,7 +85,7 @@ function updateNavbar(role) {
                 </div>
                 <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
         "Moderator": `
@@ -106,7 +106,7 @@ function updateNavbar(role) {
                 
                 <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
         "Sommelier": `
@@ -125,7 +125,7 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `
 
