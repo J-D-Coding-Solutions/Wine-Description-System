@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             const userRole = data.role || "guest"; // Default to guest if no role is found
             updateNavbar(userRole);
-            console.log(userRole);
             setupDropdown(); // Initialize dropdown AFTER navbar is inserted
         })
         .catch(error => {
@@ -25,10 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function to update the navbar based on the role
 function updateNavbar(role) {
     const navbar = {
-        "USER": `
+        "User": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
+                <a href="/WineRequest">Wine Request</a>
 
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
@@ -40,16 +40,15 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <a href="/">Logout</a> <!-- Replaces login with logout -->
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
 
             </nav>
         `,
-        "STAKEHOLDER": `
+        "Stakeholder": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-
+                <a href="/WineRequest">Wine Request</a>
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
                     <button class="dropbtn" id="dropbtn">Friends</button>
@@ -60,7 +59,7 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
         "guest": `
@@ -70,10 +69,11 @@ function updateNavbar(role) {
                 <a href="/">Login</a> <!-- Replaces login with logout -->
             </nav>
         `,
-        "ADMIN": `
+        "Admin": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
+                <a href="/WineRequests">Requested Wines</a>
                 <a href="/AdjustProfiles">Adjust Profiles</a>
                 <a href="/RegisterAccounts">Register Accounts</a>
 
@@ -87,10 +87,10 @@ function updateNavbar(role) {
                 </div>
                 <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
-        "MODERATOR": `
+        "Moderator": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -108,15 +108,14 @@ function updateNavbar(role) {
                 
                 <a href="/ViewBugs">View Bug Reports</a>
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
-        "SOMMLIER": `
+        "Sommelier": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
-                <a href="/WineRequest">Wine Requests</a>
-
+                <a href="/WineRequests">Requested Wines</a>
                 <!-- Dropdown Menu -->
                 <div class="dropdown" id="friendDropdown">
                     <button class="dropbtn" id="dropbtn">Friends</button>
@@ -127,7 +126,7 @@ function updateNavbar(role) {
                 </div>
 
                 <a href="/ReportBuggies">Report Bugs</a>
-                <button onclick="logout()">Logout</button>
+                <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `
 
@@ -153,5 +152,3 @@ function setupDropdown() {
         console.error("Dropdown elements not found. Check your HTML structure.");
     }
 }
-
-

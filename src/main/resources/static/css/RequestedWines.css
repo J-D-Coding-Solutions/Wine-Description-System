@@ -1,0 +1,124 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2C1E1E; /* Dark wine red */
+}
+
+.winePage{
+    display: flex;
+    flex-direction: row;
+    /*align-items: center;*/
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+
+}
+
+#wineInfo{
+    width: 100%;
+    height: 100%;
+    background-color: #5A2A27; /* Dark wine red */  ;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+}
+
+
+
+#wineList{
+    width: 100%;
+    height: 100%;
+    background-color: #7B506F;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+#searchwine{
+    background-color: #F4EAE6;
+    /*background-image: url('/images/searchIcon.png');*/
+    background-position: 1px 12px;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+    width: 98%;
+    /*height: 100%;*/
+    font-size: 16px;
+    padding: 12px 4px 12px 1px;
+    margin-bottom: 12px;
+    background-color: white;
+
+}
+
+
+#wineRequest{
+    width: 100%;
+    height: 100%;
+    background-color: #5A2A27; /* Dark wine red */;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+/*table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    /*border: 1px solid #dddddd;*/
+/*    text-align: left;
+    padding: 8px;
+}
+td, .header{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-radius: 8px;
+}
+
+.header, tr:hover{
+    background-color: #F4EAE6;
+}
+*/
+.accept, .decline{
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.accept{
+    background-color: lightgreen;
+    color: white;
+}
+
+.decline{
+    background-color: darkred;
+    color: white;
+}
+
+h2{
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+#wineInfo h2{
+    text-align: center;
+}
+
+#wineRequest h2{
+    text-align: center;
+}
+
+#wineList h2{
+    text-align: center;
+}
+
+.dark{
+    color: #F4EAE6;
+}

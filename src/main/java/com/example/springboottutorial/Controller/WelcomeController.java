@@ -71,4 +71,9 @@ public class WelcomeController {
     public String showBugsPage() {
         return "viewBugReport";
     }
+
+    @GetMapping("/WineRequests")
+    public String showWineRequestsPage() {
+        return "RequestedWines";
+    }
 }
