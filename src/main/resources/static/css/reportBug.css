@@ -1,5 +1,6 @@
 body{
     background-color: #2C1E1E;
+    color: black;
 }
 
 #mainDiv{
@@ -31,7 +32,7 @@ h1{
     border-radius: 6px;
     border: 1px solid #F4EAE6;
     background-color: #F4EAE6 ;
-    color: #F4EAE6;
+    color: black;
 }
 
 #reportBugButton{

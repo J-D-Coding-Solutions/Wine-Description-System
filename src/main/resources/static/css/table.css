@@ -8,6 +8,14 @@ table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
 }
 
+td:first-child{
+    width: 10%;
+}
+
+td:nth-child(2){
+    width: 20%;
+}
+
 td, th {
     text-align: left;
     padding: 12px; /* Add more padding for a modern look */
@@ -18,21 +26,17 @@ tbody, thead{
     display: block;
 }
 
+
 tbody{
-
-    /* Set the height of table body */
-    height: 200px;
-
     /* Set vertical scroll */
     overflow-y: auto;
-
     /* Hide the horizontal scroll */
     overflow-x: hidden;
 }
 
-tbody td,
-thead th {
-    width: 200px;
+
+tbody tr, td{
+    width: 75%;
 }
 
 td {

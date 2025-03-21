@@ -6,7 +6,8 @@
 
 
     <link th:href="@{/css/NavBar.css}" rel="stylesheet">
-    <link th:href="@{/css/friend.css}" rel="stylesheet">
+    <link th:href="@{/css/table.css}" rel="stylesheet">
+    <link th:href="@{/css/adjustProfile.css}" rel="stylesheet">
     <script th:src="@{/js/adjustProfile.js}"></script>
     <script th:src="@{js/NavBar.js}"></script>
     <script th:src="@{js/Logout.js}"></script>
@@ -16,48 +17,67 @@
 
 <div id="navbar"></div>
 
-
-<div id="friendList">
+<div class="profilePage">
+<div id="profileList">
     <h2>Users</h2>
     <input type="text" id="searchFriend" placeholder="Search User List..." onkeyup="searchFriend()">
-    <table id="friendTable">
+    <table id="userTable">
+        <thead>
         <tr class="header">
             <th>User Id</th>
             <th>Username</th>
             <th>Delete User</th>
         </tr>
-        <tr onclick="deleteUser(this)">
+        </thead>
+        <tbody>
+        <tr>
             <td>1</td>
             <td>Dennis</td>
-            <td><button class="decline">Delete</button></td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
         </tr>
-        <tr onclick="deleteUser(this)">
+        <tr>
             <td>2</td>
             <td>Jake</td>
-            <td><button class="decline">Delete</button></td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
         </tr>
-        <tr onclick="deleteUser(this)">
+        <tr>
             <td>3</td>
             <td>Rachel</td>
-            <td><button class="decline">Delete</button></td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
         </tr>
-        <tr onclick="deleteUser(this)">
+        <tr>
             <td>4</td>
             <td>Helen</td>
-            <td><button class="decline">Delete</button></td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
         </tr>
-        <tr onclick="deleteUser(this)">
+        <tr>
             <td>5</td>
             <td>HYoshi</td>
-            <td><button class="decline">Delete</button></td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
         </tr>
-        <tr onclick="deleteUser(this)">
+        <tr >
             <td>6</td>
             <td>Giovanni</td>
-            <td><button class="decline">Delete</button></td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
         </tr>
+        <tr >
+            <td>7</td>
+            <td>Sid</td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
+        </tr>
+        <tr >
+            <td>8</td>
+            <td>Lonk</td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
+        </tr>
+        <tr >
+            <td>9</td>
+            <td>Jack</td>
+            <td><button class="decline" onclick="deleteUser(this)">Delete</button></td>
+        </tr>
+        </tbody>
     </table>
 </div>
-
+</div>
 </body>
 </html>
