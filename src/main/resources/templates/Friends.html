@@ -39,27 +39,27 @@
             <th>User Id</th>
             <th>Username</th>
         </tr>
-        <tr onclick="showFriendInfo(this)">
+        <tr onclick="showFriendInfo(this, 1)">
             <td>1</td>
             <td>Dennis</td>
         </tr>
-        <tr onclick="showFriendInfo(this)">
+        <tr onclick="showFriendInfo(this, 1)">
             <td>2</td>
             <td>Jake</td>
         </tr>
-        <tr onclick="showFriendInfo(this)">
+        <tr onclick="showFriendInfo(this, 1)">
             <td>3</td>
             <td>Rachel Jackie</td>
         </tr>
-        <tr onclick="showFriendInfo(this)">
+        <tr onclick="showFriendInfo(this, 1)">
             <td>4</td>
             <td>Helen</td>
         </tr>
-        <tr onclick="showFriendInfo(this)">
+        <tr onclick="showFriendInfo(this, 1)">
             <td>5</td>
             <td>HYoshi</td>
         </tr>
-        <tr onclick="showFriendInfo(this)">
+        <tr onclick="showFriendInfo(this, 1)">
             <td>6</td>
             <td>Giovanni</td>
         </tr>
@@ -78,14 +78,14 @@
         <tr>
             <td>7</td>
             <td>Jack</td>
-            <td><button class="accept">Accept</button></td>
-            <td><button class="decline">Decline</button></td>
+            <td><button class="accept" onclick="addFriend(this)">Accept</button></td>
+            <td><button class="decline" onclick="declineFriend(this)">Decline</button></td>
         </tr>
         <tr>
             <td>8</td>
             <td>Lonk</td>
-            <td><button class="accept">Accept</button></td>
-            <td><button class="decline">Decline</button></td>
+            <td><button class="accept" onclick="addFriend(this)">Accept</button></td>
+            <td><button class="decline" onclick="declineFriend(this)">Decline</button></td>
         </tr>
     </table>
 </div>
