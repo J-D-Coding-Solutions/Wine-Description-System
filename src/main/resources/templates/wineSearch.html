@@ -6,6 +6,7 @@
 
     <link th:href="@{/css/NavBar.css}" rel="stylesheet">
     <link th:href="@{/css/wineSearch.css}" rel="stylesheet">
+    <link th:href="@{/css/table.css}" rel="stylesheet">
     <script th:src="@{js/NavBar.js}"></script>
     <script th:src="@{js/wineSearch.js}"></script>
     <script th:src="@{js/Logout.js}"></script>
@@ -22,26 +23,64 @@
         <h1>Search Wine</h1>
         <form id="searchForm" autocomplete="off">
             <div id="extras">
-                <label id="countryLabel" for="wineCountry"><h3>Country:</h3></label>
-                <input type="text" id="wineCountry" name="wineCountry" placeholder="Wine Country">
+                        <label id="countryLabel" for="wineCountry"><h3>Country:</h3></label>
+                        <select id="wineCountry" name="wineCountry">
+                            <option value="All">All</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Chile">Chile</option>
+                            <option value="France">France</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Italy">Italy</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="Spain">Spain</option>
+                            <option value="USA">USA</option>
+                        </select>
 
-                <label id="provinceLabel" for="wineProvince"><h3>Province:</h3></label>
-                <input type="text" id="wineProvince" name="wineProvince" placeholder="Wine Province">
-            </div>
+                        <label id="provinceLabel" for="wineProvince"><h3>Province:</h3></label>
+                        <select id="wineProvince" name="wineProvince">
+                            <option value="All">All</option>
+                            <option value="Mendoza">Mendoza</option>
+                            <option value="Barossa Valley">Barossa Valley</option>
+                            <option value="Burgenland">Burgenland</option>
+                            <option value="Maipo Valley">Maipo Valley</option>
+                            <option value="Bordeaux">Bordeaux</option>
+                            <option value="Mosel">Mosel</option>
+                            <option value="Tuscany">Tuscany</option>
+                            <option value="Marlborough">Marlborough</option>
+                            <option value="Douro">Douro</option>
+                            <option value="Stellenbosch">Stellenbosch</option>
+                            <option value="Rioja">Rioja</option>
+                            <option value="Napa Valley">Napa Valley</option>
+                        </select>
+                    </div>
 
-            <label for="wineDescription"><h2>Description:</h2></label>
+
+                    <label for="wineDescription"><h2>Description:</h2></label>
             <div id="descriptionDiv">
                 <input type="text" id="wineDescription"  name="wineDescription" placeholder="Wine Description" required>
                 <button id="searchWineButton" onclick="displayTable()">Search</button>
             </div>
         </form>
-
+    <div>
         <table id="wineTable">
+            <thead>
             <tr class="header">
                 <th>Wine Name</th>
                 <th>Winery</th>
                 <th>Country</th>
                 <th>Province</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
             </tr>
             <tr>
                 <td>Wine Name</td>
@@ -49,7 +88,63 @@
                 <td>Country</td>
                 <td>Province</td>
             </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            <tr>
+                <td>Wine Name</td>
+                <td>Winery</td>
+                <td>Country</td>
+                <td>Province</td>
+            </tr>
+            </tbody>
         </table>
+    </div>
     </div>
 </div>
 </body>

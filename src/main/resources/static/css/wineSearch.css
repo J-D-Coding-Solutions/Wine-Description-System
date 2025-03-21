@@ -86,7 +86,7 @@ body{
     border-radius: 6px;
     border: 1px solid #F4EAE6;
     background-color: #F4EAE6 ;
-    color: #F4EAE6;
+    color: black;
 }
 
 label{
@@ -95,28 +95,11 @@ label{
     margin-bottom: 0.5rem;
 }
 
-table {
-    position: relative;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+#wineTable{
     display: none;
-    text-align: center;
-  }
-  
-  td, th {
-    /*border: 1px solid #dddddd;*/
-    text-align: left;
-    padding: 8px;
-  }
-  td, .header{
-    border: 1px solid black;
-  }
+}
 
- .header, tr:hover{
-    background-color: #F4EAE6;;
-  }
-
-  #searchDiv #wineTable{
-    margin: 20px auto;
-  }
+tbody{
+    /* Set the height of table body */
+    height: 200px;
+}

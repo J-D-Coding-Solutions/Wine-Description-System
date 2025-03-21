@@ -5,34 +5,24 @@ body{
     background-color: #2C1E1E; /* Dark wine red */
 }
 
-.friendPage{
+.mainDiv{
     display: flex;
     flex-direction: row;
     /*align-items: center;*/
     justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
 
-
 }
 
-#friendInfo{
-    width: 100%;
+#bugInfo{
+    width: 50%;
     height: 100%;
     background-color: #5A2A27; /* Dark wine red */  ;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
-}
-
-
-
-#friendList{
-    width: 100%;
-    height: 100%;
-    background-color: #7B506F;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -51,37 +41,6 @@ body{
 
 }
 
-
-#friendRequest{
-    width: 100%;
-    height: 100%;
-    background-color: #5A2A27; /* Dark wine red */;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-
-/*table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    /*border: 1px solid #dddddd;*/
-/*    text-align: left;
-    padding: 8px;
-}
-td, .header{
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    border-radius: 8px;
-}
-
-.header, tr:hover{
-    background-color: #F4EAE6;
-}
-*/
 .accept, .decline{
     padding: 6px 12px;
     cursor: pointer;
