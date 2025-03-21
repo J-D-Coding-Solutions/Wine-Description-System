@@ -26,10 +26,10 @@ function showwineInfo(thisObj, i){
     }
     console.log(allChildNodes[2 + i]);
     var userName = allChildNodes[2 + i].textContent;
-    var friendInfo = document.getElementById("friendInfo");
-    var textbox = friendInfo.childNodes[3];
+    var wineInfo = document.getElementById("wineInfo");
+    var textbox = wineInfo.childNodes[3];
     var infroRow = document.getElementById("infoRow");
-    textbox.textContent = userName;
+    textbox.textContent = userId;
 
     infroRow.innerHTML = "<td>" + userId + "</td>" + "<td>" + userName + "</td>";
 }
@@ -48,7 +48,7 @@ function addwine(thisObj){
 
 
     row.addEventListener('click', function() {
-        showFriendInfo(row, 0);
+        showwineInfo(row, 0);
     });
 
     var parentRow =  thisObj.parentNode.parentNode;
