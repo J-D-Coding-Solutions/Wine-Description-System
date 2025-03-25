@@ -90,3 +90,9 @@ input[type="submit"]:hover {
     background-color: #5A2A27; /* Dark wine red */
     transform: scale(1.05); /* Slight zoom effect */
 }
+#registerForm{
+    position: relative;
+    text-align: center;
+    padding: 30px;
+    border: 2px solid  #D8B5A5;
+}

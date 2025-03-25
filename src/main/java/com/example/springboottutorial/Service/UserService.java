@@ -1,7 +1,7 @@
 package com.example.springboottutorial.Service;
 
-import com.example.springboottutorial.Model.User;
-import com.example.springboottutorial.Repository.UserRepository;
+import com.example.springboottutorial.Model.*;
+import com.example.springboottutorial.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public String authenticate(String username, String password) {
-        Optional<User> user = userRepository.findByUsername(username);
+        Optional<users> user = userRepository.findByUsername(username);
 
         if (user.isPresent() && user.get().getPassword().equals(password)) {
             return user.get().getRole(); // Return role if authentication is successful
@@ -22,7 +22,7 @@ public class UserService {
         return null; // Authentication failed
     }
     public boolean register(String username) {
-        Optional<User> user = userRepository.findByUsername(username);
+        Optional<users> user = userRepository.findByUsername(username);
         return user.isEmpty(); // Returns true if the user does not exist, false if it does
     }
 

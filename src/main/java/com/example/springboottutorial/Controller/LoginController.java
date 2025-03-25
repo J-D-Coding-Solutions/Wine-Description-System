@@ -41,12 +41,12 @@ public class LoginController {
 
     @GetMapping("/RegisterPage")
     public String DisplayRegisterPage(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new users());
         return "Register";
     }
 
     @PostMapping("/AddUser")
-    public String AddUser(@ModelAttribute User user,
+    public String AddUser(@ModelAttribute users user,
                             @RequestParam String username, Model model) {
         if (userService.register(username)) {
             userRepository.save(user);
@@ -60,7 +60,7 @@ public class LoginController {
     @GetMapping("/Dash")
     public String welcome(@RequestParam(name = "username", required = false) String username, Model model) {
         if (username != null) {
-            User user = userRepository.findByUsername(username).orElse(null);
+            users user = userRepository.findByUsername(username).orElse(null);
             if (user != null) {
                 model.addAttribute("username", user.getUsername());
             } else {
