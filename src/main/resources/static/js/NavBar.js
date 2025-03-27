@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function to update the navbar based on the role
 function updateNavbar(role) {
     const navbar = {
-        "User": `
+        "USER": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -44,7 +44,7 @@ function updateNavbar(role) {
 
             </nav>
         `,
-        "Stakeholder": `
+        "STAKEHOLDER": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -69,7 +69,7 @@ function updateNavbar(role) {
                 <a href="/">Login</a> <!-- Replaces login with logout -->
             </nav>
         `,
-        "Admin": `
+        "ADMIN": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -90,7 +90,7 @@ function updateNavbar(role) {
                 <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
-        "Moderator": `
+        "MODERATOR": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
@@ -111,7 +111,7 @@ function updateNavbar(role) {
                 <button class="dropbtn" onclick="logout()">Logout</button>
             </nav>
         `,
-        "Sommelier": `
+        "SOMMELIER": `
             <nav>
                 <a href="/Dash">Home</a>
                 <a href="/WineSearch">Wine Search</a>
