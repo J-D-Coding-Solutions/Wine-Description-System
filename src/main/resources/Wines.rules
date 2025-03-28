@@ -100,10 +100,34 @@ Well Balanced	TASTE	MISC	1
 Developing	TASTE	MISC	1
 Vibrant	TASTE	MISC	1
 Fig	FRUIT	MISC	1
+Figs	FRUIT	MISC	1
 Blackberry	FRUIT	MISC	1
+Blackberries	FRUIT	MISC	1
 Chocolate	TASTE	MISC	1
 Fruits	FRUIT	MISC	1
-Spices	FRUIT	MISC	1
+Spices	TASTE	MISC	1
 Red	COLOR	MISC	1
 White	COLOR	MISC	1
 Layered	TASTE	MISC	1
+Cherry	FRUIT	MISC	1
+Cherries	FRUIT	MISC	1
+Caramel	TASTE	MISC	1
+Minty	TASTE	MISC	1
+Mint	TASTE	MISC	1
+Acidity	TASTE	MISC	1
+Cranberry	FRUIT	1
+Cranberries	FRUIT	1
+Pomegranate	FRUIT	1
+Pomegranates	FRUIT	1
+Orange	FRUIT	1
+Oranges	FRUIT	1
+Succulent	TASTE	1
+Layers	TASTE	1
+Mocha	TASTE	1
+Tea	TASTE	1
+Savory	TASTE	1
+Tannins	TASTE	1
+Berries	FRUIT	1
+Plum	FRUIT	1
+Plums	FRUIT	1
+Black-plum	FRUIT	1
