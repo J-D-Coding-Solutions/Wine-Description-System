@@ -15,10 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.springboottutorial.Controller.DTO.WineSearchRequest;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/Wine-Description")
@@ -30,17 +27,19 @@ public class WineSearchController {
         this.wineRepository = wineRepository;
     }
 
-    public static class wineList{
-        String name;
-        double coSim;
-
-    }
+    /*class SortByValue implements Comparator<wines> {
+        @Override
+        public double compare(wines a, wines b){
+            return Integer.compare(a.getcoSim(), b.getcoSim());
+        }
+    }*/
 
 
     @PostMapping
-    public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest Search) {
+    public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest search) {
         long startTime = System.nanoTime();
-        String UserSearch = Search.getDescription();
+        String userSearch = search.getCombinedInput(); // Updated getter
+        System.out.println("It Works, Calculating now..." + userSearch);
 
         NLPController NLPController = new NLPController();
         List<CoreLabel> userKeyWord = NLPController.NLP(UserSearch);
