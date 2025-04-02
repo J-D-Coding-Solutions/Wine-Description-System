@@ -112,16 +112,3 @@ public class NLPController {
 
 
 }
-
- /* Properties props = new Properties();
-        props.setProperty("annotators", "tokenize");
-
-        props.setProperty("tokenize.language", "English");
-        props.setProperty("tokenize.options", "americanize=false");
-
-        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
-        CoreDocument doc1 = new CoreDocument(text1);
-        CoreDocument doc2 = new CoreDocument(text2);
-
-        pipeline.annotate(doc1);
-        pipeline.annotate(doc2);*/ // Goes in Consine stuffs
