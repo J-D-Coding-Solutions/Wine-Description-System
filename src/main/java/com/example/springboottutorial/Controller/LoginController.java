@@ -49,6 +49,7 @@ public class LoginController {
     public String AddUser(@ModelAttribute users user,
                             @RequestParam String username, Model model) {
         if (userService.register(username)) {
+            user.setRole("USER");
             userRepository.save(user);
             return "login";
         } else {
