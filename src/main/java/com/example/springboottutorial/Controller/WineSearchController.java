@@ -24,31 +24,15 @@ import java.util.Properties;
 @RequestMapping("/api/Wine-Description")
 public class WineSearchController {
 
-    public static class wine{
-        String name;
-        String description;
-
-        wine(String name, String description){
-            this.name=name;
-            this.description=description;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-        public String getName() {
-            return name;
-        }
-    }
-
 
     @PostMapping
-    public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest Search) {
+    public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest search) {
         long startTime = System.nanoTime();
-        String UserSearch = Search.getDescription();
+        String userSearch = search.getCombinedInput(); // Updated getter
+        System.out.println("It Works, Calculating now..." + userSearch);
 
         NLPController NLPController = new NLPController();
-        List<CoreLabel> userKeyWord = NLPController.NLP(UserSearch);
+        List<CoreLabel> userKeyWord = NLPController.NLP(userSearch);
 
 
         List<List> somilierWines = new ArrayList<List>();
@@ -76,6 +60,6 @@ public class WineSearchController {
 
         System.out.println("Method execution time: " + duration + " nanoseconds");
         System.out.println("Method execution time: " + duration / 1_000_000 + " milliseconds");
-        return ResponseEntity.ok("It Works!!! " + UserSearch);
+        return ResponseEntity.ok("It Works!!! " + userSearch);
     }
 }

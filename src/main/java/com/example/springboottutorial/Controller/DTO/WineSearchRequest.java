@@ -3,21 +3,21 @@ package com.example.springboottutorial.Controller.DTO;
 
 public class WineSearchRequest {
 
-    private String description;
+    private String combinedInput;
 
     public WineSearchRequest() {
     }
 
-    public WineSearchRequest(String description) {
-        this.description = description;
+    public WineSearchRequest(String combinedInput) {
+        this.combinedInput = combinedInput;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCombinedInput() {
+        return combinedInput;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCombinedInput(String combinedInput) {
+        this.combinedInput = combinedInput;
     }
 
 
