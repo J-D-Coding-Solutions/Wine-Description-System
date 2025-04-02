@@ -24,21 +24,16 @@ import java.util.Properties;
 @RequestMapping("/api/Wine-Description")
 public class WineSearchController {
 
-    public static class wine{
+    private final WineRepository wineRepository;
+
+    public WineSearchController(WineRepository wineRepository) {
+        this.wineRepository = wineRepository;
+    }
+
+    public static class wineList{
         String name;
-        String description;
+        double coSim;
 
-        wine(String name, String description){
-            this.name=name;
-            this.description=description;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-        public String getName() {
-            return name;
-        }
     }
 
 
@@ -50,26 +45,20 @@ public class WineSearchController {
         NLPController NLPController = new NLPController();
         List<CoreLabel> userKeyWord = NLPController.NLP(UserSearch);
 
-
-        List<List> somilierWines = new ArrayList<List>();
-        List<Double> consineSim = new ArrayList<Double>();
-
-        somilierWines.add(NLPController.NLP("The wine had hints of different fruits such as fig and blackberry. It was sweet with flavors of chocolate and hints of vanilla. The flavors were layered and intense."));
-        somilierWines.add(NLPController.NLP("This tremendous 100% varietal wine hails from Oakville and was aged over three years in oak. Juicy red-cherry fruit and a compelling hint of caramel greet the palate, framed by elegant, fine tannins and a subtle minty tone in the background. Balanced and rewarding from start to finish, it has years ahead of it to develop further nuance."));
-        somilierWines.add(NLPController.NLP("The producer sources from two blocks of the vineyard for this wine is one at a high elevation, which contributes bright acidity. Crunchy cranberry, pomegranate and orange peel flavors surround silky, succulent layers of texture that present as fleshy fruit. That delicately lush flavor has considerable length."));
-        somilierWines.add(NLPController.NLP("From 18-year-old vines, this supple well-balanced effort blends flavors of mocha, cherry, vanilla and breakfast tea. Superbly integrated and delicious even at this early stage, this wine seems destined for a long and savory cellar life."));
-
-
-        for(int i = 0; i < somilierWines.size(); i++) {
-            double tempSim = NLPController.cosineSimilarity(userKeyWord, somilierWines.get(i));
-            if(!Double.isNaN(tempSim)) {
-                consineSim.add(tempSim);
-            }
+        List<wines> winelist = wineRepository.findAll();
+        for(wines wine: winelist){
+           List<CoreLabel> tempKeyword = NLPController.NLP(wine.getWineDesc());
+           double tempSim = NLPController.cosineSimilarity(userKeyWord, tempKeyword);
+           if(!Double.isNaN(tempSim)){
+               wine.setcoSim(tempSim);
+           }
+        }
+        for(wines wine: winelist){
+           if(!(wine.getcoSim() == 0.0)){
+               System.out.println(wine.getWineName() + " " + wine.getcoSim());
+           }
         }
 
-        Collections.sort(consineSim, Collections.reverseOrder());
-
-        System.out.println(consineSim);
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);  // in nanoseconds
