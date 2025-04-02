@@ -42,7 +42,7 @@ public class WineSearchController {
         System.out.println("It Works, Calculating now..." + userSearch);
 
         NLPController NLPController = new NLPController();
-        List<CoreLabel> userKeyWord = NLPController.NLP(UserSearch);
+        List<CoreLabel> userKeyWord = NLPController.NLP(userSearch);
 
         List<wines> winelist = wineRepository.findAll();
         for(wines wine: winelist){
@@ -64,6 +64,6 @@ public class WineSearchController {
 
         System.out.println("Method execution time: " + duration + " nanoseconds");
         System.out.println("Method execution time: " + duration / 1_000_000 + " milliseconds");
-        return ResponseEntity.ok("It Works!!! " + UserSearch);
+        return ResponseEntity.ok("It Works!!! " + userSearch);
     }
 }
