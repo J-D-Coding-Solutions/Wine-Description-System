@@ -110,6 +110,7 @@ public class NLPController {
         return sim_score;
     }
 
+
 }
 
  /* Properties props = new Properties();
