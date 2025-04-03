@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="">
+<head>
+  <title>Register New Wines</title>
+  <link th:href="@{/css/Register.css}" rel="stylesheet">
+  <link th:href="@{/css/registerAdmin.css}" rel="stylesheet">
+  <link th:href="@{/css/NavBar.css}" rel="stylesheet">
+  <script th:src="@{/js/NavBar.js}"></script>
+  <script th:src="@{js/Logout.js}"></script>
+
+
+</head>
+<body>
+
+
+<div id="registerForm">
+  <h2>Register A New Wine Here</h2>
+
+
+  <form action="/AddWine" th:object="${Wine}" method="post"><!--NEEDS A CONTROLLER SIMILAR TO REGISTER USER BUT IT NEEDS TO USE THE DROP DOWN MENU, LEAVIBG AS DASH FRO FRIGHT NOW-->
+
+    <label>Wine Name:</label>
+    <input type="text" name="wine_name" required><br><br>
+
+    <label>Wine Description:</label>
+    <input type="text" name="wine_description" required><br><br>
+
+    <label>Country:</label>
+    <input type="text" name="country" required><br><br>
+
+    <label>Province:</label>
+    <input type="text" name="province" required><br><br>
+
+    <label>Region:</label>
+    <input type="text" name="region" required><br><br>
+
+    <label>Variety:</label>
+    <input type="text" name="variety" required><br><br>
+
+    <label>Winery:</label>
+    <input type="text" name="winery" required><br><br>
+
+
+    <button type="submit">Register New Wine</button>
+
+  </form>
+
+  <form action="/Dash" method="get">
+    <button id="Back to Dash" type="submit"> Back to Dashboard </button>
+  </form>
+
+  <p style="color: red;" th:text="${error}"></p>
+</div>
+</body>
+</html>
