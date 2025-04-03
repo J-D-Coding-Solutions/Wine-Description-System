@@ -1,6 +1,6 @@
 package com.example.springboottutorial.Controller;
 
-import com.example.springboottutorial.Model.*;
+import com.example.springboottutorial.Model.wines;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
 import com.example.springboottutorial.Controller.*;
@@ -9,6 +9,7 @@ import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreEntityMention;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,16 +28,10 @@ public class WineSearchController {
         this.wineRepository = wineRepository;
     }
 
-    /*class SortByValue implements Comparator<wines> {
-        @Override
-        public double compare(wines a, wines b){
-            return Integer.compare(a.getcoSim(), b.getcoSim());
-        }
-    }*/
 
 
     @PostMapping
-    public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest search) {
+    public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest search, Sort sort) {
         long startTime = System.nanoTime();
         String userSearch = search.getCombinedInput(); // Updated getter
         System.out.println("It Works, Calculating now..." + userSearch);
@@ -44,26 +39,35 @@ public class WineSearchController {
         NLPController NLPController = new NLPController();
         List<CoreLabel> userKeyWord = NLPController.NLP(userSearch);
 
+        for (CoreLabel token : userKeyWord) {
+            if(!token.ner().equals("O")){
+                String tokenAndNERTags = "(" + token.word() + ", " + token.ner() + ")";
+                System.out.println(tokenAndNERTags);
+
+            }
+        }
+
         List<wines> winelist = wineRepository.findAll();
+
         for(wines wine: winelist){
            List<CoreLabel> tempKeyword = NLPController.NLP(wine.getWineDesc());
            double tempSim = NLPController.cosineSimilarity(userKeyWord, tempKeyword);
-           if(!Double.isNaN(tempSim)){
+           if(!Double.isNaN(tempSim)) {
                wine.setcoSim(tempSim);
            }
         }
-        for(wines wine: winelist){
-           if(!(wine.getcoSim() == 0.0)){
-               System.out.println(wine.getWineName() + " " + wine.getcoSim());
-           }
-        }
 
+        winelist.removeIf(wine -> wine.getcoSim() < 0.1);
+
+        winelist.sort(Comparator.comparingDouble(wines::getcoSim).reversed());
+
+        String jsonObj = NLPController.jsonObj(winelist);
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);  // in nanoseconds
 
         System.out.println("Method execution time: " + duration + " nanoseconds");
         System.out.println("Method execution time: " + duration / 1_000_000 + " milliseconds");
-        return ResponseEntity.ok("It Works!!! " + userSearch);
+        return ResponseEntity.ok(jsonObj);
     }
 }

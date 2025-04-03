@@ -1,5 +1,6 @@
 package com.example.springboottutorial.Controller;
 
+import com.example.springboottutorial.Model.wines;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -15,8 +16,11 @@ public class NLPController {
 
         Properties props = new Properties();
         props.setProperty("annotators", "tokenize,pos,lemma,ner");
+        props.setProperty("ner.model", "");
 
+        props.setProperty("ner.fine.regexner.mapping", "src/main/resources/Country.rules");
         props.setProperty("ner.fine.regexner.mapping", "src/main/resources/Wines.rules");
+
         props.setProperty("ner.fine.regexner.ignorecase", "true");
 
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
@@ -24,7 +28,6 @@ public class NLPController {
         CoreDocument doc = new CoreDocument(text);
         // annotate the document
         pipeline.annotate(doc);
-
         return doc.tokens();
     }
 
@@ -56,7 +59,7 @@ public class NLPController {
 
 
         for (CoreLabel token : text1) {
-            if (!token.ner().equals("O")) {
+            if (!(token.ner().equals("O"))) {
                 if (freq_vector.containsKey(token.word())) {
                     values vals1 = freq_vector.get(token.word());
                     int freq1 = vals1.val1 + 1;
@@ -72,7 +75,7 @@ public class NLPController {
         }
 
         for (CoreLabel token : text2) {
-            if (!token.ner().equals("O")) {
+            if (!(token.ner().equals("O"))) {
                 if (freq_vector.containsKey(token.word())) {
                     values vals1 = freq_vector.get(token.word());
                     int freq1 = vals1.val1;
@@ -80,8 +83,8 @@ public class NLPController {
                     vals1.Update_VAl(freq1, freq2);
                     freq_vector.put(token.word(), vals1);
                 } else {
-                    values vals1 = new values(1, 0);
-                    freq_vector.put(token.word(), vals1);
+                    values vals2 = new values(0, 1);
+                    freq_vector.put(token.word(), vals2);
                     Distinct_words.add(token.word());
                 }
             }
@@ -110,5 +113,19 @@ public class NLPController {
         return sim_score;
     }
 
+    public String jsonObj(List<wines> winelist){
+        String jsonObj = "[";
 
+        for (wines wine : winelist) {
+            jsonObj = jsonObj + "{" + "\"winename\":\"" + wine.getWineName() + "\", \"winery\":\"" + wine.getWinery() + "\", \"country\":\"" + wine.getCountry() + "\", \"province\": \"" + wine.getProvince() + "\"},";
+        }
+
+        if (jsonObj.length() > 1) {
+            jsonObj = jsonObj.substring(0, jsonObj.length() - 1);
+        }
+
+        jsonObj = jsonObj + "]";
+        return jsonObj;
+
+    }
 }

@@ -24,7 +24,7 @@
             <div id="extras">
                 <label id="countryLabel" for="wineCountry"><h3>Country:</h3></label>
                 <select id="wineCountry" name="wineCountry">
-                    <option value="All">All</option>
+                    <option value="">All</option>
                     <option value="Argentina">Argentina</option>
                     <option value="Australia">Australia</option>
                     <option value="Austria">Austria</option>
@@ -41,7 +41,7 @@
 
                 <label id="provinceLabel" for="wineProvince"><h3>Province:</h3></label>
                 <select id="wineProvince" name="wineProvince">
-                    <option value="All">All</option>
+                    <option value="">All</option>
                     <option value="Mendoza">Mendoza</option>
                     <option value="Barossa Valley">Barossa Valley</option>
                     <option value="Burgenland">Burgenland</option>
@@ -74,76 +74,19 @@
                     <th>Province</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
-                <tr>
-                    <td>Wine Name</td>
-                    <td>Winery</td>
-                    <td>Country</td>
-                    <td>Province</td>
-                </tr>
+                <tbody id="wineTableBody">
+
                 </tbody>
             </table>
         </div>
     </div>
+</div>
 </body>
 </html>
+
+<!--<tr th:each="wine : $">
+                    <td th:text="${wines.wine_name}">Wine Name</td>
+                    <td th:text="${wines.winery}">Winery</td>
+                    <td th:text="${wines.country}">Country</td>
+                    <td th:text="${province}">Province</td>
+                </tr>-->
