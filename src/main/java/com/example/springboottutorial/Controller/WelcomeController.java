@@ -17,7 +17,8 @@ public class WelcomeController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/friendPage") //this does not use any of the fuctionality below because there is no error model made in the html page
+    @GetMapping("/friendPage")
+    //this does not use any of the fuctionality below because there is no error model made in the html page
     public String friendPage(@RequestParam(name = "username", required = false) String username, Model model) {
         if (username != null) {
             users user = userRepository.findByUsername(username).orElse(null);
@@ -32,7 +33,6 @@ public class WelcomeController {
 
         return "Friends";
     }
-
 
 
     @GetMapping("/WineRequest")
@@ -61,7 +61,9 @@ public class WelcomeController {
     }
 
     @GetMapping("/AdjustProfiles")
-    public String showAdjustProfilesPage() {return "adjustProfile";}
+    public String showAdjustProfilesPage() {
+        return "adjustProfile";
+    }
 
     @GetMapping("/ViewBugs")
     public String showBugsPage() {
@@ -69,8 +71,8 @@ public class WelcomeController {
     }
 
     @GetMapping("/WineRequests")
-    public String showWineRequestsPage() {return "RequestedWines";}
+    public String showWineRequestsPage() {
+        return "RequestedWines";
+    }
 
-    @GetMapping("/RegisterWines")
-    public String showAddWinePage() {return "registerWine";}
 }
