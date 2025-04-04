@@ -50,7 +50,7 @@ public class WineSearchController {
         List<wines> winelist = wineRepository.findAll();
 
         for(wines wine: winelist){
-           List<CoreLabel> tempKeyword = NLPController.NLP(wine.getWineDesc());
+           List<CoreLabel> tempKeyword = NLPController.NLP(wine.getWineDesc() + " " + wine.getCountry() + " ");
            double tempSim = NLPController.cosineSimilarity(userKeyWord, tempKeyword);
            if(!Double.isNaN(tempSim)) {
                wine.setcoSim(tempSim);
