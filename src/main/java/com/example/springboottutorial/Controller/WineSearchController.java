@@ -39,6 +39,7 @@ public class WineSearchController {
         NLPController NLPController = new NLPController();
         List<CoreLabel> userKeyWord = NLPController.NLP(userSearch);
 
+        //Debug thing
         for (CoreLabel token : userKeyWord) {
             if(!token.ner().equals("O")){
                 String tokenAndNERTags = "(" + token.word() + ", " + token.ner() + ")";
@@ -53,11 +54,11 @@ public class WineSearchController {
            List<CoreLabel> tempKeyword = NLPController.NLP(wine.getWineDesc());
            double tempSim = NLPController.cosineSimilarity(userKeyWord, tempKeyword);
            if(!Double.isNaN(tempSim)) {
+               System.out.println(wine.getWineName() + " " + tempSim);
                wine.setcoSim(tempSim);
            }
         }
-
-        winelist.removeIf(wine -> wine.getcoSim() < 0.1);
+       winelist.removeIf(wine -> wine.getcoSim() < 0.1);
 
         winelist.sort(Comparator.comparingDouble(wines::getcoSim).reversed());
 

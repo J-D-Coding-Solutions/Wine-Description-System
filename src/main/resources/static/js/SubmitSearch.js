@@ -45,7 +45,7 @@ async function submitWineDescription() {
 
     if(!(data.length === 0)) {generateTable(data);}
     else {    const tableBody = document.getElementById("wineTableBody");
-        tableBody.innerHTML = 'NO MATCHING WINES! BITCH!';
+        tableBody.innerHTML = 'NO MATCHING WINES!';
         tableBody.style.color = "white";
         const table = document.getElementById("wineTable");
         table.style.display = "block";}// Clear old table data}

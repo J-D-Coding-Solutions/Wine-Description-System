@@ -48,7 +48,6 @@ public class NLPController {
         }
     }//end of class values
 
-
     public double cosineSimilarity(List<CoreLabel> text1, List<CoreLabel> text2) {
 
 
