@@ -26,10 +26,11 @@ async function submitWineDescription() {
     const wineCountry = document.getElementById("wineCountry").value;
     const wineProvince = document.getElementById("wineProvince").value;
     const wineVariety = document.getElementById("wineVariety").value;
+    const wineWinery = document.getElementById("wineWinery").value;
 
 
     //const combinedInput = `Description: ${wineDescription}, Country: ${wineCountry}, Province: ${wineProvince}`;
-    const combinedInput = `${wineDescription} ${wineCountry} ${wineProvince} ${wineVariety}`;
+    const combinedInput = `${wineDescription} ${wineCountry} ${wineProvince} ${wineVariety} ${wineWinery}`;
 
     const wineData = { combinedInput: combinedInput }; // Correctly formatted object
 

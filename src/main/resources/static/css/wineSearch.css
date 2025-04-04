@@ -79,7 +79,7 @@ body{
     margin-top: 1rem;
 }
 
-#wineCountry, #wineProvince, #wineRegion, #wineVariety{
+#wineCountry, #wineProvince, #wineRegion, #wineVariety, #wineWinery{
     width: 97%;
     padding: 10px;
     margin-bottom: 10px;
@@ -97,6 +97,15 @@ label{
 
 #wineTable{
     display: none;
+    table-layout: fixed;
+    width: 500px;
+}
+
+#wineTable td{
+    width: 125px;
+}
+#wineTable th{
+        width: 125px;
 }
 
 tbody{
