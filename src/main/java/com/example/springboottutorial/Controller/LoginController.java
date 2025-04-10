@@ -3,6 +3,7 @@ package com.example.springboottutorial.Controller;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
+import com.example.springboottutorial.Controller.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
+    //Also need to make designated error page to redirect
+    //Need to make dash its own controller & be able to pull data from favorite wines
     // Handle GET request for login page
     @GetMapping("/")
     public String showLoginPage() {
@@ -39,13 +42,13 @@ public class LoginController {
         return "redirect:/" + "Dash"; // Redirect to appropriate dashboard
     }
 
-    @GetMapping("/RegisterPage")
+    @GetMapping("/RegisterPage")//Need to make individual controller
     public String DisplayRegisterPage(Model model) {
         model.addAttribute("user", new users());
         return "Register";
     }
 
-    @PostMapping("/AddUser")
+    @PostMapping("/AddUser")//Need to make individual controller
     public String AddUser(@ModelAttribute users user,
                             @RequestParam String username, Model model) {
         if (userService.register(username)) {

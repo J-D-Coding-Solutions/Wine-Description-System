@@ -17,60 +17,48 @@ public class WelcomeController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/friendPage")
-    //this does not use any of the fuctionality below because there is no error model made in the html page
-    public String friendPage(@RequestParam(name = "username", required = false) String username, Model model) {
-        if (username != null) {
-            users user = userRepository.findByUsername(username).orElse(null);
-            if (user != null) {
-                model.addAttribute("username", user.getUsername());
-            } else {
-                model.addAttribute("error", "User not found");
-            }
-        } else {
-            model.addAttribute("error", "Username not provided");
-        }
-
-        return "Friends";
+    @GetMapping("/friendPage")//Will show currecnt friends, have other infromation pulled each time a user is clicked and show current requests (Will display info from database & Edit info in database)
+    public String showFriendPage() {return "Friends"; // This should resolve to the login.html template
     }
 
 
-    @GetMapping("/WineRequest")
+
+    @GetMapping("/WineRequest")//Where users ask the somolier to look at the wine (Will add to databse)
     public String showRequestPage() {
         return "Wine-request"; // This should resolve to the login.html template
     }
 
-    @GetMapping("/FriendRequest")
+    @GetMapping("/FriendRequest")//Where you type in a name to add them to you friend requests (Will add to databse)
     public String showFriendRequestPage() {
         return "registerFriend";
     }
 
-    @GetMapping("/ReportBuggies")
+    @GetMapping("/ReportBuggies")//A simple form page that takes users bug reports (Will add to databse)
     public String showReportBuggiesPage() {
         return "reportBug";
     }
 
-    @GetMapping("/RegisterAccounts")
+    @GetMapping("/RegisterAccounts")//A simple form page similar to make accounts but for other users (Will add to databse)
     public String showRegisterAccountsPage() {
         return "registerAdmin";
     }
 
-    @GetMapping("/WineSearch")
+    @GetMapping("/WineSearch")//This just gets the wine search page and cannot move from here and wont work in the wine search controller because it is a rest controller
     public String showWineSearchPage() {
-        return "WineSearch";
+        return "wineSearch";
     }
 
-    @GetMapping("/AdjustProfiles")
+    @GetMapping("/AdjustProfiles")//Will show all current Users and let the mod delete account or adjust info (Will display info and edit info in databse)
     public String showAdjustProfilesPage() {
         return "adjustProfile";
     }
 
-    @GetMapping("/ViewBugs")
+    @GetMapping("/ViewBugs")//Will show all current reported bugs from users and mod can accept them to work or decline (Will display info and edit info in databse)
     public String showBugsPage() {
         return "viewBugReport";
     }
 
-    @GetMapping("/WineRequests")
+    @GetMapping("/WineRequests")//Will be same as friends page but show current wines in winelist (Load by 10-20) and show requests from users (Will display and edit info in database)
     public String showWineRequestsPage() {
         return "RequestedWines";
     }

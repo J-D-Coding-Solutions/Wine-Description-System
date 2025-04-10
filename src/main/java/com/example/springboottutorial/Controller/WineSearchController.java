@@ -16,9 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.springboottutorial.Controller.DTO.WineSearchRequest;
 
+import java.time.format.SignStyle;
 import java.util.*;
 
 @RestController
+
 @RequestMapping("/api/Wine-Description")
 public class WineSearchController {
 
@@ -27,6 +29,7 @@ public class WineSearchController {
     public WineSearchController(WineRepository wineRepository) {
         this.wineRepository = wineRepository;
     }
+
 
 
 
@@ -52,6 +55,10 @@ public class WineSearchController {
 
         for(wines wine: winelist){
            List<CoreLabel> tempKeyword = NLPController.NLP(wine.getWineDesc() + " " + wine.getCountry() + " ");
+           for(CoreLabel token : tempKeyword){
+               if(!token.ner().equals("O")){
+               System.out.println(token.word() + " " + token.ner());}
+           }
            double tempSim = NLPController.cosineSimilarity(userKeyWord, tempKeyword);
            if(!Double.isNaN(tempSim)) {
                System.out.println(wine.getWineName() + " " + tempSim);
