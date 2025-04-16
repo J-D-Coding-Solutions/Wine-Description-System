@@ -33,7 +33,7 @@ public class LoginController {
         String role = userService.authenticate(username, password);
 
         if (role == null) {
-            return "redirect:/"; // Redirect back to log in if authentication fails
+            return "redirect:/"; // Re,direct back to log in if authentication fails
         }
 
         // Store role in session
