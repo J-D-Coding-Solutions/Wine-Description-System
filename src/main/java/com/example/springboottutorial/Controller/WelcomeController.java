@@ -17,18 +17,15 @@ public class WelcomeController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/friendPage")//Will show currecnt friends, have other infromation pulled each time a user is clicked and show current requests (Will display info from database & Edit info in database)
-    public String showFriendPage() {return "Friends"; // This should resolve to the login.html template
+    @GetMapping("/friendPage")//DONE DO NOT DO
+    public String showFriendPage() {return "Friends";
     }
 
 
 
-    @GetMapping("/WineRequest")//Where users ask the somolier to look at the wine (Will add to databse)
-    public String showRequestPage() {
-        return "Wine-request"; // This should resolve to the login.html template
-    }
 
-    @GetMapping("/FriendRequest")//Where you type in a name to add them to you friend requests (Will add to databse)
+
+    @GetMapping("/FriendRequest")// DONE DO NOT DO
     public String showFriendRequestPage() {
         return "registerFriend";
     }

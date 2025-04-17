@@ -10,8 +10,4 @@ public class WineService {
 
     @Autowired
     private WineRepository wineRepository;
-
-    public void saveWine(wines wine) {
-        wineRepository.save(wine);
-    }
 }
