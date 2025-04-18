@@ -30,11 +30,6 @@ public class WelcomeController {
         return "registerFriend";
     }
 
-    @GetMapping("/ReportBuggies")//A simple form page that takes users bug reports (Will add to databse)
-    public String showReportBuggiesPage() {
-        return "reportBug";
-    }
-
     @GetMapping("/RegisterAccounts")//A simple form page similar to make accounts but for other users (Will add to databse)
     public String showRegisterAccountsPage() {
         return "registerAdmin";

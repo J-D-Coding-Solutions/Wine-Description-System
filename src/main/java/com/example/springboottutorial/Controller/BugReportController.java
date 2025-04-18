@@ -12,41 +12,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
-
 @Controller
-public class WineRequestController {
+public class BugReportController {
 
     @Autowired
-    private WineRequestRepository wineRequestRepository;
+    private BugReportRepository bugReportRepository;
     @Autowired
     private UserRepository userRepository;
 
-
-    @GetMapping("/WineRequest")//Where users ask the somolier to look at the wine (Will add to databse)
-    public String showRequestPage(Model model) {
-        model.addAttribute("Wine_Request", new WineRequests()); //makes a new object of the wine request
-        return "Wine-request";
+    @GetMapping("/ReportBuggies")//A simple form page that takes users bug reports (Will add to databse)
+    public String showReportBuggiesPage(Model model) {
+        model.addAttribute("Bug_Report", new BugReport());//this needs to be filled out once the model is done
+        return "reportBug";
     }
 
-
-    @PostMapping("/Request")
-    public String RequestWine(@ModelAttribute("Wine_Request") WineRequests request, HttpSession session) {
+    @PostMapping("/ReportBug")
+    public String addBugReport(@ModelAttribute("Bug_Report") BugReport bugReport, HttpSession session) {
 
         //this sets username as a strign and grabs from the session
         String sessionusername = (String) session.getAttribute("username");
-        if (sessionusername == null) {
-        }
         //so currenltt its a string and needs to be an object to store
 
         users username = userRepository.findByUsername(sessionusername).orElse(null);
         //So this not only makes sure its in the database but also makes sure its not null and sets it as a user object
 
-
-        //This then sets the user object to the request and saves it to the database
-        request.setUser(username);
-        wineRequestRepository.save(request);
+        bugReport.setUser(username);
+        bugReportRepository.save(bugReport);
         return "dash"; // Redirect to a success page or dashboard after saving
     }
+
 
 
 }
