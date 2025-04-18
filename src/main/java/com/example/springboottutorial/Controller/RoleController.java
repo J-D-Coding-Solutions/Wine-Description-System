@@ -25,6 +25,11 @@ public class RoleController {
     public Map<String, String> logout(HttpSession session) {
         // Clear the user role from the session
         session.removeAttribute("userRole");
+        System.out.println(session.getAttribute("userRole"));
+        System.out.println(session.getAttribute("username"));
+        session.removeAttribute("username");
+        System.out.println(session.getAttribute("username"));
+
 
         return Map.of("message", "Logged out successfully", "role", "guest");
     }

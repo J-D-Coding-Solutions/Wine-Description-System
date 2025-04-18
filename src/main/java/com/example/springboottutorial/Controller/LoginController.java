@@ -37,7 +37,10 @@ public class LoginController {
         }
 
         // Store role in session
+        session.setAttribute("username", username);
         session.setAttribute("userRole", role);
+        //print out username in cosnole
+        System.out.println("Logged in user: " + username);
 
         return "redirect:/" + "Dash"; // Redirect to appropriate dashboard
     }
@@ -50,7 +53,7 @@ public class LoginController {
 
     @PostMapping("/AddUser")//Need to make individual controller
     public String AddUser(@ModelAttribute users user,
-                            @RequestParam String username, Model model) {
+                            @RequestParam String username, Model model, HttpSession session) {
         if (userService.register(username)) {
             user.setRole("USER");
             userRepository.save(user);
@@ -62,6 +65,7 @@ public class LoginController {
         }
     }
     @GetMapping("/Dash")
+    //This is doing nothing lol
     public String welcome(@RequestParam(name = "username", required = false) String username, Model model) {
         if (username != null) {
             users user = userRepository.findByUsername(username).orElse(null);

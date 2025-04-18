@@ -18,9 +18,9 @@
     <div id="mainDiv">
         <div id="reportDiv">
             <h1>Report Bug</h1>
-            <form id="reportForm" autocomplete="off">
+            <form action="/ReportBug" th:object="${Bug_Report}" method="post">
                 <div id="descriptionDiv">
-                    <input type="text" id="bugDescription"  name="bugDescription" placeholder="Bug Description" required>
+                    <input type="text" id="bugDescription" th:field="*{bugReport}" placeholder="Bug Description" required>
                     <button id="reportBugButton">Report</button>
                 </div>
             </form>

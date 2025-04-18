@@ -6,35 +6,25 @@
 
   <link th:href="@{/css/NavBar.css}" rel="stylesheet">
   <link th:href="@{/css/Wine-request.css}" rel="stylesheet">
-  <script th::src="@{/js/NavBar.js}"></script>
-  <script th:src="@{js/Logout.js}"></script>
-
-
+  <script th:src="@{/js/NavBar.js}"></script>
+  <script th:src="@{/js/Logout.js}"></script>
 </head>
 <body>
 
 <div id="navbar"></div>
 
-
-<div class = "WinePage">
-  <div class = "Center">
+<div class="WinePage">
+  <div class="Center">
     <h2>Request a Wine</h2>
-    <form action="/request" method="post">
-      <form action="/WineRequest" method="get">
-        <label for="wineName">Wine Name:</label><br>
-        <input type="text" id="wineName" name="wineName" required><br>
-        <label for="wineDescription">Wine Description:</label><br>
-        <input type="text" id="wineDescription" name="wineDescription" required><br>
-        <input type="submit" value="Submit">
-        </form>
-      </form>
+    <form action="/Request" th:object="${Wine_Request}" method="post"><!--This  neds to match the model.addAttribute line!-->
+      <label> Wine Name: </label><br>
+      <input type="text" th:field="*{wineName}" required><br><!--This matches the model.addAttribute line!-->
+      <label> Wine Description: </label><br>
+      <input type="text" th:field="*{wineDesc}" required><br>
+      <input type="submit" value="Submit">
+    </form>
   </div>
 </div>
-
-
-
-
-
 
 </body>
 </html>

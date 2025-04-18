@@ -11,6 +11,7 @@ public class wines {
     private Long wine_id;
 
     private String wine_name;
+    @Column(name = "wine_description", columnDefinition = "TEXT")//JUST SETS THE DATA TYPE TO TEXT, YOU CANT DO IT IN JAVA AND I DONT WNAT THJE CONSOLE BITCHING
     private String wine_description;
     private String country;
     private String province;

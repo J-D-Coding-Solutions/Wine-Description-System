@@ -17,20 +17,17 @@ public class WelcomeController {
     @Autowired
     private UserRepository userRepository;
 
-
-    @GetMapping("/WineRequest")//Where users ask the somolier to look at the wine (Will add to databse)
-    public String showRequestPage() {
-        return "Wine-request";
+    @GetMapping("/friendPage")//DONE DO NOT DO
+    public String showFriendPage() {return "Friends";
     }
 
-    @GetMapping("/FriendRequest")//Where you type in a name to add them to you friend requests (Will add to databse)
+
+
+
+
+    @GetMapping("/FriendRequest")// DONE DO NOT DO
     public String showFriendRequestPage() {
         return "registerFriend";
-    }
-
-    @GetMapping("/ReportBuggies")//A simple form page that takes users bug reports (Will add to databse)
-    public String showReportBuggiesPage() {
-        return "reportBug";
     }
 
     @GetMapping("/RegisterAccounts")//A simple form page similar to make accounts but for other users (Will add to databse)
