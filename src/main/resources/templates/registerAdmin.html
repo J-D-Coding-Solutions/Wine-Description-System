@@ -3,39 +3,33 @@
 <head>
   <title>Register For Account</title>
   <link th:href="@{/css/Register.css}" rel="stylesheet">
-  <link th:href="@{/css/registerAdmin.css}" rel="stylesheet">
-  <link th:href="@{/css/NavBar.css}" rel="stylesheet">
-  <script th:src="@{/js/NavBar.js}"></script>
-  <script th:src="@{js/Logout.js}"></script>
-
-
 </head>
 <body>
 
-
 <div id="registerForm">
-  <h2>Register For A New Admin Account</h2>
+  <h2>Register A New Account</h2>
 
-
-  <form action="/AddUser" th:object="${user}" method="post"><!--NEEDS A CONTROLLER SIMILAR TO REGISTER USER BUT IT NEEDS TO USE THE DROP DOWN MENU, LEAVIBG AS DASH FRO FRIGHT NOW-->
+  <form action="/RegisterUser" th:object="${user}" method="post">
     <label>Username:</label>
-    <input type="text" name="username" required><br><br>
+    <input type="text" th:field="*{username}" placeholder="Enter your username" required><br><br>
 
     <label>Password:</label>
-    <input type="password" name="password" required><br><br>
-    <label>Acount Type:</label>
-    <select name="accountType" class="accountType">
-      <option value="admin">Admin</option>
-      <option value="user">User</option>
-      <option value="sommelier">Sommelier</option>
-      <option value="stakeholder">Stakeholder</option>
-      <option value="moderator">Moderator</option>
+    <input type="password" th:field="*{password}" placeholder="Enter your password" required><br><br>
+
+    <label>Account Type:</label>
+    <select th:field="*{role}" class="accountType">
+      <option value="ADMIN">Admin</option>
+      <option value="USER">User</option>
+      <option value="SOMMELIER">Sommelier</option>
+      <option value="STAKEHOLDER">Stakeholder</option>
+      <option value="MODERATOR">Moderator</option>
     </select><br><br>
+
     <button type="submit">Create Account</button>
   </form>
-  <form action="/Dash" method="get">
-    <button id="Back to Admin" type="submit"> Back to Dashboard </button>
 
+  <form action="/Dash" method="get">
+    <button id="Back to Admin" type="submit">Back to Dashboard</button>
   </form>
 
   <p style="color: red;" th:text="${error}"></p>

@@ -12,32 +12,31 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Controller
-public class RegisterController {
+
+public class RegisterAccountController {
 
     @Autowired
     private UserService userService;
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/RegisterPage")
-    public String DisplayRegisterPage(Model model) {
+    @GetMapping("/RegisterAccounts")//A simple form page similar to make accounts but for other users (Will add to databse)
+    public String showRegisterAccountsPage(Model model) {
         model.addAttribute("user", new users());
-        return "Register";
+        return "registerAdmin";
     }
 
-    @PostMapping("/AddUser")
+    @PostMapping("/RegisterUser")
     public String AddUser(@ModelAttribute users user,
                           @RequestParam String username, Model model) {
         if (userService.register(username)) {
-            user.setRole("USER");
             userRepository.save(user);
-            return "login";
+            return "Dash";
         } else {
             model.addAttribute("error", "User already exists");
             model.addAttribute("user", user);//Need this brcasue if the account already exists the form keeps the crap that was fileld in
-            return "Register";
+            return "registerAdmin";
 
         }
     }
-
 }
