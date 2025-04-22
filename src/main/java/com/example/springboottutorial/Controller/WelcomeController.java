@@ -17,18 +17,6 @@ public class WelcomeController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/friendPage")//DONE DO NOT DO
-    public String showFriendPage() {return "Friends";
-    }
-
-
-
-
-
-    @GetMapping("/FriendRequest")// DONE DO NOT DO
-    public String showFriendRequestPage() {
-        return "registerFriend";
-    }
 
     @GetMapping("/RegisterAccounts")//A simple form page similar to make accounts but for other users (Will add to databse)
     public String showRegisterAccountsPage() {

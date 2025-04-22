@@ -4,14 +4,54 @@ package com.example.springboottutorial.Controller;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+
 
 @Controller
 public class FriendRequestController {
 
+    @Autowired
+    private FriendRequestRepository requestRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/FriendRequest")
+    public String showFriendRequestPage(Model model) {
+
+        model.addAttribute("friendRequest", new users());
+        return "registerFriend";
+    }
+
+    @PostMapping("/requestFriend")
+    public String requestFriend(@ModelAttribute users friendRequest, HttpSession session) {
+        System.out.println("TESTING FRIEND REQUEST");
+        String sessionusername = (String) session.getAttribute("username");
+        //So this not only makes sure its in the database but also makes sure its not null and sets it as a user object
+        users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
+        users friendUser = userRepository.findByUsername(friendRequest.getUsername()).orElse(null);
+        assert currentUser != null;
+        assert friendUser != null;
+
+        boolean exists = requestRepository.existsBySenderAndFriend(currentUser, friendUser);
+        boolean exists1 = requestRepository.existsBySenderAndFriend(friendUser, currentUser);
+
+        if (!exists & !exists1) {
+            System.out.println("SENDING FRIEND REQUEST");
+            friendRequest request = new friendRequest(currentUser, friendUser);
+
+            requestRepository.save(request);
+        }
+        return "redirect:/FriendRequest";
+    }
 
 }

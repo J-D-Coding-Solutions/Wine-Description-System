@@ -18,12 +18,14 @@
 <div id="mainDiv">
     <div id="registerFriendDiv">
         <h1>Register Friend</h1>
-        <form id="addFriendForm" autocomplete="off">
-            <input type="text" id="friendName" placeholder="Friend's Name" required>
+        <form action="/requestFriend" id="addFriendForm" autocomplete="off" method="post" th:object="${friendRequest}" >
+            <input type="text"  th:field="*{username}"id="friendName" placeholder="Friend's Name" required>
 
-            <button id="registerFriendButton" onclick="requestSent()">Register</button>
+            <input type="submit" id="registerFriendButton" >Register</input>
         </form>
     </div>
 </div>
 </body>
 </html>
+
+<!--onclick="requestSent()"-->
