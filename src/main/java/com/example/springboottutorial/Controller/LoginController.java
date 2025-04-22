@@ -45,40 +45,5 @@ public class LoginController {
         return "redirect:/" + "Dash"; // Redirect to appropriate dashboard
     }
 
-    @GetMapping("/RegisterPage")//Need to make individual controller
-    public String DisplayRegisterPage(Model model) {
-        model.addAttribute("user", new users());
-        return "Register";
-    }
-
-    @PostMapping("/AddUser")//Need to make individual controller
-    public String AddUser(@ModelAttribute users user,
-                            @RequestParam String username, Model model, HttpSession session) {
-        if (userService.register(username)) {
-            user.setRole("USER");
-            userRepository.save(user);
-            return "login";
-        } else {
-            model.addAttribute("error", "User already exists");
-            return "Register";
-
-        }
-    }
-    @GetMapping("/Dash")
-    //This is doing nothing lol
-    public String welcome(@RequestParam(name = "username", required = false) String username, Model model) {
-        if (username != null) {
-            users user = userRepository.findByUsername(username).orElse(null);
-            if (user != null) {
-                model.addAttribute("username", user.getUsername());
-            } else {
-                model.addAttribute("error", "User not found");
-            }
-        } else {
-            model.addAttribute("error", "Username not provided");
-        }
-
-        return "Dash"; // Thymeleaf template name
-    }
 
 }
