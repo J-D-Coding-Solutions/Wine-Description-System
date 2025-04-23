@@ -23,10 +23,6 @@ public class WelcomeController {
         return "wineSearch";
     }
 
-    @GetMapping("/AdjustProfiles")//Will show all current Users and let the mod delete account or adjust info (Will display info and edit info in databse)
-    public String showAdjustProfilesPage() {
-        return "adjustProfile";
-    }
 
     @GetMapping("/ViewBugs")//Will show all current reported bugs from users and mod can accept them to work or decline (Will display info and edit info in databse)
     public String showBugsPage() {
