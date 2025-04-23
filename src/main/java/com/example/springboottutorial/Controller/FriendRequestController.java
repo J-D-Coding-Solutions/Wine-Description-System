@@ -43,7 +43,7 @@ public class FriendRequestController {
         users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
         users friendUser = userRepository.findByUsername(friendRequest.getUsername()).orElse(null);
 
-        if(currentUser != null && friendUser != null){
+        if((currentUser != null && friendUser != null) & currentUser != friendUser){
         boolean friendAlready = userFriendRepository.existsByUserAndFriend(currentUser, friendUser);
         boolean friendAlready1 = userFriendRepository.existsByUserAndFriend(friendUser, currentUser);
 
