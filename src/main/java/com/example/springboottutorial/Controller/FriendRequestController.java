@@ -4,6 +4,7 @@ package com.example.springboottutorial.Controller;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
+import com.sun.istack.NotNull;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ public class FriendRequestController {
     private FriendRequestRepository requestRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserFriendRepository userFriendRepository;
 
     @GetMapping("/FriendRequest")
     public String showFriendRequestPage(Model model) {
@@ -39,11 +42,17 @@ public class FriendRequestController {
         //So this not only makes sure its in the database but also makes sure its not null and sets it as a user object
         users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
         users friendUser = userRepository.findByUsername(friendRequest.getUsername()).orElse(null);
-        assert currentUser != null;
-        assert friendUser != null;
 
+        if(currentUser != null && friendUser != null){
+        boolean friendAlready = userFriendRepository.existsByUserAndFriend(currentUser, friendUser);
+        boolean friendAlready1 = userFriendRepository.existsByUserAndFriend(friendUser, currentUser);
+
+        if(!friendAlready && !friendAlready1){
         boolean exists = requestRepository.existsBySenderAndFriend(currentUser, friendUser);
         boolean exists1 = requestRepository.existsBySenderAndFriend(friendUser, currentUser);
+
+        System.out.println(exists);
+        System.out.println(exists1);
 
         if (!exists & !exists1) {
             System.out.println("SENDING FRIEND REQUEST");
@@ -51,6 +60,7 @@ public class FriendRequestController {
 
             requestRepository.save(request);
         }
+        }}
         return "redirect:/FriendRequest";
     }
 

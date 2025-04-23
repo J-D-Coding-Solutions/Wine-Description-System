@@ -21,11 +21,9 @@
         <form action="/requestFriend" id="addFriendForm" autocomplete="off" method="post" th:object="${friendRequest}" >
             <input type="text"  th:field="*{username}"id="friendName" placeholder="Friend's Name" required>
 
-            <input type="submit" id="registerFriendButton" >Register</input>
+            <input type="submit" id="registerFriendButton"  value="Send Request"></input>
         </form>
     </div>
 </div>
 </body>
 </html>
-
-<!--onclick="requestSent()"-->

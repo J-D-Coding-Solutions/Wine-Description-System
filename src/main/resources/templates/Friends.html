@@ -43,7 +43,7 @@
        </thead>
         <tbody>
         <tr onclick="showFriendInfo(this, 1)" th:each="friend:${userFriend}" >
-            <td th:text="${friend.user.getUsername()}"></td>
+            <td th:text="${friend.friend.getId()}"></td>
             <td th:text="${friend.friend.getUsername()}"></td>
         </tbody>
     </table>

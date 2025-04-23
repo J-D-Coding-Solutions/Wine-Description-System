@@ -33,9 +33,6 @@ public class WelcomeController {
         return "viewBugReport";
     }
 
-    @GetMapping("/WineRequests")//Will be same as friends page but show current wines in winelist (Load by 10-20) and show requests from users (Will display and edit info in database)
-    public String showWineRequestsPage() {
-        return "RequestedWines";
-    }
-
 }
+
+

@@ -13,4 +13,6 @@ public interface UserFriendRepository extends JpaRepository<userFriend, Long> {
 
     @Query("SELECT uf FROM userFriend uf WHERE uf.user.user_id = :userId OR uf.friend.user_id = :userId")
     List<userFriend> findAllByUserIdOrFriendId(@Param("userId") Long userId);
+
+    boolean existsByUserAndFriend(users currentUser, users friendUser);
 }
