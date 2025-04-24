@@ -83,6 +83,7 @@ public class FriendPageController {
 
         requestRepository.deleteById(id);
 
+
         return "redirect:/friendPage";
     }
 }
