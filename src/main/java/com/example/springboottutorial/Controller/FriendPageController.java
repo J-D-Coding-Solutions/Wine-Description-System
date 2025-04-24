@@ -31,7 +31,6 @@ public class FriendPageController {
         String sessionusername = (String) session.getAttribute("username");
         //So this not only makes sure its in the database but also makes sure its not null and sets it as a user object
         users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
-        assert currentUser != null;
         Long curentUserId = currentUser.getId();
 
         List<userFriend> allFriends = userFriendRepository.findAllByUserIdOrFriendId(curentUserId);
