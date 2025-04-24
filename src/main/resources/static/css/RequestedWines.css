@@ -78,6 +78,8 @@ td, .header{
     border-radius: 8px;
 }
 
+
+
 .header, tr:hover{
     background-color: #F4EAE6;
 }
@@ -121,4 +123,22 @@ h2{
 
 .dark{
     color: #F4EAE6;
+}
+
+
+
+th {
+    width: 50%;
+}
+
+.wineListHead{
+    width: 70%;
+}
+
+.requestHead{
+    width: 33%;
+}
+
+.requestBody{
+    width: 45%;
 }
