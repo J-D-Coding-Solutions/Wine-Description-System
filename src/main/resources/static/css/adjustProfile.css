@@ -45,19 +45,19 @@ body{
 }
 
 
-.accept, .decline{
+.delete, .edit{
     padding: 6px 12px;
     cursor: pointer;
     border-radius: 6px;
 }
 
 
-.accept{
+.edit{
     background-color: lightgreen;
     color: white;
 }
 
-.decline{
+.delete{
     background-color: darkred;
     color: white;
 }
