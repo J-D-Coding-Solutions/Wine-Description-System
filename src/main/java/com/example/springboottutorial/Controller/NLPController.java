@@ -14,7 +14,9 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class NLPController {
 
@@ -154,9 +156,6 @@ public class NLPController {
                 double predictionIndex = classifier.classifyInstance(filteredData.get(i)); // predict first instance
                 String predictionLabel = dataset.classAttribute().value((int) predictionIndex);
 
-//                System.out.println("KeyWord: " + dataset.get(i).stringValue((dataset.get(i).attribute(0))));
-//                System.out.println("Predicted keyWord class: "  + predictionLabel);
-
                 if(predictionLabel.equals("True")){
                     predictKeyWords.add(dataset.get(i).stringValue((dataset.get(i).attribute(0))));
                 }
@@ -224,6 +223,8 @@ public class NLPController {
                 }
         }
 
+
+
         //calculate the cosine similarity score.
         double VectAB = 0.0000000;
         double VectA_Sq = 0.0000000;
@@ -235,6 +236,8 @@ public class NLPController {
 
             double freq1 = vals12.val1;
             double freq2 = vals12.val2;
+
+            System.out.println(Distinct_words.get(i) + ":" +  freq1 + " " + freq2);
 
             VectAB=VectAB+(freq1*freq2);
 
@@ -251,6 +254,7 @@ public class NLPController {
         String jsonObj = "[";
 
         for (wines wine : winelist) {
+            System.out.println(wine.getWineName() + " " + wine.getCountry());
             jsonObj = jsonObj + "{" + "\"winename\":\"" + wine.getWineName() + "\", \"winery\":\"" + wine.getWinery() + "\", \"country\":\"" + wine.getCountry() + "\", \"province\": \"" + wine.getProvince() + "\"},";
         }
 

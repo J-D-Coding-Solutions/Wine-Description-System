@@ -45,23 +45,23 @@ public class WineSearchController {
        List<String> userKeyWords = NLPController.keyWordList(NLPController.NLP(userSearch));
 
        userKeyWords = NLPController.predictKeywords(userKeyWords);
-        System.out.println("User Keywords: " + userKeyWords);
+//        System.out.println("User Keywords: " + userKeyWords);
         List<wines> winelist = wineRepository.findAll();
 
         for(wines wine: winelist){
             System.out.println(wine.getWineName());
            List<String> tempKeyWords = NLPController.keyWordList(NLPController.NLP(wine.getWineDesc() + " " + wine.getCountry() + " "));
            tempKeyWords = NLPController.predictKeywords(tempKeyWords);
-           for(String word : tempKeyWords){
-               System.out.println(word);
-           }
+//           for(String word : tempKeyWords){
+//               System.out.println(word);
+//           }
            double tempSim = NLPController.cosineSimilarity(userKeyWords, tempKeyWords);
            if(!Double.isNaN(tempSim)) {
                System.out.println(wine.getWineName() + " " + tempSim);
                wine.setcoSim(tempSim);
            }
         }
-       winelist.removeIf(wine -> wine.getcoSim() < 0.1);
+       winelist.removeIf(wine -> wine.getcoSim() < 0.3);
 
         winelist.sort(Comparator.comparingDouble(wines::getcoSim).reversed());
 
