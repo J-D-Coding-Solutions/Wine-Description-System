@@ -13,7 +13,7 @@
     <script th:src="@{js/SubmitSearch.js}"></script>
 
 </head>
-<body>
+<body onload="fillProvince()">
 
 <div id="navbar"></div>
 
@@ -23,8 +23,8 @@
         <form id="searchForm" autocomplete="off">
             <div id="extras">
                 <label id="countryLabel" for="wineCountry"><h3>Country:</h3></label>
-                <select id="wineCountry" name="wineCountry">
-                    <option value="">All</option>
+                <select id="wineCountry" name="wineCountry" onchange="filterProvinces()">
+                    <option value="All">All</option>
                     <option value="Argentina">Argentina</option>
                     <option value="Australia">Australia</option>
                     <option value="Austria">Austria</option>
@@ -36,126 +36,12 @@
                     <option value="Portugal">Portugal</option>
                     <option value="South Africa">South Africa</option>
                     <option value="Spain">Spain</option>
-                    <option value="USA">USA</option>
+                    <option value="United States of America">United States of America</option>
                 </select>
 
                 <label id="provinceLabel" for="wineProvince"><h3>Province:</h3></label>
                 <select id="wineProvince" name="wineProvince">
-                    <option value="">All</option>
-                    <option value="California">California</option>
-                    <option value="Northern Spain">Northern Spain</option>
-                    <option value="Oregon">Oregon</option>
-                    <option value="Provence">Provence</option>
-                    <option value="Northeastern Italy">Northeastern Italy</option>
-                    <option value="Southwest France">Southwest France</option>
-                    <option value="Kumeu">Kumeu</option>
-                    <option value="Washington">Washington</option>
-                    <option value="Bulgaria">Bulgaria</option>
-                    <option value="Tuscany">Tuscany</option>
-                    <option value="France Other">France Other</option>
-                    <option value="Rhône Valley">Rhône Valley</option>
-                    <option value="Galicia">Galicia</option>
-                    <option value="Andalucia">Andalucia</option>
-                    <option value="Idaho">Idaho</option>
-                    <option value="Burgundy">Burgundy</option>
-                    <option value="Loire Valley">Loire Valley</option>
-                    <option value="New York">New York</option>
-                    <option value="Mendoza Province">Mendoza Province</option>
-                    <option value="Victoria">Victoria</option>
-                    <option value="Alentejano">Alentejano</option>
-                    <option value="Piedmont">Piedmont</option>
-                    <option value="Alentejo">Alentejo</option>
-                    <option value="Champagne">Champagne</option>
-                    <option value="Upper Galilee">Upper Galilee</option>
-                    <option value="Beira Atlantico">Beira Atlantico</option>
-                    <option value="Veneto">Veneto</option>
-                    <option value="Douro">Douro</option>
-                    <option value="Tejo">Tejo</option>
-                    <option value="Stellenbosch">Stellenbosch</option>
-                    <option value="Levante">Levante</option>
-                    <option value="Sicily & Sardinia">Sicily & Sardinia</option>
-                    <option value="Southern Italy">Southern Italy</option>
-                    <option value="Languedoc-Roussillon">Languedoc-Roussillon</option>
-                    <option value="Bordeaux">Bordeaux</option>
-                    <option value="Atalanti Valley">Atalanti Valley</option>
-                    <option value="Catalonia">Catalonia</option>
-                    <option value="Santorini">Santorini</option>
-                    <option value="Florina">Florina</option>
-                    <option value="Marchigue">Marchigue</option>
-                    <option value="Colchagua Valley">Colchagua Valley</option>
-                    <option value="Curicó Valley">Curicó Valley</option>
-                    <option value="Nemea">Nemea</option>
-                    <option value="Maule Valley">Maule Valley</option>
-                    <option value="Alsace">Alsace</option>
-                    <option value="Guerrouane">Guerrouane</option>
-                    <option value="Colinele Dobrogei">Colinele Dobrogei</option>
-                    <option value="Central Spain">Central Spain</option>
-                    <option value="Vinho Verde">Vinho Verde</option>
-                    <option value="Mosel">Mosel</option>
-                    <option value="Rheinhessen">Rheinhessen</option>
-                    <option value="Golan Heights">Golan Heights</option>
-                    <option value="Württemberg">Württemberg</option>
-                    <option value="Ahr">Ahr</option>
-                    <option value="British Columbia">British Columbia</option>
-                    <option value="Moldova">Moldova</option>
-                    <option value="Spain Other">Spain Other</option>
-                    <option value="Sopron">Sopron</option>
-                    <option value="Other">Other</option>
-                    <option value="Walker Bay">Walker Bay</option>
-                    <option value="Dão">Dão</option>
-                    <option value="Italy Other">Italy Other</option>
-                    <option value="Duriense">Duriense</option>
-                    <option value="Ontario">Ontario</option>
-                    <option value="Beiras">Beiras</option>
-                    <option value="Tokaji">Tokaji</option>
-                    <option value="Lisboa">Lisboa</option>
-                    <option value="Thermenregion">Thermenregion</option>
-                    <option value="Burgenland">Burgenland</option>
-                    <option value="Carnuntum">Carnuntum</option>
-                    <option value="Rheingau">Rheingau</option>
-                    <option value="Nahe">Nahe</option>
-                    <option value="South Australia">South Australia</option>
-                    <option value="North Dalmatia">North Dalmatia</option>
-                    <option value="Thracian Valley">Thracian Valley</option>
-                    <option value="Goriska Brda">Goriska Brda</option>
-                    <option value="Western Cape">Western Cape</option>
-                    <option value="Overberg">Overberg</option>
-                    <option value="Robertson">Robertson</option>
-                    <option value="Galilee">Galilee</option>
-                    <option value="Maipo Valley">Maipo Valley</option>
-                    <option value="Casablanca Valley">Casablanca Valley</option>
-                    <option value="Cachapoal Valley">Cachapoal Valley</option>
-                    <option value="Terras do Dão">Terras do Dão</option>
-                    <option value="Leyda Valley">Leyda Valley</option>
-                    <option value="Peumo">Peumo</option>
-                    <option value="Baden">Baden</option>
-                    <option value="Limarí Valley">Limarí Valley</option>
-                    <option value="Lombardy">Lombardy</option>
-                    <option value="Peloponnese">Peloponnese</option>
-                    <option value="Judean Hills">Judean Hills</option>
-                    <option value="Tasmania">Tasmania</option>
-                    <option value="Bairrada">Bairrada</option>
-                    <option value="Simonsberg-Paarl">Simonsberg-Paarl</option>
-                    <option value="Portuguese Table Wine">Portuguese Table Wine</option>
-                    <option value="Beaujolais">Beaujolais</option>
-                    <option value="Península de Setúbal">Península de Setúbal</option>
-                    <option value="Aconcagua Valley">Aconcagua Valley</option>
-                    <option value="Virginia">Virginia</option>
-                    <option value="Dealurile Munteniei">Dealurile Munteniei</option>
-                    <option value="Serbia">Serbia</option>
-                    <option value="Lebanon">Lebanon</option>
-                    <option value="Macedonia">Macedonia</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Croatia">Croatia</option>
-                    <option value="Romania">Romania</option>
-                    <option value="Hungary">Hungary</option>
-                    <option value="Turkey">Turkey</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="China">China</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Lithuania">Lithuania</option>
-                    <option value="Ukraine">Ukraine</option>
-                    <option value="Tunisia">Tunisia</option>
+                    <option value="All">Select a province/state</option>
                 </select>
 
                 <label id="varietyLabel" for="wineVariety"><h3>Variety:</h3></label>
