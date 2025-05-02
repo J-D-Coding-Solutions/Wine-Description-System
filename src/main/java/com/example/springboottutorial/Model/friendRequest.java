@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(
-        name = "friend_Requests",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"sender_id", "friend_id"})
+        name = "friend_Requests"
+        //uniqueConstraints = @UniqueConstraint(columnNames = {"sender_id", "friend_id"})
 )
 public class friendRequest {
     @Id

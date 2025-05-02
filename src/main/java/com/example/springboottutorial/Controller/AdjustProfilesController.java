@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AdjustProfilesController {
@@ -20,7 +21,7 @@ public class AdjustProfilesController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/AdjustProfiles")//Will show all current Users and let the mod delete account or adjust info (Will display info and edit info in databse)
+    @GetMapping("/AdjustProfiles")
     public String showAdjustProfilesPage(Model model, HttpSession session) {
         List<users> users = userRepository.findAll();
         model.addAttribute("users", users);

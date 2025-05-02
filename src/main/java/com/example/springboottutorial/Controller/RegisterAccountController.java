@@ -1,5 +1,6 @@
 package com.example.springboottutorial.Controller;
 
+import com.example.springboottutorial.Encryption.PassEncryption;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
@@ -30,6 +31,7 @@ public class RegisterAccountController {
     public String AddUser(@ModelAttribute users user,
                           @RequestParam String username, Model model) {
         if (userService.register(username)) {
+            user.setPassword(PassEncryption.EncyptPassword(user.getPassword()));
             userRepository.save(user);
             return "Dash";
         } else {
