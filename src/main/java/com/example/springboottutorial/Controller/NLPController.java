@@ -360,7 +360,7 @@ public class NLPController {
         String jsonObj = "[";
 
         for (wines wine : winelist) {
-            jsonObj = jsonObj + "{" + "\"winename\":\"" + wine.getWineName() + "\", \"winery\":\"" + wine.getWinery() + "\", \"country\":\"" + wine.getCountry() + "\", \"province\": \"" + wine.getProvince()  + "\"},";
+            jsonObj = jsonObj + "{" + "\"winename\":\"" + wine.getWineName() + "\", \"winery\":\"" + wine.getWinery() + "\", \"country\":\"" + wine.getCountry() + "\", \"province\": \"" + wine.getProvince() + "\"},";
         }
 
         if (jsonObj.length() > 1) {
