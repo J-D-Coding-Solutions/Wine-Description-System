@@ -10,7 +10,8 @@ public class wines {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long wine_id;
 
-    private String wine_name;
+    @Column(name = "wine_name")
+    private String wineName;
     @Column(name = "wine_description", columnDefinition = "TEXT")//JUST SETS THE DATA TYPE TO TEXT, YOU CANT DO IT IN JAVA AND I DONT WNAT THJE CONSOLE BITCHING
     private String wine_description;
     private String country;
@@ -22,8 +23,8 @@ public class wines {
 
     public wines() {}
 
-    public wines(String wine_name, String wine_description, String country, String province, String region, String variety, String winery) {
-        this.wine_name = wine_name;
+    public wines(String wineName, String wine_description, String country, String province, String region, String variety, String winery) {
+        this.wineName = wineName;
         this.wine_description = wine_description;
         this.country = country;
         this.province = province;
@@ -34,7 +35,7 @@ public class wines {
     }
 
     public Long getId() { return wine_id; }
-    public String getWineName() { return wine_name; }
+    public String getWineName() { return wineName; }
     public String getWineDesc() { return wine_description; }
     public String getCountry() { return country; }
     public String getProvince() { return province; }
@@ -45,7 +46,7 @@ public class wines {
 
 
     public void setId(Long id) { this.wine_id = id; }
-    public void setWineName(String wine_name) { this.wine_name = wine_name; }
+    public void setWineName(String wineName) { this.wineName = wineName; }
     public void setWineDesc(String wine_description) { this.wine_description = wine_description; }
     public void setCountry(String country) { this.country = country; }
     public void setProvince(String province) { this.province = province; }

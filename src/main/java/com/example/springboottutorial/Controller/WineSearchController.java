@@ -169,7 +169,7 @@ public class WineSearchController {
         } // End of wine loop
 
         // Restore original filtering logic
-        winelist.removeIf(wine -> wine.getcoSim() < 0.1);
+        winelist.removeIf(wine -> wine.getcoSim() < 0.15);
 
         // Restore original sorting logic
         winelist.sort(Comparator.comparingDouble(wines::getcoSim).reversed());

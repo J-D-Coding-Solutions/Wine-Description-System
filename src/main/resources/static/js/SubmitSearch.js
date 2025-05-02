@@ -1,4 +1,26 @@
+function addFav(winename){
+    const userConfirmed = window.confirm("Are you sure you want to add this wine to your favorites?");
+    if(userConfirmed) {
+        fetch("/addFavorite", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({winename: winename})
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Wine selected:", winename);
+                } else {
+                    console.error("Error selecting wine");
+                }
+            })
+    }
+}
+
+
 function generateTable(data) {
+    console.log(data);
     const tableBody = document.getElementById("wineTableBody");
     tableBody.innerHTML = ''; // Clear old table data
 
@@ -6,7 +28,9 @@ function generateTable(data) {
     const headers = Object.keys(data[0]);
 
     data.forEach(item => {
+        console.log(item.winename);
         const row = document.createElement("tr");
+        row.addEventListener("click", () => addFav(item.winename));
         headers.forEach(key => {
             const cell = document.createElement("td");
             cell.textContent = item[key]; // Fill data from JSON

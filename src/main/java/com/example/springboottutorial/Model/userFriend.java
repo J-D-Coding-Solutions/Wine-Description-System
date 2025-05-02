@@ -6,10 +6,10 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(
-        name = "user_friendships"
-        //uniqueConstraints = @UniqueConstraint(columnNames = {"user", "friend"})
-)
+//@Table(
+//        name = "user_friendships",
+//        uniqueConstraints = @UniqueConstraint(columnNames = {"user", "friend"})
+//)
 public class userFriend {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
