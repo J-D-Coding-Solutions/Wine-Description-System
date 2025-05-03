@@ -19,14 +19,12 @@ import java.util.function.Function; // Needed for weightedCosineSimilarity clean
 
 public class NLPController {
 
-    // NLP() method - unchanged from original
     public List<CoreLabel> NLP(String text) {
         Properties props = new Properties();
         props.setProperty("annotators", "tokenize,pos,lemma,ner");
         props.setProperty("ner.model", ""); // Uses only RegexNER
 
-        // WARNING: Hardcoded path might fail on deployment. Use classpath loading.
-        props.setProperty("ner.fine.regexner.mapping", "src/main/resources/Country.rules,src/main/resources/Wines.rules, src/main/resources/Province.rules, src/main/resources/Variety.rules, src/main/resources/Winery.rules");
+        //props.setProperty("ner.fine.regexner.mapping", "src/main/resources/Country.rules,src/main/resources/Wines.rules, src/main/resources/Province.rules, src/main/resources/Variety.rules, src/main/resources/Winery.rules");
         props.setProperty("ner.fine.regexner.ignorecase", "true");
 
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
@@ -50,12 +48,9 @@ public class NLPController {
             String containsDigit = "False";
             String Suffix = "False";
             String isContextuallyDescriptive = "False";
-            //System.out.println(word + " " + pos);
 
-            //Rules - Apply simplification
             String simplifiedPos = pos.startsWith("J") ? "Adjective" : pos.startsWith("N") ? "Noun" : pos.startsWith("V") ? "Verb" : "Other";
 
-            // Contains Digit Check
             for (Character c : word.toCharArray()) {
                 if (Character.isDigit(c)) {
                     containsDigit = "True";
@@ -63,7 +58,6 @@ public class NLPController {
                 }
             }
 
-            // Suffix Check
             for (String suffix : suffixes) {
                 if (word.toLowerCase().endsWith(suffix)) {
                     Suffix = suffix;
@@ -71,7 +65,6 @@ public class NLPController {
                 }
             }
 
-            // Next POS Check (using original index logic from first block)
             if (tokens.size() - 2 >= i) {
                 nextPos = tokens.get(i + 1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
                 nextPos = nextPos.startsWith("J") ? "Adjective" : nextPos.startsWith("N") ? "Noun" : nextPos.startsWith("V") ? "Verb" : "Other";
@@ -79,31 +72,25 @@ public class NLPController {
                 nextPos = "Empty";
             }
 
-            // Contextual Check - Uses the current 'prevWordPOS' (from previous iteration) and current 'simplifiedPos'/'nextPos'
             boolean contextuallyDescriptive = (prevWordPOS.equals("Adjective") && simplifiedPos.equals("Noun")) || (simplifiedPos.equals("Adjective") && nextPos.equals("Adjective"));
             if (contextuallyDescriptive) {
                 isContextuallyDescriptive = "True";
             }
 
-            // Add keyword string IF NOT comma - Uses current 'prevWordPOS' value
             if (!word.equals(",")) {
                 keyWords.add("\"" + lemma + "\"," + simplifiedPos + "," + word.length() + "," + containsDigit + "," + prevWordPOS + "," + nextPos + "," + isContextuallyDescriptive + "," + Suffix + ",?\n");
             }
 
-            // *** ESSENTIAL UPDATE ***
-            // Update prevWordPOS *after* using it, setting it to the simplified POS of the *current* token for the *next* iteration.
             prevWordPOS = simplifiedPos;
 
-            i++; // Increment counter
+            i++;
         }
         return keyWords;
     }
 
 
-    // predictKeywords() method - RESTORED EXACTLY to user's original version
     public List<String> predictKeywords(List<String> keyWords){
         List<String> predictKeyWords = new ArrayList<>();
-        //Build the Attribute List for the classifier.
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(new Attribute("word", (ArrayList<String>) null)); // String attribute
 
@@ -132,16 +119,14 @@ public class NLPController {
 
         Instances dataset = new Instances("TestInstances", attributes, 0);
         try {
-            // WARNING: Hardcoded path might fail on deployment. Use classpath loading.
+
             Classifier classifier = (Classifier) SerializationHelper.read("src/main/resources/wine_model.model");
 
-            // --- Start of loop EXACTLY as in original user code ---
-            for (String keyWord : keyWords) { // Iterate using original variable name 'keyWord'
-                List<String> data = Arrays.asList(keyWord.split(",")); // Original split logic
-                DenseInstance inst = new DenseInstance(9); // Original instance size (assuming 9 attributes)
+            for (String keyWord : keyWords) {
+                List<String> data = Arrays.asList(keyWord.split(","));
+                DenseInstance inst = new DenseInstance(9);
 
-                // Original setValue calls (assuming order matches original intent)
-                // Add dataset association BEFORE setting values - required by WEKA API for nominals/strings
+
                 inst.setDataset(dataset);
 
                 inst.setValue(attributes.get(0), data.get(0));            // word (String) - Index 0
@@ -152,19 +137,16 @@ public class NLPController {
                 inst.setValue(attributes.get(5), data.get(5));            // nextWordPOS (Nominal) - Index 5
                 inst.setValue(attributes.get(6), data.get(6));            // isContextuallyDescriptive (Nominal) - Index 6
                 inst.setValue(attributes.get(7), data.get(7));            // Suffix (Nominal) - Index 7
-                // Index 8 is the class attribute '?', Weka handles missing class value
-                // inst.setMissing(attributes.get(8)); // Not explicitly needed
 
-                dataset.add(inst); // Add instance to dataset
+
+                dataset.add(inst);
             }
-            // --- End of loop EXACTLY as in original user code ---
 
             dataset.setClassIndex(dataset.numAttributes() - 1);
 
-            //Removes the Name attribute from the dataset.
             Remove remove = new Remove();
-            remove.setAttributeIndices("1");  // Weka uses 1-based indexing!
-            remove.setInputFormat(dataset); // Set input format BEFORE filtering
+            remove.setAttributeIndices("1");
+            remove.setInputFormat(dataset);
             Instances filteredData = Filter.useFilter(dataset, remove);
 
             //Sets the Class attribute, The one we are trying to predict.
@@ -173,28 +155,24 @@ public class NLPController {
                 filteredData.setClassIndex(filteredData.numAttributes() - 1);
             } else {
                 System.out.println("Error: No attributes remaining after filtering in predictKeywords. Cannot classify.");
-                return predictKeyWords; // Return empty list if no attributes left
+                return predictKeyWords;
             }
 
 
             for(int i =0; i<filteredData.numInstances(); i++){
-                // Original classification call
                 double predictionIndex = classifier.classifyInstance(filteredData.instance(i)); // Use instance(i) from filtered data
 
-                // Original label retrieval - Get class value definition from *filtered* data's class attribute
                 String predictionLabel = filteredData.classAttribute().value((int) predictionIndex);
 
-//                System.out.println("KeyWord: " + dataset.get(i).stringValue((dataset.get(i).attribute(0)))); // Original debug lookup on *unfiltered* data
+//                System.out.println("KeyWord: " + dataset.get(i).stringValue((dataset.get(i).attribute(0))));
 //                System.out.println("Predicted keyWord class: "  + predictionLabel);
 
                 if(predictionLabel.equals("True")){
-                    // Original logic to retrieve the word from the *unfiltered* dataset based on index i
                     predictKeyWords.add(dataset.instance(i).stringValue(attributes.get(0))); // Use instance(i) and original attribute def
                 }
             }
 
         }catch (Exception e){
-            // Original error handling
             System.out.println("Error in predictKeywords: " + e.getMessage());
             e.printStackTrace(); // Print stack trace for better debug info
         }
@@ -202,7 +180,6 @@ public class NLPController {
     }
 
 
-    // values inner class - unchanged from original
     public class values
     {
         int val1;
@@ -235,7 +212,6 @@ public class NLPController {
         if (metadata2 != null) allTerms2.addAll(metadata2);
         if (description2 != null) allTerms2.addAll(description2);
 
-        // Create a set of all terms that are considered metadata (case-insensitive, quotes removed)
         Set<String> metadataTermSet = new HashSet<>();
         Function<String, String> clean = s -> (s == null) ? "" : s.toLowerCase().replace("\"", ""); // Helper to clean
 
@@ -257,7 +233,7 @@ public class NLPController {
 
         // Build frequency vector using the original Hashtable approach
         Hashtable<String, values> freq_vector = new Hashtable<>();
-        LinkedList<String> Distinct_words = new LinkedList<>(); // List to maintain order for iteration
+        LinkedList<String> Distinct_words = new LinkedList<>();
 
         // Process terms from Document 1 (metadata1 + description1)
         for (String word : allTerms1) {
@@ -317,18 +293,18 @@ public class NLPController {
             }
 // *** NEW DEBUG BLOCK START ***
             // Check if the term exists in BOTH inputs (is a true match contributing to VectAB)
-            if (freq1 > 0 && freq2 > 0) {
-                String termType = metadataTermSet.contains(distinctWord) ? "Metadata" : "Description";
-                double contributionToDotProduct = weight * freq1 * freq2; // Calculate this term's contribution
-
-                System.out.printf("  -> Match Found: '%s' | Type: %s | User Freq: %.0f | Wine Freq: %.0f | Weight: %.1f | Dot Product Contrib: %.2f%n",
-                        distinctWord,
-                        termType,
-                        freq1,
-                        freq2,
-                        weight,
-                        contributionToDotProduct);
-            }
+//            if (freq1 > 0 && freq2 > 0) {
+//                String termType = metadataTermSet.contains(distinctWord) ? "Metadata" : "Description";
+//                double contributionToDotProduct = weight * freq1 * freq2; // Calculate this term's contribution
+//
+//                System.out.printf("  -> Match Found: '%s' | Type: %s | User Freq: %.0f | Wine Freq: %.0f | Weight: %.1f | Dot Product Contrib: %.2f%n",
+//                        distinctWord,
+//                        termType,
+//                        freq1,
+//                        freq2,
+//                        weight,
+//                        contributionToDotProduct);
+//            }
             // *** NEW DEBUG BLOCK END ***
             // Apply weight to components: w*f1*f2, w*f1^2, w*f2^2
             VectAB += weight * freq1 * freq2;
@@ -355,7 +331,6 @@ public class NLPController {
         return sim_score;
     }
 
-    // jsonObj() method - unchanged from original
     public String jsonObj(List<wines> winelist){
         String jsonObj = "[";
 
