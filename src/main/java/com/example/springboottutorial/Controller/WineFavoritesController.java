@@ -1,6 +1,7 @@
 package com.example.springboottutorial.Controller;
 
 
+import com.example.springboottutorial.Controller.DTO.friendFavDTO;
 import com.example.springboottutorial.Model.favoriteWines;
 import com.example.springboottutorial.Model.users;
 import com.example.springboottutorial.Model.wines;
@@ -13,12 +14,11 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class WineFavoritesController {
@@ -32,21 +32,19 @@ public class WineFavoritesController {
 
     @PostMapping("/addFavorite")
     public String favoriteWine(@RequestParam String winename, HttpSession session){
-        Optional<wines> wine = wineRepository.findByWineName(winename);
-        String sessionusername = (String) session.getAttribute("username");
-        users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
-        if(wine.isPresent()){
-            favoriteWines favWine = new favoriteWines(currentUser,wine.get());
-            if(favoriteWineRepository.existsByUserAndWine(currentUser, wine.get())){
-                System.out.println("ALREADY FAVORITE");
+            Optional<wines> wine = wineRepository.findByWineName(winename);
+            String sessionusername = (String) session.getAttribute("username");
+            users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
+            if (wine.isPresent()) {
+                favoriteWines favWine = new favoriteWines(currentUser, wine.get());
+                if (favoriteWineRepository.existsByUserAndWine(currentUser, wine.get())) {
+                    System.out.println("ALREADY FAVORITE");
+                } else {
+                    favoriteWineRepository.save(favWine);
+                }
+            } else {
+                System.out.println("WINE NOT FOUND");
             }
-            else {
-                favoriteWineRepository.save(favWine);
-            }
-        }
-        else{
-            System.out.println("WINE NOT FOUND");
-        }
         return "dash";
     }
 
@@ -59,6 +57,20 @@ public class WineFavoritesController {
 
         favoriteWineRepository.deleteByWineAndUser(wine, currentUser);
         return "redirect:/Dash";
+    }
+
+    @PostMapping("/friendFav")
+    @ResponseBody
+    public List<friendFavDTO> friendWine(@RequestParam long userID, HttpSession session) {
+        Optional<users> currentUser = userRepository.findById(userID);
+        System.out.println(userID);
+
+        return favoriteWineRepository.findAllByUser(currentUser.get())
+                .stream()
+                .map(fav -> new friendFavDTO(
+                        fav.getWine().getWineName(),
+                        fav.getWine().getWineDesc()))
+                .collect(Collectors.toList());
     }
 }
 

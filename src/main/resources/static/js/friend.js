@@ -24,7 +24,6 @@ function showFriendInfo(thisObj, i){
     if(i == 0){
         i = -1;
     }
-    console.log(allChildNodes[2 + i]);
     var userName = allChildNodes[2 + i].textContent;
     var friendInfo = document.getElementById("friendInfo");
     var textbox = friendInfo.childNodes[3];
@@ -32,34 +31,26 @@ function showFriendInfo(thisObj, i){
     textbox.textContent = userName;
 
     infroRow.innerHTML = "<td>" + userId + "</td>" + "<td>" + userName + "</td>";
-}
 
-function addFriend(thisObj){
-    var allChildNodes = thisObj.parentNode.parentNode.childNodes;
-    var userId = allChildNodes[1].textContent;
-    var userName = allChildNodes[3].textContent;
-    var friendTable = document.getElementById("friendTable");
-    var row = friendTable.insertRow(-1);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
+    fetch("/friendFav", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({ userID: userId })
+    })
+        .then(response => {
+            if (!response.ok) {
+                console.log("Error fetching friend favorites");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Favorite wines list:", data); // data is the returned list
+            // Do something with data (like update the table, etc.)
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
 
-    cell1.innerHTML = userId;
-    cell2.innerHTML = userName;
-
-
-    row.addEventListener('click', function() {
-        showFriendInfo(row, 0);
-    });
-
-    var parentRow =  thisObj.parentNode.parentNode;
-   parentRow.remove();
-
-}
-
-function declineFriend(thisObj){
-    var parentRow = thisObj.parentNode.parentNode;
-    var confrimDelete = confirm("Are you sure you want to decline this friend request?");
-    if (confrimDelete){
-        parentRow.remove();
-    }
 }
