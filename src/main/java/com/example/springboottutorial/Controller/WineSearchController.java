@@ -39,27 +39,6 @@ public class WineSearchController {
         this.nlpService = nlpService;
     }
 
-
-
-    public class predictValues
-    {
-        String keyWord;
-        double weight;
-        predictValues(String keyWord, double weight)
-        {
-            this.keyWord=keyWord;
-            this.weight=weight;
-        }
-
-        public void Update_VAl(String keyWord, double weight)
-        {
-            this.keyWord = keyWord;
-            this.weight = weight;
-        }
-    }//end of class values
-
-
-
     @PostMapping
     public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest search, Sort sort) {
         long startTime = System.nanoTime();
