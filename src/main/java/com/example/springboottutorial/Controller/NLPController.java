@@ -117,6 +117,8 @@ public class NLPController {
         ArrayList<String> classValues = new ArrayList<>(Arrays.asList("True", "False"));
         attributes.add(new Attribute("keyWord", classValues)); // Class attribute
 
+        //attributes.add(new Attribute("wordWeight")); // Numeric attribute
+
         Instances dataset = new Instances("TestInstances", attributes, 0);
         try {
 
@@ -137,6 +139,7 @@ public class NLPController {
                 inst.setValue(attributes.get(5), data.get(5));            // nextWordPOS (Nominal) - Index 5
                 inst.setValue(attributes.get(6), data.get(6));            // isContextuallyDescriptive (Nominal) - Index 6
                 inst.setValue(attributes.get(7), data.get(7));            // Suffix (Nominal) - Index 7
+                //inst.setValue(attributes.get(8), data.get(8));            //WordWeight
 
 
                 dataset.add(inst);
