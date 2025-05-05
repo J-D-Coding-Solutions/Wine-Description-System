@@ -91,8 +91,26 @@ public class NLPController {
         return keyWords;
     }
 
-    public List<String> predictKeywords(List<String> keyWords){
-        List<String> predictKeyWords = new ArrayList<>();
+    public class predictValues
+    {
+        String keyWord;
+        double weight;
+        predictValues(String keyWord, double weight)
+        {
+            this.keyWord=keyWord;
+            this.weight=weight;
+        }
+
+        public void Update_VAl(String keyWord, double weight)
+        {
+            this.keyWord = keyWord;
+            this.weight = weight;
+        }
+    }//end of class values
+
+
+    public List<predictValues> predictKeywords(List<String> keyWords){
+        List<predictValues> predictKeyWords = new ArrayList<>();
         //Build the Attribute List for the classifier.
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(new Attribute("word", (ArrayList<String>) null)); // String attribute
@@ -120,15 +138,18 @@ public class NLPController {
         ArrayList<String> classValues = new ArrayList<>(Arrays.asList("True", "False"));
         attributes.add(new Attribute("keyWord", classValues)); // Class attribute
 
+        attributes.add(new Attribute("wordWeight"));
+
         Instances dataset = new Instances("TestInstances", attributes, 0);
         try {
-            Classifier classifier = (Classifier) SerializationHelper.read("src/main/resources/wine_model.model");
+            Classifier classifier = (Classifier) SerializationHelper.read("Models/wine_model.model");
+            Classifier weightClassifier = (Classifier) SerializationHelper.read("Models/weight_model.model");
 
 
             //Creates an instance for each keyWord
             for (String keyWord : keyWords) {
                 List<String> data = Arrays.asList(keyWord.split(","));
-                DenseInstance inst = new DenseInstance(9); // 6 attributes
+                DenseInstance inst = new DenseInstance(attributes.size()); // 6 attributes
 
                 inst.setValue(attributes.get(0), data.get(0));
                 inst.setValue(attributes.get(1), data.get(1)); // pos
@@ -141,23 +162,25 @@ public class NLPController {
 
                 dataset.add(inst);
             }
-            dataset.setClassIndex(dataset.numAttributes() - 1);
+            dataset.setClassIndex(dataset.numAttributes() - 2);
             //Removes the Name attribute from the dataset.
             Remove remove = new Remove();
             remove.setAttributeIndices("1");  // Weka uses 1-based indexing!
             remove.setInputFormat(dataset);
             Instances filteredData = Filter.useFilter(dataset, remove);
+            Instances weightData = Filter.useFilter(dataset, remove);
             //Sets the Class attribute, The one we are trying to predict.
-            filteredData.setClassIndex(filteredData.numAttributes() - 1);
+            filteredData.setClassIndex(filteredData.numAttributes() - 2);
+            weightData.setClassIndex(weightData.numAttributes() - 1);
 
             for(int i =0; i<filteredData.numInstances(); i++){
                 double predictionIndex = classifier.classifyInstance(filteredData.get(i)); // predict first instance
                 String predictionLabel = dataset.classAttribute().value((int) predictionIndex);
-
 //                System.out.println("KeyWord: " + dataset.get(i).stringValue((dataset.get(i).attribute(0))));
 //                System.out.println("Predicted keyWord class: "  + predictionLabel);
                 if(predictionLabel.equals("True")){
-                    predictKeyWords.add(dataset.get(i).stringValue((dataset.get(i).attribute(0))));
+                    double weight = weightClassifier.classifyInstance(weightData.get(i));
+                    predictKeyWords.add(new predictValues(dataset.get(i).stringValue((dataset.get(i).attribute(0))), weight));
                 }
             }
 
@@ -172,10 +195,12 @@ public class NLPController {
     {
         int val1;
         int val2;
-        values(int v1, int v2)
+        double weight;
+        values(int v1, int v2, double weight)
         {
             this.val1=v1;
             this.val2=v2;
+            this.weight=weight;
         }
 
         public void Update_VAl(int v1, int v2)
@@ -185,7 +210,7 @@ public class NLPController {
         }
     }//end of class values
 
-    public double cosineSimilarity(List<String> text1, List<String> text2) {
+    public double cosineSimilarity(List<predictValues> text1, List<predictValues> text2) {
 
 
         //Consine Sim stuffs
@@ -194,32 +219,32 @@ public class NLPController {
         double sim_score=0.0000000;
 
 
-        for (String word : text1) {
-            if (freq_vector.containsKey(word)) {
-                values vals1 = freq_vector.get(word);
+        for (predictValues word : text1) {
+            if (freq_vector.containsKey(word.keyWord)) {
+                values vals1 = freq_vector.get(word.keyWord);
                 int freq1 = vals1.val1 + 1;
                 int freq2 = vals1.val2;
                 vals1.Update_VAl(freq1, freq2);
-                freq_vector.put(word, vals1);
+                freq_vector.put(word.keyWord, vals1);
             } else {
-                values vals1 = new values(1, 0);
-                freq_vector.put(word, vals1);
-                Distinct_words.add(word);
+                values vals1 = new values(1, 0, word.weight);
+                freq_vector.put(word.keyWord, vals1);
+                Distinct_words.add(word.keyWord);
             }
 
         }
 
-        for (String word : text2) {
-            if (freq_vector.containsKey(word)) {
-                values vals1 = freq_vector.get(word);
+        for (predictValues word : text2) {
+            if (freq_vector.containsKey(word.keyWord)) {
+                values vals1 = freq_vector.get(word.keyWord);
                 int freq1 = vals1.val1;
                 int freq2 = vals1.val2 + 1;
                 vals1.Update_VAl(freq1, freq2);
-                freq_vector.put(word, vals1);
+                freq_vector.put(word.keyWord, vals1);
             } else {
-                values vals2 = new values(0, 1);
-                freq_vector.put(word, vals2);
-                Distinct_words.add(word);
+                values vals2 = new values(0, 1, word.weight);
+                freq_vector.put(word.keyWord, vals2);
+                Distinct_words.add(word.keyWord);
             }
         }
 
@@ -234,11 +259,12 @@ public class NLPController {
 
             double freq1 = vals12.val1;
             double freq2 = vals12.val2;
+            double weight = vals12.weight;
 
-            VectAB=VectAB+(freq1*freq2);
+            VectAB= VectAB+(weight*(freq1*freq2));
 
-            VectA_Sq = VectA_Sq + freq1*freq1;
-            VectB_Sq = VectB_Sq + freq2*freq2;
+            VectA_Sq = VectA_Sq + (weight*(freq1*freq1));
+            VectB_Sq = VectB_Sq + (weight*(freq2*freq2));
         }
 
         sim_score = ((VectAB)/(Math.sqrt(VectA_Sq)*Math.sqrt(VectB_Sq)));

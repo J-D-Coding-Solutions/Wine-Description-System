@@ -36,23 +36,7 @@ public class WineAddController {
         List<String> predictedKeyWord = modelController.predictKeywordType(userKeyWords);
         List<Double> predictedWeights = modelController.predictWeights(userKeyWords);
 
-        for(int i = 0; i < userKeyWords.size(); i++){
-            String[] parts = userKeyWords.get(i).split(",");
-
-// Extract each variable from the parts array
-            String extractedLemma = parts[0].replace("\"", "");  // Remove the quotes around the lemma
-            String extractedPos = parts[1];
-            int extractedWordLength = Integer.parseInt(parts[2]);
-            String extractedContainsDigit = parts[3];
-            String extractedPrevWordPOS = parts[4];
-            String extractedNextPos = parts[5];
-            String extractedIsContextuallyDescriptive = parts[6];
-            String extractedSuffix = parts[7];
-
-            arff arff = new arff(extractedLemma, extractedPos, extractedWordLength, extractedContainsDigit, extractedPrevWordPOS, extractedNextPos, extractedIsContextuallyDescriptive, extractedSuffix, predictedKeyWord.get(i), predictedWeights.get(i));
-            arffRepository.save(arff);
-        }
-
+        modelController.addArff(userKeyWords, predictedKeyWord, predictedWeights);
         modelController.createArff();
         modelController.trainModel();
 

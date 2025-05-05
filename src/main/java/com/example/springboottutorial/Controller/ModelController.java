@@ -100,7 +100,7 @@ public class ModelController {
             Classifier classifier = new J48();  // Decision tree, This throws and error since its protected class.
             classifier.buildClassifier(filteredData);
 
-            weka.core.SerializationHelper.write("Models/wine_model_testing.model", classifier);
+            weka.core.SerializationHelper.write("Models/wine_model.model", classifier);
            // boolean tempDelete = tempFile.delete();
             //System.out.println("Temp file deleted: " + tempDelete);
             System.out.println("Model trained and saved!");
@@ -136,7 +136,7 @@ public class ModelController {
             Classifier classifier = new RandomForest();  // Decision tree, This throws and error since its protected class.
             classifier.buildClassifier(filteredData);
 
-            weka.core.SerializationHelper.write("Models/weight_model_testing.model", classifier);
+            weka.core.SerializationHelper.write("Models/weight_model.model", classifier);
             // boolean tempDelete = tempFile.delete();
             //System.out.println("Temp file deleted: " + tempDelete);
             System.out.println("Model trained and saved!");
@@ -186,7 +186,7 @@ public class ModelController {
             //Creates an instance for each keyWord
             for (String keyWord : keyWords) {
                 List<String> data = Arrays.asList(keyWord.split(","));
-                DenseInstance inst = new DenseInstance(9); // 6 attributes
+                DenseInstance inst = new DenseInstance(attributes.size()); // 6 attributes
 
                 inst.setValue(attributes.get(0), data.get(0));
                 inst.setValue(attributes.get(1), data.get(1)); // pos
@@ -258,13 +258,13 @@ public class ModelController {
 
         Instances dataset = new Instances("TestInstances", attributes, 0);
         try {
-            Classifier classifier = (Classifier) SerializationHelper.read("Models/weight_model_testing.model");
+            Classifier classifier = (Classifier) SerializationHelper.read("Models/weight_model.model");
 
 
             //Creates an instance for each keyWord
             for (String keyWord : keyWords) {
                 List<String> data = Arrays.asList(keyWord.split(","));
-                DenseInstance inst = new DenseInstance(9); // 6 attributes
+                DenseInstance inst = new DenseInstance(attributes.size()); // 6 attributes
 
                 inst.setValue(attributes.get(0), data.get(0));
                 inst.setValue(attributes.get(1), data.get(1)); // pos
@@ -295,6 +295,25 @@ public class ModelController {
             System.out.println("Error: " + e.getMessage());
         }
         return predictWeights;
+    }
+
+    public void addArff(List<String> userKeyWords, List<String> predictedKeyWord,  List<Double> predictedWeights){
+        for(int i = 0; i < userKeyWords.size(); i++){
+            String[] parts = userKeyWords.get(i).split(",");
+
+// Extract each variable from the parts array
+            String extractedLemma = parts[0].replace("\"", "");  // Remove the quotes around the lemma
+            String extractedPos = parts[1];
+            int extractedWordLength = Integer.parseInt(parts[2]);
+            String extractedContainsDigit = parts[3];
+            String extractedPrevWordPOS = parts[4];
+            String extractedNextPos = parts[5];
+            String extractedIsContextuallyDescriptive = parts[6];
+            String extractedSuffix = parts[7];
+
+            arff arff = new arff(extractedLemma, extractedPos, extractedWordLength, extractedContainsDigit, extractedPrevWordPOS, extractedNextPos, extractedIsContextuallyDescriptive, extractedSuffix, predictedKeyWord.get(i), predictedWeights.get(i));
+            arffRepository.save(arff);
+        }
     }
 
 

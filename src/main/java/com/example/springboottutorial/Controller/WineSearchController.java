@@ -46,24 +46,25 @@ public class WineSearchController {
         System.out.println("It Works, Calculating now..." + userSearch);
 
         NLPController NLPController = new NLPController();
-
+        ModelController modelController = new ModelController(arffRepository);
 
         //Debug thing
-        List<String> userKeyWords = NLPController.keyWordList(NLPController.NLP(userSearch));
+        List<String> userCleanedWords = NLPController.keyWordList(NLPController.NLP(userSearch));
+        modelController.addArff(userCleanedWords, modelController.predictKeywordType(userCleanedWords), modelController.predictWeights(userCleanedWords));
+
+        List<NLPController.predictValues> userKeyWords = NLPController.predictKeywords(userCleanedWords);
 
 
-        userKeyWords = NLPController.predictKeywords(userKeyWords);
-        System.out.println("User Keywords: " + userKeyWords);
         List<wines> winelist = wineRepository.findAll();
 
         for(wines wine: winelist){
             System.out.println(wine.getWineName());
             List<String> tempKeyWords = NLPController.keyWordList(NLPController.NLP(wine.getWineDesc() + " " + wine.getCountry() + " "));
-            tempKeyWords = NLPController.predictKeywords(tempKeyWords);
-            for(String word : tempKeyWords){
-                System.out.println(word);
+            List<NLPController.predictValues> tempPrediction = NLPController.predictKeywords(tempKeyWords);
+            for(NLPController.predictValues word : tempPrediction){
+                System.out.println(word.keyWord);
             }
-            double tempSim = NLPController.cosineSimilarity(userKeyWords, tempKeyWords);
+            double tempSim = NLPController.cosineSimilarity(userKeyWords, tempPrediction);
             if(!Double.isNaN(tempSim)) {
                 System.out.println(wine.getWineName() + " " + tempSim);
                 wine.setcoSim(tempSim);
