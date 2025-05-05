@@ -20,6 +20,7 @@ public class WelcomeController {
 
     @GetMapping("/WineSearch")//This just gets the wine search page and cannot move from here and wont work in the wine search controller because it is a rest controller
     public String showWineSearchPage() {
+
         return "wineSearch";
     }
 
