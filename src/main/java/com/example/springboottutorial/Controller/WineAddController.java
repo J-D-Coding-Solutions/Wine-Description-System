@@ -56,6 +56,6 @@ public class WineAddController {
         modelController.createArff();
         modelController.trainModel();
 
-        return "dash";
+        return "redirect:/RegisterWines";
     }
 }
