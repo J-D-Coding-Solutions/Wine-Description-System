@@ -26,8 +26,6 @@ public class NLPController {
         props.setProperty("annotators", "tokenize,pos,lemma,ner");
         props.setProperty("ner.model", "");
 
-        props.setProperty("ner.fine.regexner.mapping", "src/main/resources/Country.rules,src/main/resources/Wines.rules, src/main/resources/Province.rules, src/main/resources/Variety.rules, src/main/resources/Winery.rules");
-
         props.setProperty("ner.fine.regexner.ignorecase", "true");
 
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);

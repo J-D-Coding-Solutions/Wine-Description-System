@@ -30,7 +30,7 @@ function showFriendInfo(thisObj, i){
     var infroRow = document.getElementById("infoRow");
     textbox.textContent = userName;
 
-    infroRow.innerHTML = "<td>" + userId + "</td>" + "<td>" + userName + "</td>";
+    // infroRow.innerHTML = "<td>" + userId + "</td>" + "<td>" + userName + "</td>";
 
     fetch("/friendFav", {
         method: "POST",
@@ -47,7 +47,9 @@ function showFriendInfo(thisObj, i){
         })
         .then(data => {
             console.log("Favorite wines list:", data); // data is the returned list
-            // Do something with data (like update the table, etc.)
+            data.forEach(item => {
+                infroRow.innerHTML += "<td>" + data.wineName + "</td>" + "<td>" + data.wineDesc + "</td>";
+            })
         })
         .catch(error => {
             console.error("Error:", error);

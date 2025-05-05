@@ -144,7 +144,7 @@ public class ModelController {
             System.out.println("Error: " + e.getMessage());
         }
 
-       System.out.println("Deleted temp file: tempFile.delete()");
+       System.out.println("Deleted temp file:" + tempFile.delete());
 
     }
 
