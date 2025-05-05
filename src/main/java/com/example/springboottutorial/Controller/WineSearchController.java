@@ -39,8 +39,6 @@ public class WineSearchController {
         this.nlpService = nlpService;
     }
 
-
-
     @PostMapping
     public ResponseEntity<String> SearchWine(@RequestBody WineSearchRequest search, Sort sort) {
         long startTime = System.nanoTime();
