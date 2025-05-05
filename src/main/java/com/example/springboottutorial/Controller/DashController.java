@@ -27,31 +27,32 @@ public class DashController {
     private WineRepository wineRepository;
 
     @GetMapping("/Dash")
-    //This is doing nothing lol
-    public String welcome(@RequestParam(name = "username", required = false) String username, Model model, Model wines, HttpSession session) {
+    public String welcome(@RequestParam(name = "username", required = false) String username, Model model, HttpSession session) {
+        users user = null;
+
         if (username != null) {
-            users user = userRepository.findByUsername(username).orElse(null);
-            if (user != null) {
-                model.addAttribute("username", user.getUsername());
-            } else {
-                model.addAttribute("error", "User not found");
-            }
+            user = userRepository.findByUsername(username).orElse(null);
         } else {
-            model.addAttribute("error", "Username not provided");
+            String sessionUsername = (String) session.getAttribute("username");
+            if (sessionUsername != null) {
+                user = userRepository.findByUsername(sessionUsername).orElse(null);
+            }
         }
 
-        String sessionusername = (String) session.getAttribute("username");
-        users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
+        if (user == null) {
+            model.addAttribute("error", "User not found or not logged in.");
+            return "Dash";
+        }
 
-        List<favoriteWines> favWines = favoriteWineRepository.findAllByUser(currentUser);
+        model.addAttribute("user", user);
+
+        List<favoriteWines> favWines = favoriteWineRepository.findAllByUser(user);
         List<wines> wineList = new ArrayList<>();
-
         for (favoriteWines fav : favWines) {
             wineList.add(fav.getWine());
         }
-        wines.addAttribute("wineList", wineList);
+        model.addAttribute("wineList", wineList);
 
-        return "Dash"; // Thymeleaf template name
+        return "Dash";
     }
-
 }

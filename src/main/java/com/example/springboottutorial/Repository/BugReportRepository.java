@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BugReportRepository extends JpaRepository <BugReport, Long> {
+
 }

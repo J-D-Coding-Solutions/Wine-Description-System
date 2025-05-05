@@ -24,34 +24,25 @@
     <h2>Bug Reports</h2>
     <input type="text" id="searchFriend" placeholder="Search Bug List..." onkeyup="searchFriend()">
     <table id="friendTable">
+        <thead>
         <tr class="header">
             <th>Issue Id</th>
             <th>Bug report</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Nav bar was glitching out</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>User gaining admin access</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>BUG BUG BUG</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>IDK what to put here</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Running out of Ideas</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Css not loading properly</td>
-        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="BugReport:${BugReport}">
+                <td th:text="${BugReport.getId}" ></td>
+                <td th:text="${BugReport.getBugReport}" ></td>
+                <td th:text="${BugReport.getUser}" ></td>
+                <td th:text="${BugReport.getCreatedAt}" ></td>
+                <td>Nav bar was glitching out
+                    <form th:action="@{'/delete/' + ${BugReport.getId()} }" method="post">
+                        <button class="delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
 </div>
