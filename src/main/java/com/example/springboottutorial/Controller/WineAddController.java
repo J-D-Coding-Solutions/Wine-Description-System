@@ -13,11 +13,18 @@ import java.util.List;
 
 @Controller
 public class WineAddController {
+    private final NLPController nlpService;
 
+    // Constructor injection
+
+    public WineAddController(NLPController nlpService) {
+        this.nlpService = nlpService;
+    }
     @Autowired
     private WineRepository wineRepository;
     @Autowired
     private arffRepository arffRepository;
+
 
     @GetMapping("/RegisterWines")
     public String showAddWinePage(Model model) {
@@ -29,10 +36,12 @@ public class WineAddController {
     public String Addwine(@ModelAttribute wines wine) {
         wineRepository.save(wine);
 
-        NLPController NLPController = new NLPController();
+
+
+       // NLPController NLPController = new NLPController();
         ModelController modelController = new ModelController(arffRepository);
 
-        List<String> userKeyWords =  NLPController.keyWordList(NLPController.NLP(wine.getWineDesc() + " " + wine.getProvince()+ " " + wine.getCountry() + " " + wine.getRegion() + " " + wine.getVariety() + " " + wine.getWinery()));
+        List<String> userKeyWords =  nlpService.keyWordList(nlpService.NLP(wine.getWineDesc() + " " + wine.getProvince()+ " " + wine.getCountry() + " " + wine.getRegion() + " " + wine.getVariety() + " " + wine.getWinery()));
         List<String> predictedKeyWord = modelController.predictKeywordType(userKeyWords);
         List<Double> predictedWeights = modelController.predictWeights(userKeyWords);
 

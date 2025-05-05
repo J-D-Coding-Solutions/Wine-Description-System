@@ -180,7 +180,7 @@ public class ModelController {
 
         Instances dataset = new Instances("TestInstances", attributes, 0);
         try {
-            Classifier classifier = (Classifier) SerializationHelper.read("models/wine_model.model");
+            Classifier classifier = (Classifier) SerializationHelper.read("Models/wine_model.model");
 
 
             //Creates an instance for each keyWord

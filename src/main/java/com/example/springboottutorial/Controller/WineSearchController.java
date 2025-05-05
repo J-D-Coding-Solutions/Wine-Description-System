@@ -28,14 +28,35 @@ public class WineSearchController {
 
     private final WineRepository wineRepository;
     private final arffRepository arffRepository;
+    private final NLPController nlpService;
 
-    public WineSearchController(WineRepository wineRepository, arffRepository arffRepository) {
+    // Constructor injection
+
+
+    public WineSearchController(WineRepository wineRepository, arffRepository arffRepository, NLPController nlpService) {
         this.wineRepository = wineRepository;
         this.arffRepository = arffRepository;
+        this.nlpService = nlpService;
     }
 
 
 
+    public class predictValues
+    {
+        String keyWord;
+        double weight;
+        predictValues(String keyWord, double weight)
+        {
+            this.keyWord=keyWord;
+            this.weight=weight;
+        }
+
+        public void Update_VAl(String keyWord, double weight)
+        {
+            this.keyWord = keyWord;
+            this.weight = weight;
+        }
+    }//end of class values
 
 
 
@@ -45,26 +66,27 @@ public class WineSearchController {
         String userSearch = search.getCombinedInput(); // Updated getter
         System.out.println("It Works, Calculating now..." + userSearch);
 
-        NLPController NLPController = new NLPController();
         ModelController modelController = new ModelController(arffRepository);
 
         //Debug thing
-        List<String> userCleanedWords = NLPController.keyWordList(NLPController.NLP(userSearch));
+        List<String> userCleanedWords = nlpService.keyWordList(nlpService.NLP(userSearch));
+        System.out.println(userCleanedWords);
         modelController.addArff(userCleanedWords, modelController.predictKeywordType(userCleanedWords), modelController.predictWeights(userCleanedWords));
 
-        List<NLPController.predictValues> userKeyWords = NLPController.predictKeywords(userCleanedWords);
+
+        List<NLPController.predictValues> userKeyWords = nlpService.predictKeywords(userCleanedWords);
 
 
         List<wines> winelist = wineRepository.findAll();
 
         for(wines wine: winelist){
             System.out.println(wine.getWineName());
-            List<String> tempKeyWords = NLPController.keyWordList(NLPController.NLP(wine.getWineDesc() + " " + wine.getCountry() + " "));
-            List<NLPController.predictValues> tempPrediction = NLPController.predictKeywords(tempKeyWords);
+            List<String> tempKeyWords = nlpService.keyWordList(nlpService.NLP(wine.getWineDesc() + " " + wine.getCountry() + " "));
+            List<NLPController.predictValues> tempPrediction = nlpService.predictKeywords(tempKeyWords);
             for(NLPController.predictValues word : tempPrediction){
                 System.out.println(word.keyWord);
             }
-            double tempSim = NLPController.cosineSimilarity(userKeyWords, tempPrediction);
+            double tempSim = nlpService.cosineSimilarity(userKeyWords, tempPrediction);
             if(!Double.isNaN(tempSim)) {
                 System.out.println(wine.getWineName() + " " + tempSim);
                 wine.setcoSim(tempSim);
@@ -78,7 +100,7 @@ public class WineSearchController {
             System.out.println(wine.getWineName() + " " + wine.getcoSim());
         }
 
-        String jsonObj = NLPController.jsonObj(winelist);
+        String jsonObj = nlpService.jsonObj(winelist);
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);  // in nanoseconds

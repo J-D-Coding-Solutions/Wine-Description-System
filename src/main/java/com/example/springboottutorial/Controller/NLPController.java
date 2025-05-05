@@ -8,6 +8,7 @@ import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 
+import org.springframework.stereotype.Service;
 import weka.classifiers.Classifier;
 import weka.core.*;
 import weka.filters.Filter;
@@ -16,19 +17,23 @@ import weka.filters.unsupervised.attribute.Remove;
 
 import java.util.*;
 
+@Service
 public class NLPController {
+    private final StanfordCoreNLP pipeline;
 
-
+    public NLPController(StanfordCoreNLP pipeline) {
+        this.pipeline = pipeline;
+    }
 
     public List<CoreLabel> NLP(String text) {
 
-        Properties props = new Properties();
-        props.setProperty("annotators", "tokenize,pos,lemma,ner");
-        props.setProperty("ner.model", "");
-
-        props.setProperty("ner.fine.regexner.ignorecase", "true");
-
-        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+//        Properties props = new Properties();
+//        props.setProperty("annotators", "tokenize,pos,lemma,ner");
+//        props.setProperty("ner.model", "");
+//
+//        props.setProperty("ner.fine.regexner.ignorecase", "true");
+//
+//        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
         // make an example document
         CoreDocument doc = new CoreDocument(text);
         // annotate the document
