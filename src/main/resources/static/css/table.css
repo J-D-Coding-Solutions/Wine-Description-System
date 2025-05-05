@@ -8,13 +8,13 @@ table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
 }
 
-td:first-child{
-    width: 10%;
-}
+/*td:first-child{*/
+/*    width: 10%;*/
+/*}*/
 
-td:nth-child(2){
-    width: 20%;
-}
+/*td:nth-child(2){*/
+/*    width: 40%;*/
+/*}*/
 
 td, th {
     text-align: left;
@@ -22,22 +22,13 @@ td, th {
     color: #F4EAE6; /* Light text */
 }
 
-tbody, thead{
-    display: block;
-}
 
-
-tbody{
-    /* Set vertical scroll */
-    overflow-y: auto;
-    /* Hide the horizontal scroll */
-    overflow-x: hidden;
-}
-
-
-tbody tr, td{
-    width: 75%;
-}
+/*tbody{*/
+/*    !* Set vertical scroll *!*/
+/*    overflow-y: auto;*/
+/*    !* Hide the horizontal scroll *!*/
+/*    overflow-x: hidden;*/
+/*}*/
 
 td {
     background-color: #5A2A27; /* Dark wine red for rows */
