@@ -33,7 +33,7 @@ public class RegisterAccountController {
         if (userService.register(username)) {
             user.setPassword(PassEncryption.EncyptPassword(user.getPassword()));
             userRepository.save(user);
-            return "Dash";
+            return "redirect:/" + "Dash"; // Redirect to appropriate dashboard
         } else {
             model.addAttribute("error", "User already exists");
             model.addAttribute("user", user);//Need this brcasue if the account already exists the form keeps the crap that was fileld in
