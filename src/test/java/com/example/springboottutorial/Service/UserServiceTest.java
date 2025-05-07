@@ -88,6 +88,6 @@ public class UserServiceTest {
         assertFalse(userService.register("existinguser"));
         System.out.println("Existing User Registration Test Successful!");
         System.out.println("Username: " + "existinguser");
-        System.out.println("Role: " + "USER");
+        System.out.println(userService.register("existinguser"));
     }
 }

@@ -28,6 +28,7 @@ function showFriendInfo(thisObj, i){
     var friendInfo = document.getElementById("friendInfo");
     var textbox = friendInfo.childNodes[3];
     var infroRow = document.getElementById("infoRow");
+    var table = document.getElementById("friendInfoTable");
     textbox.textContent = userName;
 
     // infroRow.innerHTML = "<td>" + userId + "</td>" + "<td>" + userName + "</td>";
@@ -46,10 +47,7 @@ function showFriendInfo(thisObj, i){
             return response.json();
         })
         .then(data => {
-            console.log("Favorite wines list:", data); // data is the returned list
-            data.forEach(item => {
-                infroRow.innerHTML += "<td>" + data.wineName + "</td>" + "<td>" + data.wineDesc + "</td>";
-            })
+
         })
         .catch(error => {
             console.error("Error:", error);
