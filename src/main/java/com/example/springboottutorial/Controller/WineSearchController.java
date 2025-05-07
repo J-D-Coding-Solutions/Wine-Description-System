@@ -35,8 +35,6 @@ public class WineSearchController {
     private final arffRepository arffRepository;
     private final NLPController nlpService;
 
-    // Constructor injection
-
 
     public WineSearchController(WineRepository wineRepository, arffRepository arffRepository, NLPController nlpService) {
         this.wineRepository = wineRepository;
@@ -91,6 +89,7 @@ public class WineSearchController {
 
         System.out.println("Method execution time: " + duration + " nanoseconds");
         System.out.println("Method execution time: " + duration / 1_000_000 + " milliseconds");
+        System.out.println(jsonObj);
         return ResponseEntity.ok(jsonObj);
     }
 }

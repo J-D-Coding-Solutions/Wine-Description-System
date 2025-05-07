@@ -37,19 +37,6 @@ public class RequestedWineController {
         return "RequestedWines";
     }
 
-    //Do we want to give the admin the ability to accept the pure users description? Or for the somilier to add their own details
-//    @PostMapping("/accept/{id}")
-//    public String accept(@PathVariable Long id) {
-//        wineRepository.save()
-//
-//        return "redirect:/WineRequests";
-//    }
-
-//    <td>  <form th:action="@{'/accept/' + ${request.getId()} }" method="post">
-//            <button class="accept">Accept</button>
-//          </form>
-//      </td>
-
     @PostMapping("/declineWine/{id}")
     public String accept(@PathVariable Long id) {
 
