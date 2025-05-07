@@ -105,7 +105,7 @@ public class ModelController {
             //System.out.println("Temp file deleted: " + tempDelete);
             System.out.println("Model trained and saved!");
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error Generating Keyword Model: " + e.getMessage());
         }
 
         try {
@@ -141,7 +141,7 @@ public class ModelController {
             //System.out.println("Temp file deleted: " + tempDelete);
             System.out.println("Model trained and saved!");
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error Generating Weight Model: " + e.getMessage());
         }
 
        System.out.println("Deleted temp file:" + tempFile.delete());

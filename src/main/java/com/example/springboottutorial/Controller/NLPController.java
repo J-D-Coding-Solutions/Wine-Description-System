@@ -26,15 +26,7 @@ public class NLPController {
     }
 
     public List<CoreLabel> NLP(String text) {
-
-//        Properties props = new Properties();
-//        props.setProperty("annotators", "tokenize,pos,lemma,ner");
-//        props.setProperty("ner.model", "");
-//
-//        props.setProperty("ner.fine.regexner.ignorecase", "true");
-//
-//        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
-        // make an example document
+        // make an document
         CoreDocument doc = new CoreDocument(text);
         // annotate the document
         pipeline.annotate(doc);
@@ -78,7 +70,6 @@ public class NLPController {
                 nextPos = tokens.get(i + 1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
                 nextPos = nextPos.startsWith("J") ? "Adjective" : nextPos.startsWith("N") ? "Noun" : nextPos.startsWith("V") ? "Verb" : "Other";
             } else {
-                ;
                 nextPos = "Empty";
             }
 
@@ -94,7 +85,7 @@ public class NLPController {
         return keyWords;
     }
 
-    public class predictValues
+    public static class predictValues
     {
         String keyWord;
         double weight;
@@ -188,7 +179,8 @@ public class NLPController {
             }
 
         }catch (Exception e){
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Model not found!:  " + e.getMessage());
+            throw new RuntimeException("Model not found!: ", e); // Rethrow the exception
         }
         return predictKeyWords;
     }
@@ -214,7 +206,6 @@ public class NLPController {
     }//end of class values
 
     public double cosineSimilarity(List<predictValues> text1, List<predictValues> text2) {
-
 
         //Consine Sim stuffs
         Hashtable<String, values> freq_vector = new Hashtable<String, NLPController.values>();
