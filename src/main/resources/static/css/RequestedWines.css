@@ -140,3 +140,28 @@ th {
 .requestBody{
     width: 45%;
 }
+
+#wineTable {
+    table-layout: fixed;
+    width: 500px;
+    border-collapse: collapse;
+}
+
+#wineTable th,
+.scrollable-body td {
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.scrollable-body {
+    max-height: 200px;
+    overflow-y: auto;
+    width: 500px;
+}
+
+.scrollable-body table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
