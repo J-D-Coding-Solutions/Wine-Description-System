@@ -32,8 +32,8 @@
   </div>
 
   <div id="wineList">
-    <h2>Current Winelist</h2>
-    <input type="text" id="searchwine" placeholder="Search Requested Wines..." onkeyup="searchFriend()">
+    <h2 class="dark">Current Winelist</h2>
+    <input type="text" id="searchwine" placeholder="Search Requested Wines..." onkeyup="searchwine()">
     <table id="wineTable">
       <thead>
         <tr class="header">
@@ -52,6 +52,7 @@
 
   <div id="wineRequest">
     <h2 class="dark">Wine Requests</h2>
+    <div class="scrollable-body">
     <table>
       <thead>
         <tr class="header">
@@ -72,6 +73,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 </div>
 
