@@ -47,7 +47,22 @@ function showFriendInfo(thisObj, i){
             return response.json();
         })
         .then(data => {
+            console.log(data);
+            data.forEach(item => {
+                const row = document.createElement("tr");
 
+                const keyCell = document.createElement("td");
+                keyCell.textContent = item.wineName;
+                console.log(item.wineName);
+
+                const valueCell = document.createElement("td");
+                valueCell.textContent = item.wineDesc;
+                console.log(item.wineDesc);
+
+                row.appendChild(keyCell);
+                row.appendChild(valueCell);
+                table.appendChild(row);
+            })
         })
         .catch(error => {
             console.error("Error:", error);
