@@ -1,4 +1,10 @@
 package com.example.springboottutorial.Controller;
+/**
+ * FriendPageController.java
+ * This class is responsible for handling requests related to the friend page.
+ * It allows users to view their friends, accept or decline friend requests, and manage their friend list.
+ * It interacts with the UserFriendRepository, UserRepository, and FriendRequestRepository to perform these operations.
+ */
 
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;

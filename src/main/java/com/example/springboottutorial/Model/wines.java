@@ -1,4 +1,8 @@
 package com.example.springboottutorial.Model;
+/**
+ * wine.java
+ * This class represents a wine entity in the database.
+ */
 
 import jakarta.persistence.*;
 

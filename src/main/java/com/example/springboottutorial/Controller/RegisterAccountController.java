@@ -1,5 +1,13 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ *
+ * RegisterAccountController.java
+ * This Class is responsible for handling the registration of new users that the admin creates.
+ * It provides a form for the admin to fill out and submit, which is then processed to create a new user account.
+ *
+ */
+
 import com.example.springboottutorial.Encryption.PassEncryption;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;

@@ -1,5 +1,10 @@
 package com.example.springboottutorial.Model;
 
+/**
+ * arff.java
+ * This class represents the structure of the ARFF (Attribute-Relation File Format) file.
+ */
+
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 

@@ -1,5 +1,13 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * DashController.java
+ * This class is responsible for handling requests related to the dashboard.
+ * It includes methods for displaying the dashboard page and managing user sessions.
+ *
+ *
+ */
+
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;

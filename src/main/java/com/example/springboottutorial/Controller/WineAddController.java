@@ -1,5 +1,11 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * WineAddController.java
+ * The Class is resposnible for handling the requests related to adding wines.
+ * It contains methods to show the add wine page and to handle the form submission for adding a new wine.
+ */
+
 import com.example.springboottutorial.Model.arff;
 import com.example.springboottutorial.Model.wines;
 import com.example.springboottutorial.Repository.WineRepository;

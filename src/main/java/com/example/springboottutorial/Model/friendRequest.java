@@ -1,5 +1,8 @@
 package com.example.springboottutorial.Model;
-
+/**
+ * friendRequest.java
+ * This class represents a friend request between two users.
+ */
 
 import jakarta.persistence.*;
 

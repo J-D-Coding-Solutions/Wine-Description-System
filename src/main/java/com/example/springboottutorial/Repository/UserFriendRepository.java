@@ -1,4 +1,8 @@
 package com.example.springboottutorial.Repository;
+/**
+ * UserFriendRepository.java
+ * This Repository uses @Query to fetch all the friends of a user
+ */
 
 import com.example.springboottutorial.Model.userFriend;
 import com.example.springboottutorial.Model.users;

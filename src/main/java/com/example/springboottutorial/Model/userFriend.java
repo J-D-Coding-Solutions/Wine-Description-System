@@ -1,5 +1,10 @@
 package com.example.springboottutorial.Model;
 
+/**
+ * userFriend.java
+ * This class represents a temporary friend request between two users in the system.
+ */
+
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

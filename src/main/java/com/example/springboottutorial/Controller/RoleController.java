@@ -1,5 +1,10 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * RoleController.java
+ * This class handles user role management and session management.
+ */
+
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
 import java.util.Map;

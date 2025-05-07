@@ -1,5 +1,12 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * RequestedWineController.java
+ * This Class is responsible for handling the requests related to wine requests.
+ * It allows the admin and sommeliers to view all wine requests and decline them.
+ *
+ */
+
 import com.example.springboottutorial.Model.WineRequests;
 import com.example.springboottutorial.Model.wines;
 import com.example.springboottutorial.Repository.WineRepository;

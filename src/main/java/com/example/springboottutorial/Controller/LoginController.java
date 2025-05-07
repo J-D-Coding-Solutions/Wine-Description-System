@@ -1,5 +1,13 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * LoginController.java
+ * This Class is responsible for the login for users
+ * It uses PassEncryption and User Service to authenticate users
+ * It also uses the UserRepository to find users in the database
+ */
+
+
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;

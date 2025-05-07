@@ -1,5 +1,10 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * WineSearchController.java
+ * This class handles the search functionality for wines based on user input.
+ */
+
 import com.example.springboottutorial.Model.wines;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
