@@ -1,5 +1,11 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * FriendRequestController.java
+ * This class handles the friend request functionality in the application.
+ * It allows users to send friend requests to other users.
+ * It uses the FriendRequestRepository to manage friend requests
+ */
 
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;

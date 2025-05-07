@@ -1,5 +1,15 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * BugReportController.java
+ * This class is responsible for handling requests related to bug reports.
+ * It includes methods for displaying the bug report form and saving bug reports to the database.
+ *
+ *
+ *
+ */
+
+
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;
@@ -38,7 +48,7 @@ public class BugReportController {
 
         bugReport.setUser(username);
         bugReportRepository.save(bugReport);
-        return "dash"; // Redirect to a success page or dashboard after saving
+        return "redirect:/Dash";
     }
 
 

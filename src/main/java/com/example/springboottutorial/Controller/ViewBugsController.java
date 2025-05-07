@@ -1,5 +1,12 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ *
+ * ViewBugsController.java
+ * This Controller is responsible for handling the requests related to viewing bug reports.
+ * It retrieves all bug reports from the database and displays them on the viewBugReport page.
+ */
+
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;

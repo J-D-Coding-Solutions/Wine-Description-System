@@ -1,5 +1,13 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ *
+ * RegisterAccountController.java
+ * This Class is responsible for handling the registration of new users that the admin creates.
+ * It provides a form for the admin to fill out and submit, which is then processed to create a new user account.
+ *
+ */
+
 import com.example.springboottutorial.Encryption.PassEncryption;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
@@ -33,7 +41,7 @@ public class RegisterAccountController {
         if (userService.register(username)) {
             user.setPassword(PassEncryption.EncyptPassword(user.getPassword()));
             userRepository.save(user);
-            return "Dash";
+            return "redirect:/" + "Dash"; // Redirect to appropriate dashboard
         } else {
             model.addAttribute("error", "User already exists");
             model.addAttribute("user", user);//Need this brcasue if the account already exists the form keeps the crap that was fileld in

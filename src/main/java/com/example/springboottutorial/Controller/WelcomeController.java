@@ -1,5 +1,10 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * WelcomeController.java
+ * This Class is responsible fro displaying the Wine Search page it is not included in the winesreach crontroller because that is a rest controller
+ */
+
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;

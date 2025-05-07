@@ -1,4 +1,8 @@
 package com.example.springboottutorial.Model;
+/**
+ * users.java
+ * This class represents a user entity in the database.
+ */
 
 import jakarta.persistence.*;
 

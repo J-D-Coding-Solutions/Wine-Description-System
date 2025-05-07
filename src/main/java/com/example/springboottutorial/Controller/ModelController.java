@@ -1,5 +1,11 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * ModelController.java
+ * This class is responsible for creating the ARFF file, training the model, and making predictions.
+ * It uses Weka for machine learning and the Stanford NLP library for natural language processing.
+ * It also interacts with the arffRepository to save and retrieve data.
+ */
 
 import com.example.springboottutorial.Model.arff;
 import com.example.springboottutorial.Repository.arffRepository;

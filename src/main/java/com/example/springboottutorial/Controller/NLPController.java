@@ -1,5 +1,12 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ *NLPController.java
+ * This class is used to perform Natural Language Processing (NLP) tasks
+ * such as tokenization, part-of-speech tagging, and keyword extraction.
+ *
+ */
+
 import com.example.springboottutorial.Model.wines;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;

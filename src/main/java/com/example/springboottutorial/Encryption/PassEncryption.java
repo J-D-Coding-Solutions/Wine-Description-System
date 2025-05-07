@@ -1,4 +1,8 @@
 package com.example.springboottutorial.Encryption;
+/**
+ * PassEncryption.java
+ * This class is used to encrypt and check passwords using BCrypt.
+ */
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

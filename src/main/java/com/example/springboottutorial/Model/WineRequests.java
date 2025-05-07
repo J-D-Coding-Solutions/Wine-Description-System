@@ -1,4 +1,8 @@
 package com.example.springboottutorial.Model;
+/**
+ * WineRequests.java
+ * This class represents a wine request entity in the database.
+ */
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

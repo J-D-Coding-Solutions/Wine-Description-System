@@ -1,4 +1,9 @@
 package com.example.springboottutorial.Model;
+/**
+ * favoritewines.java
+ * This class represents the favorite wines of a user.
+ *
+ */
 
 import jakarta.persistence.*;
 

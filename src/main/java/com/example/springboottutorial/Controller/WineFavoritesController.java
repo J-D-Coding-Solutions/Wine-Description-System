@@ -1,5 +1,11 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * WineFavoritesController.java
+ * This Class is responsible for handling the favorite wines functionality.
+ * It allows users to add, remove, and view their favorite wines.
+ * It also provides functionality to view the favorite wines of friends.
+ */
 
 import com.example.springboottutorial.Controller.DTO.friendFavDTO;
 import com.example.springboottutorial.Model.favoriteWines;

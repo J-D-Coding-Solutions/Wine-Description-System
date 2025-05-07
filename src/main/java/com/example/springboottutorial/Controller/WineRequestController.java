@@ -1,5 +1,11 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * WineRequestController.java
+ * This class handles the requests related to wine requests.
+ * It allows users to submit wine requests and saves them to the database.
+ */
+
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;

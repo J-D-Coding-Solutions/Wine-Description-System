@@ -1,5 +1,14 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * AdjustProfilesController.java
+ * This class is responsible for handling requests related to adjusting user profiles.
+ * It includes methods for displaying the profile adjustment page and deleting user profiles.
+ * It uses the UserRepository to interact with the database.
+ *
+ */
+
+
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;
 import com.example.springboottutorial.Service.*;

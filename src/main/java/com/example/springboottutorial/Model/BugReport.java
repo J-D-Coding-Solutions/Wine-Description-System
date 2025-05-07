@@ -1,4 +1,8 @@
 package com.example.springboottutorial.Model;
+/**
+ * BugReport.java
+ * This class represents a bug report entity in the database.
+ */
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

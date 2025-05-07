@@ -1,5 +1,11 @@
 package com.example.springboottutorial.Controller;
 
+/**
+ * RegisterController.java
+ * This Class is responsible for handling user registration.
+ * It contains methods to display the registration page and to add a new user.
+ */
+
 import com.example.springboottutorial.Encryption.PassEncryption;
 import com.example.springboottutorial.Model.*;
 import com.example.springboottutorial.Repository.*;

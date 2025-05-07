@@ -1,4 +1,8 @@
 package com.example.springboottutorial.Service;
+/**
+ * UserService.java
+ * This class handles user authentication and registration.
+ */
 
 import com.example.springboottutorial.Encryption.PassEncryption;
 import com.example.springboottutorial.Model.*;

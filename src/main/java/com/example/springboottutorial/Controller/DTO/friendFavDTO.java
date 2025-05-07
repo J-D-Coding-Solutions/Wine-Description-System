@@ -1,5 +1,13 @@
 package com.example.springboottutorial.Controller.DTO;
 
+/**
+ * This class is used to transfer data between the client and server.
+ * It contains the fields that are needed to create a new friend favorite.
+ * It is used in the FriendController class.
+ *
+ *
+ *
+ */
 public class friendFavDTO {
         private String wineName;
         private String wineDesc;
