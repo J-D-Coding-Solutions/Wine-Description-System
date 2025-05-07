@@ -38,7 +38,7 @@ html {
 }
 
 body{
-    background-image: url('/images/Login-Background.png');
+    background-image: url('../images/Login-Background.png');
     background-size: cover;
     background-repeat: no-repeat;
     font-family: Georgia, 'Times New Roman', Times, serif;
