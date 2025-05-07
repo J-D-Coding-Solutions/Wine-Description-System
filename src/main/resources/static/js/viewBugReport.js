@@ -2,7 +2,7 @@ function searchFriend(){
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchFriend");
     filter = input.value.toUpperCase();
-    table = document.getElementById("friendList");
+    table = document.getElementById("bugInfo");
     tr = table.getElementsByTagName("tr");
 
     for (i = 0; i < tr.length; i++) {

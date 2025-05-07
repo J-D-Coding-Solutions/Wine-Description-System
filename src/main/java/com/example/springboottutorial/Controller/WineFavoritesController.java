@@ -51,7 +51,7 @@ public class WineFavoritesController {
             } else {
                 System.out.println("WINE NOT FOUND");
             }
-        return "dash";
+        return "redirect:/Dash";
     }
 
     @PostMapping("/removeFavorite/{wineId}")

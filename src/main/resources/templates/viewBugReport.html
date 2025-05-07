@@ -21,7 +21,7 @@
 
 <div class="mainDiv">
 <div id="bugInfo">
-    <h2>Bug Reports</h2>
+    <h2 class = "dark">Bug Reports</h2>
     <input type="text" id="searchFriend" placeholder="Search Bug List..." onkeyup="searchFriend()">
     <table id="friendTable">
         <thead>
@@ -34,13 +34,14 @@
             <tr th:each="BugReport:${BugReport}">
                 <td th:text="${BugReport.getId}" ></td>
                 <td th:text="${BugReport.getBugReport}" ></td>
-                <td th:text="${BugReport.getUser}" ></td>
+                <td th:text="${BugReport.getUser.username}" ></td>
                 <td th:text="${BugReport.getCreatedAt}" ></td>
-                <td>Nav bar was glitching out
+                <td>
                     <form th:action="@{'/delete/' + ${BugReport.getId()} }" method="post">
-                        <button class="delete">Delete</button>
+                        <button class="decline">Delete</button>
                     </form>
                 </td>
+
             </tr>
         </tbody>
     </table>
