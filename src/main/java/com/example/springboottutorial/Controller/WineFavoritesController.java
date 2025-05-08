@@ -37,10 +37,11 @@ public class WineFavoritesController {
     private UserRepository userRepository;
 
     @PostMapping("/addFavorite")
-    public String favoriteWine(@RequestParam String winename, HttpSession session){
+    public String favoriteWine(@RequestParam String winename, HttpSession session, Model model) {
             Optional<wines> wine = wineRepository.findByWineName(winename);
             String sessionusername = (String) session.getAttribute("username");
             users currentUser = userRepository.findByUsername(sessionusername).orElse(null);
+            if(currentUser != null){
             if (wine.isPresent()) {
                 favoriteWines favWine = new favoriteWines(currentUser, wine.get());
                 if (favoriteWineRepository.existsByUserAndWine(currentUser, wine.get())) {
@@ -50,6 +51,10 @@ public class WineFavoritesController {
                 }
             } else {
                 System.out.println("WINE NOT FOUND");
+            }
+        }else{
+                model.addAttribute("error", "Invalid username or password");
+                return "wineSearch";
             }
         return "redirect:/Dash";
     }
