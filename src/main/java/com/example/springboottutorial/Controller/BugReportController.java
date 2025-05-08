@@ -49,11 +49,7 @@ public class BugReportController {
         bugReport.setUser(username);
         bugReportRepository.save(bugReport);
         // if the username is not null redirect dash if it is null redirect wine sreahc
-        if (username != null) {
-            return "redirect:/Dash";
-        } else {
-            return "redirect:/ReportBuggies";
-        }
+        return "redirect:/ReportBuggies";
     }
 
 

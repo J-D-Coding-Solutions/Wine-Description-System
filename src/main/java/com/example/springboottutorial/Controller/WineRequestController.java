@@ -51,7 +51,7 @@ public class WineRequestController {
         //This then sets the user object to the request and saves it to the database
         request.setUser(username);
         wineRequestRepository.save(request);
-        return "redirect:/Dash";
+        return "redirect:/WineRequest";
     }
 
 
