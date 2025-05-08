@@ -18,7 +18,7 @@ public class BugReport {
     @Column(name = "bug_report", columnDefinition = "TEXT")//JUST SETS THE DATA TYPE TO TEXT, YOU CANT DO IT IN JAVA AND I DONT WNAT THJE CONSOLE BITCHING
     private String bug_report;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "username", nullable = false, referencedColumnName = "username") //first lists what the collumn is called in the winerequests database and then the second is the name of the collumn in the users database
+    @JoinColumn(name = "username", nullable = true, referencedColumnName = "username") //first lists what the collumn is called in the winerequests database and then the second is the name of the collumn in the users database
     private users user;//the user object is the one that is being referenced in the database
 
     @Column(name = "created_at", updatable = false)

@@ -31,6 +31,8 @@ body{
     background-color: #7B506F;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    display: flex; /* added to structure content in column layout */
+    flex-direction: column; /* added for vertical layout */
 }
 
 
@@ -58,30 +60,6 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-
-/*table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    /*border: 1px solid #dddddd;*/
-/*    text-align: left;
-    padding: 8px;
-}
-td, .header{
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    border-radius: 8px;
-}
-
-
-
-.header, tr:hover{
-    background-color: #F4EAE6;
-}
-*/
 .accept, .decline{
     padding: 6px 12px;
     cursor: pointer;
@@ -150,7 +128,6 @@ th {
 #wineTable th,
 .scrollable-body td {
     width: 250px;
-    border: 1px solid #ccc;
     padding: 8px;
 }
 
@@ -164,4 +141,31 @@ th {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
+}
+#wineList table {
+    width: 100%; /* added for full width */
+    border-collapse: collapse; /* ensures borders merge cleanly */
+    table-layout: fixed; /* keeps column widths consistent */
+}
+
+/* Keeps the header row visible while scrolling the wine list */
+#wineList thead {
+    position: sticky; /* added to keep header visible */
+    top: 0; /* locks thead to top of scrollable area */
+    z-index: 1; /* keeps thead above scrollable tbody */
+}
+
+/* Makes tbody scrollable and limits height */
+#wineList tbody {
+    display: block; /* separates tbody layout from thead */
+    max-height: 600px; /* added: controls vertical space used */
+    overflow-y: auto; /* added: enables vertical scrolling */
+    width: 100%; /* maintains full table width */
+}
+
+/* Ensures each table row aligns correctly inside scrollable tbody */
+#wineList tr {
+    display: table; /* added to preserve table layout inside block tbody */
+    width: 100%; /* ensures rows don't overflow */
+    table-layout: fixed; /* keeps column alignment consistent */
 }
