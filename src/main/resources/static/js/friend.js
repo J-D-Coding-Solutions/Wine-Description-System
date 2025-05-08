@@ -27,8 +27,7 @@ function showFriendInfo(thisObj, i){
     var userName = allChildNodes[2 + i].textContent;
     var friendInfo = document.getElementById("friendInfo");
     var textbox = friendInfo.childNodes[3];
-    var infroRow = document.getElementById("infoRow");
-    var table = document.getElementById("friendInfoTable");
+    var table = document.getElementById("infoRow");
     textbox.textContent = userName;
 
     // infroRow.innerHTML = "<td>" + userId + "</td>" + "<td>" + userName + "</td>";
@@ -48,6 +47,7 @@ function showFriendInfo(thisObj, i){
         })
         .then(data => {
             console.log(data);
+            infoRow.innerHTML = "";
             data.forEach(item => {
                 const row = document.createElement("tr");
 
