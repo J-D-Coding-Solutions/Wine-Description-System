@@ -28,13 +28,16 @@
         <tr class="header">
             <th>Issue Id</th>
             <th>Bug report</th>
+            <th>Reported by</th>
+            <th>Created at</th>
+            <th>Delete?</th>
         </tr>
         </thead>
         <tbody>
             <tr th:each="BugReport:${BugReport}">
                 <td th:text="${BugReport.getId}" ></td>
                 <td th:text="${BugReport.getBugReport}" ></td>
-                <td th:text="${BugReport.getUser.username}" ></td>
+                <td th:text="${BugReport.getUser?.username ?: 'Guest'}"></td>
                 <td th:text="${BugReport.getCreatedAt}" ></td>
                 <td>
                     <form th:action="@{'/delete/' + ${BugReport.getId()} }" method="post">
